@@ -39,6 +39,12 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  # Gworks add
+  gem 'pry-byebug'
+  gem 'better_errors'
+  gem 'rubocop'
+
 end
 
 group :development do
@@ -61,4 +67,48 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+
+
+## Gworks add
+
+# login
 gem 'devise'
+
+# pagenation
+# rails g kaminari:config
+# rails g kaminari:views default
+gem 'kaminari'
+
+# search form
+gem 'ransack'
+
+# form create
+# gem 'rails-bootstrap-forms'
+# gem 'simple-form-bootstrap'
+gem 'bootstrap-forms'
+gem 'form-bootstrap'
+
+# bootstrap
+gem 'bootstrap-sass'
+gem 'jquery-rails'
+
+# select box
+gem 'bootstrap-select-rails'
+
+# datetime select
+# gem 'DatePicker'
+# gem 'TimePicker'
+# gem 'DateTimePicker'
+gem 'bootstrap-datepicker-rails'
+gem 'bootstrap-timepicker-rails'
+gem 'bootstrap_datetimepicker'
+
+# image upload
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
+
+# user authority
+gem 'cancancan'
+
+# N+1 check
+gem 'bullet'
