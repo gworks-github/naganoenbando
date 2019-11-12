@@ -20,4 +20,8 @@ Rails.application.routes.draw do
 
   devise_for :customers
 
+  get '/carts/info', to: 'carts#info'
+  get '/carts/confirm', to: 'carts#confirm'
+  resources :carts, only: [:index, :create, :destroy, :new]
+
 end
