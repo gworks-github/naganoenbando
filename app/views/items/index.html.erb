@@ -1,0 +1,14 @@
+<h1>投稿一覧</h1>
+ <% @items.each do |item| %>
+    <p>タイトル</p>
+    <span><%= item.name %></span>
+    <span><%= item.artist_id %></span>
+    <span><%= item.format %></span>
+    <span><%= item.jacket_image %></span>
+    <span><%= item.prices %></span>
+    <span><%= item.genre_id %></span>
+    <span><%= item.label_id %></span>
+    <span><%= item.quantity %></span>
+    <span><%= item.release_date %></span>
+    <span><%= item.is_selling %></span>
+ <% end %>
