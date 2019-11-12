@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :items
+  
   devise_scope :customer do
     get    'users/sign_in'         => 'devise/sessions#new', as: :new_user_session
     post   'users/sign_in'         => 'devise/sessions#create', as: :user_session
