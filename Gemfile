@@ -112,3 +112,9 @@ gem 'cancancan'
 
 # N+1 check
 gem 'bullet'
+
+# seeds
+gem 'gimei'
+gem 'faker'
+
+
