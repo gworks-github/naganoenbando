@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_11_12_065335) do
+=======
+ActiveRecord::Schema.define(version: 2019_11_12_094538) do
+>>>>>>> 8170c13ce3c5de32f97df53d2696255281bd36fe
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "customer_id"
@@ -29,12 +33,12 @@ ActiveRecord::Schema.define(version: 2019_11_12_065335) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "firsrt_name"
+    t.string "first_name"
     t.string "last_name"
-    t.string "firsrt_furighana"
+    t.string "first_furigana"
     t.string "last_furigana"
     t.string "post_code"
-    t.text "adress"
+    t.text "address"
     t.string "phone_number"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
