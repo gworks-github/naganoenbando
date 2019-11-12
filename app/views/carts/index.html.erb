@@ -1,8 +1,9 @@
-asdkfjal;j
-
+<h1>カート商品一覧</h1>
 
 <% @cart_items.each do |item| %>
-	<%= item.id %>
-	<%= item.item_id %>
-	<%= item.quantity %>
+	<p><%= item.id %></p>
+	<p><%= item.item_id %></p>
+	<p><%= item.quantity %></p>
+	<br>
+	<br>
 <% end %>
