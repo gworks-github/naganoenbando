@@ -1,2 +1,6 @@
 <h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+  <li>
+  	<%= link_to item_carts_path(@item), method: :post do%>
+      <p>カートへいれる</p>
+    <% end %>
+  </li>

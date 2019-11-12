@@ -5,8 +5,9 @@ class CartsController < ApplicationController
 	end
 
 	def create
-		@cart_item = Cart_item(params[:id])
+		@cart_item = CartItem.new
 		@cart_item.save
+		redirect_to carts_index_path
 	end
 
 	def destroy
