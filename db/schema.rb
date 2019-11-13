@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2019_11_12_105433) do
+
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "customer_id"
@@ -29,12 +31,12 @@ ActiveRecord::Schema.define(version: 2019_11_12_105433) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "firsrt_name"
+    t.string "first_name"
     t.string "last_name"
-    t.string "firsrt_furighana"
+    t.string "first_furigana"
     t.string "last_furigana"
     t.string "post_code"
-    t.text "adress"
+    t.text "address"
     t.string "phone_number"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -58,6 +60,28 @@ ActiveRecord::Schema.define(version: 2019_11_12_105433) do
     t.integer "prices"
     t.integer "tax_id"
     t.string "jacket_image_id"
+  end
+
+  create_table "order_details", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "item_id"
+    t.string "price"
+    t.integer "order_quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "tax_in_postage_id"
+    t.integer "payment_method"
+    t.string "post_code"
+    t.text "adress"
+    t.string "phone_number"
+    t.integer "tax_in_total_price"
+    t.integer "order_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
