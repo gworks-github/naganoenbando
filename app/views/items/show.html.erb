@@ -1,9 +1,6 @@
 <h1>商品詳細</h1>
-<<<<<<< HEAD
 
 <li>ログインユーザID＝<%= current_customer.id %></li>
-=======
->>>>>>> 44e17c7cb1b1ce9c26a15d0ddd5f80dfe89e4fba
 
 	<h4>ジャケット画像</h4>
     <%= attachment_image_tag @item, :jacket_image, :fill, 300, 300, format: 'jpeg' %>
@@ -31,41 +28,22 @@
 
     <h4>ジャンル</h4>
     <p><%= @item.genre_id %></p>
-<<<<<<< HEAD
-
-=======
->>>>>>> 44e17c7cb1b1ce9c26a15d0ddd5f80dfe89e4fba
 
     <h4>CDの枚数</h4>
     <%= @item.quantity %>
-   
     <h4>ステータス</h4>
     <p><%= @item.is_selling %></p>
 
-<<<<<<< HEAD
 
 
 
-<%= form_for [@item] do |f| %>
+<%= form_for [@item,@cart_item], url: item_carts_path(@item), html: {method: :post} do |f| %>
     <div class="row">
         <div class="col-sm-12">
-           <%= select_tag :hoge, options_for_select((1..99).to_a) %>
+           <%= f.select :quantity, options_for_select((1..29).to_a) %>
+            <%= f.hidden_field :customer_id, :value => current_customer.id %>
+            <%= f.hidden_field :item_id, :value => @item.id %>
         </div>
     </div>
     <%= f.submit "カートへ入れる", class: "btn btn-lg mt-20" %>
 <% end %>
-
-
-  <li><%= link_to item_carts_path(@item), method: :post do%>
-      <p>カートへ入れる</p>
-=======
-  <li>
-  	<%= current_customer.id %>
-  </li>
-  <li>
-  	<%= link_to item_carts_path(current_customer), method: :post do%>
-      <p>カートへいれる</p>
->>>>>>> 44e17c7cb1b1ce9c26a15d0ddd5f80dfe89e4fba
-    <% end %>
-  </li>
-
