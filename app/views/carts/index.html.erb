@@ -2,12 +2,30 @@
 
 <p>ログインID＝<%=  @current_customer.id %></p>
 <h1>カート商品一覧</h1>
-<% @cart_items.each do |item| %>
-	<p>No＝<%= item.id %></p>
-	<p>商品ID＝<%= item.item_id %></p>
-	<p>顧客ID＝<%= item.customer_id %></p>
-	<p>商品点数＝<%= item.quantity %></p>
-	<p><%=  %></p>
+
+
+<div class="container">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>商品ID</th>
+				<th>顧客ID</th>
+				<th>商品点数</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @cart_items.each do |item| %>
+			<tr>
+				<td><%= item.id %></td>
+				<td><%= item.item_id %></td>
+				<td><%= item.customer_id %></td>
+				<td><%= item.quantity %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+
 	<br>
 	<br>
-<% end %>
