@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_13_111113) do
+ActiveRecord::Schema.define(version: 2019_11_13_121508) do
+
+  create_table "arrived_items", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.integer "quantity", null: false
+    t.datetime "date", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "artists", force: :cascade do |t|
     t.string "name", null: false
@@ -58,6 +66,12 @@ ActiveRecord::Schema.define(version: 2019_11_13_111113) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "genres", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "items", force: :cascade do |t|
     t.string "name", null: false
     t.integer "artist_id", null: false
@@ -72,6 +86,12 @@ ActiveRecord::Schema.define(version: 2019_11_13_111113) do
     t.integer "prices"
     t.integer "tax_id"
     t.string "jacket_image_id"
+  end
+
+  create_table "labels", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "likes", force: :cascade do |t|
@@ -99,6 +119,24 @@ ActiveRecord::Schema.define(version: 2019_11_13_111113) do
     t.string "phone_number"
     t.integer "tax_in_total_price"
     t.integer "order_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ready_items", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tax_in_postages", force: :cascade do |t|
+    t.integer "price", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "taxes", force: :cascade do |t|
+    t.decimal "rate", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
