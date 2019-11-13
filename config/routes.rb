@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
-  resources :items
-  
+  get '/carts/info', to: 'carts#info'
+  get '/carts/confirm', to: 'carts#confirm'
+  get '/carts/index', to: 'carts#index'
+  resources :items do
+    resource :carts, only: [:index, :create, :destroy, :new]
+  end
+
   devise_scope :customer do
     get    'users/sign_in'         => 'devise/sessions#new', as: :new_user_session
     post   'users/sign_in'         => 'devise/sessions#create', as: :user_session
@@ -21,8 +26,5 @@ Rails.application.routes.draw do
   end
 
   devise_for :customers
-  get '/carts/info', to: 'carts#info'
-  get '/carts/confirm', to: 'carts#confirm'
-  resources :carts, only: [:index, :create, :destroy, :new]
   resources :orders
 end
