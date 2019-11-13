@@ -1,17 +1,20 @@
 <h1>商品詳細</h1>
 
-	<!-- <h4>ジャケット画像</h4> -->
+<li>ログインユーザID＝<%= current_customer.id %></li>
+
+	<h4>ジャケット画像</h4>
+
     <%= attachment_image_tag @item, :jacket_image, :fill, 300, 300, format: 'jpeg' %>
 
     <h1>タイトル</h1>
     <p><%= @item.name %></p>
- 
+
     <h3>アーティスト名</h3>
     <p><%= @item.artist_id %></p>
 
     <h4>シングル/アルバム</h4>
     <p><%= @item.format %></p>
- 
+
     <h4>価格</h4>
     <p><%= @item.prices %></p>
 
@@ -27,16 +30,11 @@
     <h4>ジャンル</h4>
     <p><%= @item.genre_id %></p>
 
-    <h4>CDの枚数</h4>
-    	<%= form_for @item do |f|  %>
-    		<%= f.label :quantity, "数量"  %>
-    		<%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10]  %>
-    	<% end %>
-    	<!-- 　在庫関連の参考サイト：https://qiita.com/phantomspecial/items/22146e7e6c6d3a38fefc -->
 
     <h4>ステータス</h4>
     <p><%= @item.is_selling %></p>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     
 <h1>商品詳細</h1>
@@ -49,4 +47,19 @@
 =======
 >>>>>>> ba83f6d3e33842c0484f5af5d03fccdfc08228d4
   </li>
+=======
+>>>>>>> fc25b1720578888c7c2aeb0adaa8c57ce68230c6
 
+
+    	<!-- 　在庫関連の参考サイト：https://qiita.com/phantomspecial/items/22146e7e6c6d3a38fefc -->
+
+<%= form_for [@item,@cart_item], url: item_carts_path(@item), html: {method: :post} do |f| %>
+    <div class="row">
+        <div class="col-sm-12">
+           <%= f.select :quantity, options_for_select((1..29).to_a) %>
+            <%= f.hidden_field :customer_id, :value => current_customer.id %>
+            <%= f.hidden_field :item_id, :value => @item.id %>
+        </div>
+    </div>
+    <%= f.submit "カートへ入れる", class: "btn btn-lg mt-20" %>
+<% end %>
