@@ -1,17 +1,19 @@
+<h1>商品詳細</h1>
 
+<li>ログインユーザID＝<%= current_customer.id %></li>
 
 	<h4>ジャケット画像</h4>
     <%= attachment_image_tag @item, :jacket_image, :fill, 300, 300, format: 'jpeg' %>
 
     <h1>タイトル</h1>
     <p><%= @item.name %></p>
- 
+
     <h3>アーティスト名</h3>
     <p><%= @item.artist_id %></p>
 
     <h4>シングル/アルバム</h4>
     <p><%= @item.format %></p>
- 
+
     <h4>価格</h4>
     <p><%= @item.prices %></p>
 
@@ -26,18 +28,26 @@
 
     <h4>ジャンル</h4>
     <p><%= @item.genre_id %></p>
- 
+
 
     <h4>ステータス</h4>
     <p><%= @item.is_selling %></p>
 
-    
-<h1>商品詳細</h1>
-  <li>
-  	ログインユーザID＝<%= current_customer.id %>
-  </li>
-  <li><%= link_to item_carts_path(current_customer), method: :post do%>
-      <p>カートへいれる</p>
+
+
+
+<%= form_for [@item] do |f| %>
+    <div class="row">
+        <div class="col-sm-12">
+           <%= select_tag :hoge, options_for_select((1..99).to_a) %>
+        </div>
+    </div>
+    <%= f.submit "カートへ入れる", class: "btn btn-lg mt-20" %>
+<% end %>
+
+
+  <li><%= link_to item_carts_path(@item), method: :post do%>
+      <p>カートへ入れる</p>
     <% end %>
   </li>
 

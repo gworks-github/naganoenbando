@@ -1,6 +1,5 @@
 class CartsController < ApplicationController
 
-	before_action :authenticate_customer!
 
 	def index
 		@current_customer = current_customer
@@ -8,9 +7,9 @@ class CartsController < ApplicationController
 	end
 
 	def create
-		@cart_item = CartItem.new
-		@cart_item.customer_id = current_customer.id
-		@cart_item.save
+		item = Item.find(params[:item_id])
+		cart_item = current_customer.cart_items.new(item_id: item.id)
+		cart_item.save
 		redirect_to carts_index_path
 	end
 

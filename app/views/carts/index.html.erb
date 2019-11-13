@@ -3,9 +3,9 @@
 <p>ログインID＝<%=  @current_customer.id %></p>
 <h1>カート商品一覧</h1>
 <% @cart_items.each do |item| %>
-	<p><%= item.id %></p>
-	<p><%= item.item_id %></p>
-	<p><%= item.quantity %></p>
+	<p>カート内商品ID＝<%= item.id %></p>
+	<p>商品ID＝<%= item.item_id %></p>
+	<p>商品点数＝<%= item.quantity %></p>
 	<p><%=  %></p>
 	<br>
 	<br>
