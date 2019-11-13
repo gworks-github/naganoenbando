@@ -1,0 +1,25 @@
+<h2>7.マイページ</h2>
+
+<h3>マイページ</h3>
+
+<h3>基本情報</h3>
+
+<p>
+<%= @customer.last_name %> <%= @customer.first_name %>
+(<%= @customer.last_furigana %> <%= @customer.first_furigana %>)
+</p>
+
+<p>
+<%= @customer.post_code %> <br>
+<%= @customer.address %>
+</p>
+
+<p>
+<%= @customer.phone_number %> <br>
+<%= @customer.email %>
+</p>
+
+
+<%= link_to "購入履歴", orders_path %>
+<%= link_to "いいねした商品", '#' %>
+<%= link_to "退会する",   '#' %>
