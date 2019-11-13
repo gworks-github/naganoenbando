@@ -7,12 +7,11 @@ class ItemsController < ApplicationController
   	item = Item.new(item_params)
   	item.save
     redirect_to items_path
-  	# else
-  		# render :newnd
   end
 
   def index
   	@items = Item.all
+  	
   end
 
   def show

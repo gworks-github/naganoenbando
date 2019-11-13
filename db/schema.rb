@@ -60,6 +60,13 @@ ActiveRecord::Schema.define(version: 2019_11_12_105433) do
     t.string "jacket_image_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "order_details", force: :cascade do |t|
     t.integer "order_id"
     t.integer "item_id"

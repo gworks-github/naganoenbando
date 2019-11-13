@@ -3,6 +3,7 @@
 <li>ログインユーザID＝<%= current_customer.id %></li>
 
 	<h4>ジャケット画像</h4>
+
     <%= attachment_image_tag @item, :jacket_image, :fill, 300, 300, format: 'jpeg' %>
 
     <h1>タイトル</h1>
@@ -29,13 +30,13 @@
     <h4>ジャンル</h4>
     <p><%= @item.genre_id %></p>
 
-    <h4>CDの枚数</h4>
-    <%= @item.quantity %>
+
     <h4>ステータス</h4>
     <p><%= @item.is_selling %></p>
 
 
 
+    	<!-- 　在庫関連の参考サイト：https://qiita.com/phantomspecial/items/22146e7e6c6d3a38fefc -->
 
 <%= form_for [@item,@cart_item], url: item_carts_path(@item), html: {method: :post} do |f| %>
     <div class="row">
