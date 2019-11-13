@@ -1,18 +1,20 @@
 class CartsController < ApplicationController
 
-	before_action :authenticate_customer!
 
 	def index
-		@cart_item = Cart_item.find(current_user[:id])
+		@cart_item = CartItem.find(current_customer[:id])
 		@cart_items = CartItem.all
 		@current_customer = current_customer
-		@cart_items = CartItem.all
 	end
 
 	def create
-		@cart_item = CartItem.new
-		@cart_item.customer_id = current_customer.id
+		# item = Item.find(params[:item_id])
+		# cart_item = current_customer.cart_items.new(item_id: item.id)
+		# cart_item.save
+		# redirect_to carts_index_path
+		@cart_item = CartItem.new(cart_item_params)
 		@cart_item.save
+		puts @cart_item.errors.full_messages
 		redirect_to carts_index_path
 	end
 
@@ -27,4 +29,10 @@ class CartsController < ApplicationController
 
 	def new
 	end
+
+	private
+		def cart_item_params
+			params.require(:cart_item).permit(:quantity, :item_id, :customer_id)
+		end
+
 end
