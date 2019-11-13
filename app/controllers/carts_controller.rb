@@ -3,6 +3,8 @@ class CartsController < ApplicationController
 	before_action :authenticate_customer!
 
 	def index
+		@cart_item = Cart_item.find(current_user[:id])
+		@cart_items = CartItem.all
 		@current_customer = current_customer
 		@cart_items = CartItem.all
 	end
