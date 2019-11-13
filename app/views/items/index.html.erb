@@ -1,8 +1,9 @@
 <h1>ユーザTOP</h1>
  <% @items.each do |item| %>
-     <p>ジャケット画像</p>
-    <%= attachment_image_tag item, :jacket_image, :fill, 100, 100, format: 'jpeg' %>
-
+ 	<!-- <p>ジャケット画像</p> -->
+     <p>
+     	<%=link_to attachment_image_tag(item, :jacket_image, :fill, 100, 100, format: 'jpeg' ), item_path(item.id) %>
+    </p>
 
     <!-- <p>タイトル</p> -->
     <span>

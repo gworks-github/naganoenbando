@@ -1,5 +1,4 @@
 
-	<h4>ジャケット画像</h4>
     <%= attachment_image_tag @item, :jacket_image, :fill, 300, 300, format: 'jpeg' %>
 
     <h1>タイトル</h1>
@@ -25,8 +24,10 @@
 
     <h4>ジャンル</h4>
     <p><%= @item.genre_id %></p>
- 
 
+    <h4>CDの枚数</h4>
+    <%= @item.quantity %>
+   
     <h4>ステータス</h4>
     <p><%= @item.is_selling %></p>
 
