@@ -1,3 +1,5 @@
+
+
 <%= form_for(@item, url: '/items') do |f| %>
  
     <h4>タイトル</h4>
@@ -10,14 +12,17 @@
     <%= f.text_field :format%>
  
     <h4>ジャケット画像</h4>
-    <%= f.text_area :jacket_image %>
+    <%= f.attachment_field :jacket_image %>
 
      <h4>ジャンル</h4>
     <%= f.text_field :genre_id %>
 
     <h4>価格</h4>
     <%= f.text_area :prices %>
- 
+
+    <h4>税率</h4>
+    <%= f.text_area :tax_id %>
+
     <h4>レーベル</h4>
     <%= f.text_area :label_id %>
 

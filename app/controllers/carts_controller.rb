@@ -1,12 +1,17 @@
 class CartsController < ApplicationController
 
+	before_action :authenticate_customer!
+
 	def index
+		@current_customer = current_customer
 		@cart_items = CartItem.all
 	end
 
 	def create
-		@cart_item = Cart_item(params[:id])
+		@cart_item = CartItem.new
+		@cart_item.customer_id = current_customer.id
 		@cart_item.save
+		redirect_to carts_index_path
 	end
 
 	def destroy
@@ -20,5 +25,4 @@ class CartsController < ApplicationController
 
 	def new
 	end
-
 end
