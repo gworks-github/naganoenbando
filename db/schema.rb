@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_13_072202) do
+ActiveRecord::Schema.define(version: 2019_11_13_111113) do
+
+  create_table "artists", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "customer_id"
@@ -42,6 +48,14 @@ ActiveRecord::Schema.define(version: 2019_11_13_072202) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
+  end
+
+  create_table "disks", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.integer "disk_number"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "items", force: :cascade do |t|
@@ -85,6 +99,14 @@ ActiveRecord::Schema.define(version: 2019_11_13_072202) do
     t.string "phone_number"
     t.integer "tax_in_total_price"
     t.integer "order_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tracks", force: :cascade do |t|
+    t.integer "disk_id", null: false
+    t.integer "track_number"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -69,3 +69,20 @@ I18n.locale = 'ja'
   is_selling: is_selling,
   prices: prices)
 end
+
+
+Disk.create!(
+   item_id: '1',
+   disk_number: '1',
+   quantity: '10',
+)
+
+Track.create!(
+   disk_id: '1',
+   track_number: '1',
+   name: '夏',
+)
+
+Artist.create!(
+   name: 'AKB',
+)
