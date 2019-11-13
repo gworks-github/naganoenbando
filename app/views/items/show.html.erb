@@ -1,6 +1,9 @@
-<h1>Items#show</h1>
+<h1>商品詳細</h1>
   <li>
-  	<%= link_to item_carts_path(@item), method: :post do%>
+  	<%= current_customer.id %>
+  </li>
+  <li>
+  	<%= link_to item_carts_path(current_customer), method: :post do%>
       <p>カートへいれる</p>
     <% end %>
   </li>
