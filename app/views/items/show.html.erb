@@ -1,6 +1,9 @@
 <h1>商品詳細</h1>
+<<<<<<< HEAD
 
 <li>ログインユーザID＝<%= current_customer.id %></li>
+=======
+>>>>>>> 44e17c7cb1b1ce9c26a15d0ddd5f80dfe89e4fba
 
 	<h4>ジャケット画像</h4>
     <%= attachment_image_tag @item, :jacket_image, :fill, 300, 300, format: 'jpeg' %>
@@ -28,11 +31,18 @@
 
     <h4>ジャンル</h4>
     <p><%= @item.genre_id %></p>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 44e17c7cb1b1ce9c26a15d0ddd5f80dfe89e4fba
 
+    <h4>CDの枚数</h4>
+    <%= @item.quantity %>
+   
     <h4>ステータス</h4>
     <p><%= @item.is_selling %></p>
 
+<<<<<<< HEAD
 
 
 
@@ -48,6 +58,14 @@
 
   <li><%= link_to item_carts_path(@item), method: :post do%>
       <p>カートへ入れる</p>
+=======
+  <li>
+  	<%= current_customer.id %>
+  </li>
+  <li>
+  	<%= link_to item_carts_path(current_customer), method: :post do%>
+      <p>カートへいれる</p>
+>>>>>>> 44e17c7cb1b1ce9c26a15d0ddd5f80dfe89e4fba
     <% end %>
   </li>
 
