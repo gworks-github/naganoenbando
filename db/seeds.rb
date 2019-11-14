@@ -113,3 +113,13 @@ end
   address: address,
   phone_number: phone_number)
 end
+
+# likes
+10.times do |n|
+  customer_id = "#{n+1}"
+  item_id = "#{n+2}"
+
+  Like.create!(
+  customer_id: customer_id,
+  item_id: item_id)
+end
