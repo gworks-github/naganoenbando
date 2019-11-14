@@ -21,6 +21,7 @@
 				<td><%= item.item_id %></td>
 				<td><%= item.customer_id %></td>
 				<td><%= item.quantity %></td>
+				<td><%= link_to "削除", destroy_cart_path(item.id), method: :delete %></td>
 			</tr>
 			<% end %>
 		</tbody>
