@@ -1,6 +1,7 @@
 class Customer < ApplicationRecord
 
   has_many :cart_items, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :deliveries, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
