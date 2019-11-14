@@ -1,8 +1,6 @@
 
 
-<p>ログインID＝<%=  @current_customer.id %></p>
 <h1>カート商品一覧</h1>
-
 
 <div class="container">
 	<table class="table">
@@ -15,12 +13,13 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% @cart_items.each do |item| %>
+			<%= form_tag(carts_info_path, method: :patch) do %>
+			<% @cart_items.each_with_index  do |item, index| %>
 			<tr>
 				<td><%= item.id %></td>
 				<td><%= item.item_id %></td>
 				<td><%= item.customer_id %></td>
-				<td><%= item.quantity %></td>
+				<td><%= select_tag :"#{index}" , options_for_select((1..29).to_a, :selected => item.quantity) %></td>
 				<td><%= link_to "削除", destroy_cart_path(item.id), method: :delete %></td>
 			</tr>
 			<% end %>
@@ -28,5 +27,8 @@
 	</table>
 </div>
 
-	<br>
-	<br>
+
+<div class="row">
+    </div>
+    <%= submit_tag "レジに進む", class: "btn", style: "color: blue;" %>
+<% end %>

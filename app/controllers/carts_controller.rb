@@ -2,6 +2,7 @@ class CartsController < ApplicationController
 before_action :authenticate_customer!
 
 	def index
+		@cart_item = CartItem.new
 		@cart_items = CartItem.where(customer: current_customer[:id])
 		@current_customer = current_customer
 	end
@@ -29,6 +30,14 @@ before_action :authenticate_customer!
 	end
 
 	def info
+		@cart_items = CartItem.where(customer: current_customer[:id])
+		n = 0
+		@cart_items.each do |f|
+			puts f.id
+			f.quantity = params["#{n}"]
+			f.save
+			n += 1
+		end
 	end
 
 	def confirm
@@ -41,5 +50,8 @@ before_action :authenticate_customer!
 		def cart_item_params
 			params.require(:cart_item).permit(:quantity, :item_id, :customer_id)
 		end
+		# def item_quantity_params
+		# 	params.require(:cart_item).permit(:quantity)
+		# end
 
 end
