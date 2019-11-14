@@ -8,9 +8,10 @@ Rails.application.routes.draw do
   get '/carts/info', to: 'carts#info'
   get '/carts/confirm', to: 'carts#confirm'
   get '/carts/index', to: 'carts#index'
+  delete '/carts/:id/destroy', to: 'carts#destroy', as: :destroy_cart
 
   resources :items do
-    resource :carts, only: [:index, :create, :destroy, :new]
+    resource :carts, only: [:create]
     resource :likes, only: [:create, :destroy]
   end
 

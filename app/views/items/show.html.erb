@@ -2,14 +2,13 @@
 
 <h1>商品詳細</h1>
 
-<p>ログインユーザID＝<%= current_customer.id %></p>
-
-	<h4>ジャケット画像</h4>
-
-    <%= attachment_image_tag @item, :jacket_image, :fill, 300, 300, format: 'jpeg' %>
 <table class="table">
 
     <tbody>
+        <tr>
+            <th>ジャケット画像</th>
+            <td><%= attachment_image_tag @item, :jacket_image, :fill, 300, 300, format: 'jpeg' %></td>
+        </tr>
         <tr>
             <th>タイトル</th>
             <td><%= @item.name %></td>
@@ -55,11 +54,11 @@
     <div class="row">
         <div class="col-sm-12">
            <%= f.select :quantity, options_for_select((1..29).to_a) %>
-            <%= f.hidden_field :customer_id, :value => current_customer.id %>
+            <%#= f.hidden_field :customer_id, :value => current_customer.id %>
             <%= f.hidden_field :item_id, :value => @item.id %>
         </div>
     </div>
-    <%= f.submit "カートへ入れる", class: "btn btn-lg mt-20" %>
+    <%= f.submit "カートへ入れる", class: "btn", style: "color: blue;" %>
 <% end %>
 
 </div>
