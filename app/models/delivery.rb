@@ -1,20 +1,15 @@
-class Customer < ApplicationRecord
-
-  has_many :cart_items, dependent: :destroy
-  has_many :deliveries, dependent: :destroy
-
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+class Delivery < ApplicationRecord
+  belongs_to :customer
 
   # 1～20文字以上
-  validates :first_name, length: {in: 1..20}, presence: true
+  validates :first_name, length: {in: 1..20}
   validates :last_name,  length: {in: 1..20}, presence: true
 
-  # 全角カタカナ
+  # 全角カタカナ 存在チェックしない
   VALID_furigana_REGEX = /\A[ァ-ヶー－]+\z/
-  validates :first_furigana, length: {in: 1..20}, presence: true,
+  validates :first_furigana, length: {in: 1..20},
     format: { with: VALID_furigana_REGEX }
-  validates :last_furigana,  length: {in: 1..20}, presence: true,
+  validates :last_furigana,  length: {in: 1..20},
     format: { with: VALID_furigana_REGEX }
 
   #固定電話と携帯番号(ハイフンなし10桁or11桁)
@@ -28,6 +23,5 @@ class Customer < ApplicationRecord
     format: { with: VALID_POST_REGEX }
 
   validates :address, presence: true
-
 
 end

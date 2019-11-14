@@ -74,20 +74,42 @@ Track.create!(
    name: '夏',
 )
 
-## artist
-#10.times do |n|
-#  name  = Faker::Artist.name
-#  artists.create!(name: name)
-#end
-#
-## label
-#10.times do |n|
-#  name = Faker::Games::Pokemon.
-#  labels.create!(name: name)
-#end
-#
-## genre
-#10.times do |n|
-#  name = Faker::Music.genre
-#  genres.create!(name: name)
-#end
+# artist
+10.times do |n|
+  name  = Faker::Artist.name
+  Artist.create!(name: name)
+end
+
+# label
+10.times do |n|
+  name = Faker::Food.dish
+  Label.create!(name: name)
+end
+
+# genre
+10.times do |n|
+  name = Faker::Music.genre
+  Genre.create!(name: name)
+end
+
+# deliveries
+10.times do |n|
+  customer_id = "#{n+1}"
+  first_name = Gimei.first.kanji
+  last_name = Gimei.last.kanji
+  first_furigana = Gimei.first.katakana
+  last_furigana = Gimei.last.katakana
+  post_code = "000-0000"
+  address = Gimei.address.kanji
+  phone_number = "0000000000"
+
+  Delivery.create!(
+  customer_id: customer_id,
+  first_name: first_name,
+  last_name: last_name,
+  first_furigana: first_furigana,
+  last_furigana: last_furigana,
+  post_code: post_code,
+  address: address,
+  phone_number: phone_number)
+end
