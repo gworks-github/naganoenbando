@@ -11,13 +11,12 @@ class ItemsController < ApplicationController
 
   def index
   	@items = Item.all
-
   end
 
   def show
-  	@item = Item.find(params[:id])
+ 	  @item = Item.find(params[:id])
     @cart_item = CartItem.new
-
+    @likes = Like.where(item_id: @item.id)
   end
 
   def edit

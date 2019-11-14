@@ -1,4 +1,27 @@
-<h2>13.いいね一覧</h2>
+<div class="container">
 
-<h3>いいねした商品</h3>
+  <h3>いいねした商品</h3>
 
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ジャケット</th>
+        <th>タイトル</th>
+        <th>アーティスト名</th>
+        <th>価格</th>
+      </tr>
+    </thead>
+
+    <% @likes.each do |like| %>
+      <tbody>
+        <tr>
+          <td><%= like.id %></td>
+          <td><%= like.item_id %></td>
+          <td><%= like.customer_id %></td>
+          <td><%= like.customer_id %></td>
+        </tr>
+      </tbody>
+    <% end %>
+    </table>
+
+</div>
