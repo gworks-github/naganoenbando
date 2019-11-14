@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item_id: 1
+  quantity: 1
+  date: 2019-11-13 12:12:58
+
+two:
+  item_id: 1
+  quantity: 1
+  date: 2019-11-13 12:12:58
