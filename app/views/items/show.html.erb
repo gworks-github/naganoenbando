@@ -1,40 +1,53 @@
+<div class="container">
+
 <h1>商品詳細</h1>
 
-<li>ログインユーザID＝<%= current_customer.id %></li>
+<p>ログインユーザID＝<%= current_customer.id %></p>
 
 	<h4>ジャケット画像</h4>
 
     <%= attachment_image_tag @item, :jacket_image, :fill, 300, 300, format: 'jpeg' %>
+<table class="table">
 
-    <h1>タイトル</h1>
-    <p><%= @item.name %></p>
-
-    <h3>アーティスト名</h3>
-    <p><%= @item.artist_id %></p>
-
-    <h4>シングル/アルバム</h4>
-    <p><%= @item.format %></p>
-
-    <h4>価格</h4>
-    <p><%= @item.prices %></p>
-
-    <h4>発売日</h4>
-    <p><%= @item.release_date%></p>
-
-    <h4>レーベル</h4>
-    <p><%= @item.label_id %></p>
-
-    <h4>税率</h4>
-    <p><%= @item.tax_id %></p>
-
-    <h4>ジャンル</h4>
-    <p><%= @item.genre_id %></p>
-
-
-    <h4>ステータス</h4>
-    <p><%= @item.is_selling %></p>
-
-
+    <tbody>
+        <tr>
+            <th>タイトル</th>
+            <td><%= @item.name %></td>
+        </tr>
+        <tr>
+            <th>アーティスト</th>
+            <td><%= @item.artist_id %></td>
+        </tr>
+        <tr>
+            <th>シングル/アルバム</th>
+            <td><%= @item.format %></td>
+        </tr>
+        <tr>
+            <th>価格</th>
+            <td><%= @item.prices %></td>
+        </tr>
+        <tr>
+            <th>発売日</th>
+            <td><%= @item.release_date%></td>
+        </tr>
+        <tr>
+            <th>レーベル</th>
+            <td><%= @item.label_id %></td>
+        </tr>
+        <tr>
+            <th>税率</th>
+            <td><%= @item.tax_id %></td>
+        </tr>
+        <tr>
+            <th>ジャンル</th>
+            <td><%= @item.genre_id %></td>
+        </tr>
+        <tr>
+            <th>ステータス</th>
+            <td><%= @item.is_selling %></td>
+        </tr>
+    </tbody>
+</table>
 
     	<!-- 　在庫関連の参考サイト：https://qiita.com/phantomspecial/items/22146e7e6c6d3a38fefc -->
 
@@ -48,3 +61,5 @@
     </div>
     <%= f.submit "カートへ入れる", class: "btn btn-lg mt-20" %>
 <% end %>
+
+</div>
