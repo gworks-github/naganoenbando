@@ -1,0 +1,86 @@
+<h3>マイページ</h3>
+
+<h3>基本情報</h3>
+<p>
+<%= @customer.last_name %> <%= @customer.first_name %>
+(<%= @customer.last_furigana %> <%= @customer.first_furigana %>)
+</p>
+
+<p>
+<%= @customer.post_code %> <br>
+<%= @customer.address %>
+</p>
+
+<p>
+<%= @customer.phone_number %> <br>
+<%= @customer.email %>
+</p>
+<%= link_to '変更', edit_customer_path %>
+
+<% if @deliveries %>
+  <h3>追加のお届け先</h3>
+  <% @deliveries.each do |delivery| %>
+    <% unless delivery.last_name.nil? %>
+
+      <p>
+      <%= delivery.last_name %> <%= delivery.first_name %>
+      (<%= delivery.last_furigana %> <%= delivery.first_furigana %>)
+      </p>
+
+      <p>
+      <%= delivery.post_code %> <br>
+      <%= delivery.address %>
+      </p>
+
+      <p>
+      <%= delivery.phone_number %> <br>
+      </p>
+
+      <%= link_to '削除', delivery_path(delivery), method: :delete %>
+
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= form_for @delivery, url:deliveries_path do |f| %>
+
+  <div class="field">
+    <%= f.label :"名前（姓・名）" %><br />
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+  </div>
+  <div class="field">
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"名前（カナ姓・カナ名）"%><br />
+    <%= f.text_field :last_furigana, autofocus: true, autocomplete: "last_furigana" %>
+  </div>
+  <div class="field">
+    <%= f.text_field :first_furigana, autofocus: true, autocomplete: "first_furigana" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"電話番号" %><br />
+    <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"郵便番号" %><br />
+    <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"住所" %><br />
+    <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "登録" %>
+  </div>
+<% end %>
+
+
+<%= link_to "購入履歴", orders_path %>
+<%= link_to "いいねした商品", likes_path %>
+<%= link_to "退会する",   '#' %>
