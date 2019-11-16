@@ -113,6 +113,7 @@ end
   address: address,
   phone_number: phone_number)
 end
+
 10.times do |n|
   customer_id = "2"
   first_name = Gimei.first.kanji
@@ -132,4 +133,13 @@ end
   post_code: post_code,
   address: address,
   phone_number: phone_number)
+
+# likes
+10.times do |n|
+  customer_id = "#{n+1}"
+  item_id = "#{n+2}"
+
+  Like.create!(
+  customer_id: customer_id,
+  item_id: item_id)
 end
