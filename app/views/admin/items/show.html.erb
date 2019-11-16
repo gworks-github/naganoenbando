@@ -1,7 +1,7 @@
 <h1>商品詳細</h1>
 
-	<!-- <h4>ジャケット画像</h4> -->
-    <%= attachment_image_tag @item, :jacket_image, :fill, 300, 300, format: 'jpeg',fallback: "no_image.png",size: "300x300" %>
+    <!-- <h4>ジャケット画像</h4> -->
+    <%= attachment_image_tag @item, :jacket_image, :fill, 300, 300, format: 'jpeg',fallback: "no_image.png",size: "70x70" %>
 
     <h1>タイトル</h1>
     <p><%= @item.name %></p>
@@ -21,20 +21,11 @@
     <h4>レーベル</h4>
     <p><%= @item.label_id %></p>
 
-    <h4>税率</h4>
-    <p><%= @item.tax_id %></p>
-
     <h4>ジャンル</h4>
     <p><%= @item.genre_id %></p>
-
-    <h4>CDの枚数</h4>
-    	<%= form_for @item do |f|  %>
-    		<%= f.label :quantity, "数量"  %>
-    		<%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10]  %>
-    	<% end %>
-    	<!-- 　在庫関連の参考サイト：https://qiita.com/phantomspecial/items/22146e7e6c6d3a38fefc -->
 
     <h4>ステータス</h4>
     <p><%= @item.is_selling %></p>
 
-
+    <h4>収録曲数</h4>
+    <h4>在庫数</h4>

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :items
+  namespace :admin do
+    get 'items/new'
+  end
+
+  resources :items, only: [:index, :show]
 
   devise_for :customers, path: :users
 
@@ -11,6 +15,12 @@ Rails.application.routes.draw do
   resources :items do
     resource :carts, only: [:index, :create, :destroy, :new]
   end
-  
+
   resources :orders
+
+  namespace :admin do
+    resources :items
+  end
+
+
 end
