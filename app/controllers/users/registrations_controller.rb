@@ -61,8 +61,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
   #
   protected
+  #現在のパスワードなしで情報更新する
   def update_resource(resource, params)
     resource.update_without_current_password(params)
+  end
+  #情報更新後のリダイレクト先
+  def after_update_path_for(resource)
+    show_customer_path(resource)
   end
 
 end
