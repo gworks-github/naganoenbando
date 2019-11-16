@@ -7,6 +7,9 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  #論理削除するため
+  acts_as_paranoid
+
   # 1～20文字以上
   validates :first_name, length: {in: 1..20}, presence: true
   validates :last_name,  length: {in: 1..20}, presence: true

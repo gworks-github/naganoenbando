@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_040941) do
+ActiveRecord::Schema.define(version: 2019_11_16_103359) do
 
   create_table "arrived_items", force: :cascade do |t|
     t.integer "item_id", null: false
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2019_11_14_040941) do
     t.string "encrypted_password", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
