@@ -61,4 +61,24 @@
     <%= f.submit "カートへ入れる", class: "btn", style: "color: blue;" %>
 <% end %>
 
+<% if customer_signed_in? %>
+  <% if @likes.find_by(customer_id: current_customer.id) %>
+    <li>
+      <%= link_to item_likes_path(@item), method: :delete do %>
+        <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+        いいね済
+      <% end %>
+    </li>
+  <% else %>
+    <li>
+      <%= link_to item_likes_path(@item), method: :post do %>
+        <i class="fa fa-heart-o" aria-hidden="true"></i>
+        いいねしていない
+      <% end %>
+    </li>
+  <% end %>
+<% else %>
+  <%! "ログインしないといいねボタンが表示されない" %>
+<% end %>
+
 </div>
