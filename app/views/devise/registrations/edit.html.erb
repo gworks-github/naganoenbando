@@ -43,11 +43,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :"現在のパスワード" %> <br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="field">
     <%= f.label :"新しいパスワード" %>
     <% if @minimum_password_length %>
     (<%= @minimum_password_length %> 文字以上)

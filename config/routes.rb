@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  root 'items#index'
+
   resources :items
 
-  devise_for :customers, path: :users
-
-  root 'items#index'
+  devise_for :customers, path: :users, controllers: { registrations: 'users/registrations' }
 
   get '/carts/info', to: 'carts#info'
   get '/carts/confirm', to: 'carts#confirm'
