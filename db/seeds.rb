@@ -113,3 +113,23 @@ end
   address: address,
   phone_number: phone_number)
 end
+10.times do |n|
+  customer_id = "2"
+  first_name = Gimei.first.kanji
+  last_name = Gimei.last.kanji
+  first_furigana = Gimei.first.katakana
+  last_furigana = Gimei.last.katakana
+  post_code = "000-0000"
+  address = Gimei.address.kanji
+  phone_number = "0000000000"
+
+  Delivery.create!(
+  customer_id: customer_id,
+  first_name: first_name,
+  last_name: last_name,
+  first_furigana: first_furigana,
+  last_furigana: last_furigana,
+  post_code: post_code,
+  address: address,
+  phone_number: phone_number)
+end
