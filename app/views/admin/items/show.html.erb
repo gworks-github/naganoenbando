@@ -1,0 +1,31 @@
+<h1>商品詳細</h1>
+
+    <!-- <h4>ジャケット画像</h4> -->
+    <%= attachment_image_tag @item, :jacket_image, :fill, 300, 300, format: 'jpeg',fallback: "no_image.png",size: "70x70" %>
+
+    <h1>タイトル</h1>
+    <p><%= @item.name %></p>
+ 
+    <h3>アーティスト名</h3>
+    <p><%= @item.artist_id %></p>
+
+    <h4>シングル/アルバム</h4>
+    <p><%= @item.format %></p>
+ 
+    <h4>価格</h4>
+    <p><%= @item.prices %></p>
+
+    <h4>発売日</h4>
+    <p><%= @item.release_date%></p>
+
+    <h4>レーベル</h4>
+    <p><%= @item.label_id %></p>
+
+    <h4>ジャンル</h4>
+    <p><%= @item.genre_id %></p>
+
+    <h4>ステータス</h4>
+    <p><%= @item.is_selling %></p>
+
+    <h4>収録曲数</h4>
+    <h4>在庫数</h4>

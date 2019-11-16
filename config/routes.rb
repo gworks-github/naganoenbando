@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :items
+  namespace :admin do
+    get 'items/new'
+  end
+
+  resources :items, only: [:index, :show]
 
   devise_for :customers, path: :users
 
@@ -17,6 +21,10 @@ Rails.application.routes.draw do
 
   resources :orders
 
+  namespace :admin do
+    resources :items
+  end
+
   #マイページ閲覧、基本情報の更新/編集、退会、いいね一覧
   scope :users do
     get    '/:id(.:format)',       to: 'users#show',      as: :show_customer
@@ -29,3 +37,4 @@ Rails.application.routes.draw do
   resources :deliveries, only: [:create, :destroy]
 
 end
+

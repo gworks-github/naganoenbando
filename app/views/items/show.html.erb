@@ -1,4 +1,3 @@
-<div class="container">
 
 <h1>商品詳細</h1>
 
@@ -7,7 +6,7 @@
     <tbody>
         <tr>
             <th>ジャケット画像</th>
-            <td><%= attachment_image_tag @item, :jacket_image, :fill, 300, 300, format: 'jpeg' %></td>
+            <td><%= attachment_image_tag @item, :jacket_image, :fill, 300, 300, format: 'jpeg',fallback: "no_image.png",size: "300x300" %></td>
         </tr>
         <tr>
             <th>タイトル</th>
@@ -61,6 +60,7 @@
     <%= f.submit "カートへ入れる", class: "btn", style: "color: blue;" %>
 <% end %>
 
+
 <% if customer_signed_in? %>
   <% if @likes.find_by(customer_id: current_customer.id) %>
     <li>
@@ -80,5 +80,6 @@
 <% else %>
   <%! "ログインしないといいねボタンが表示されない" %>
 <% end %>
+
 
 </div>
