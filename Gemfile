@@ -117,4 +117,5 @@ gem 'bullet'
 gem 'gimei'
 gem 'faker'
 
-
+# 論理削除
+gem 'paranoia'
