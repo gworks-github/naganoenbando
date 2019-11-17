@@ -1,1 +1,28 @@
-<h1>carts info</h1>
+<h1>支払方法・配送先設定</h1>
+
+
+
+
+<div class="container">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>商品ID</th>
+				<th>顧客ID</th>
+				<th>商品点数</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @cart_items.each do |item| %>
+			<tr>
+				<td><%= item.id %></td>
+				<td><%= item.item_id %></td>
+				<td><%= item.customer_id %></td>
+				<td><%= item.quantity %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   root 'items#index'
 
-  get '/carts/info', to: 'carts#info'
+  patch '/carts/info', to: 'carts#info'
   get '/carts/confirm', to: 'carts#confirm'
   get '/carts/index', to: 'carts#index'
   delete '/carts/:id/destroy', to: 'carts#destroy', as: :destroy_cart
