@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
+
   root 'items#index'
 
-  resources :items
+  namespace :admin do
+    get 'items/new'
+  end
+
+  resources :items, only: [:index, :show]
 
   devise_for :customers, path: :users, controllers: { registrations: 'users/registrations' }
 
-  get '/carts/info', to: 'carts#info'
+  patch '/carts/info', to: 'carts#info'
   get '/carts/confirm', to: 'carts#confirm'
   get '/carts/index', to: 'carts#index'
   delete '/carts/:id/destroy', to: 'carts#destroy', as: :destroy_cart
@@ -16,6 +21,10 @@ Rails.application.routes.draw do
   end
 
   resources :orders
+
+  namespace :admin do
+    resources :items
+  end
 
   #マイページ閲覧、基本情報の更新/編集、退会、いいね一覧
   scope :users do
@@ -29,3 +38,4 @@ Rails.application.routes.draw do
   resources :deliveries, only: [:create, :destroy]
 
 end
+

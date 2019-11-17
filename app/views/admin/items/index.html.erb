@@ -1,0 +1,32 @@
+<h1>商品一覧</h1>
+
+ <% @items.each do |item| %>
+ 	 <!-- <p>商品ID</p> -->
+    <span>
+        <%=link_to item.id,admin_item_path(item.id) %>
+    </span>
+
+    <!-- <p>タイトル</p> -->
+    <span><%= item.name %></span>
+
+    <!-- <p>フォーマット</p> -->
+    <%=item.is_selling %>
+
+    <!-- <p>アーティスト名</p> -->
+    <%=item.artist_id %>
+
+    <!-- <p>発売日</p> -->
+    <%=item.release_date %>
+
+    <!-- <p>価格</p> -->
+    <%=item.prices %>
+
+    <p>在庫数</p>
+
+    <p>
+    <%= link_to "入荷" %>
+    </p>
+
+
+ <% end %>
+
