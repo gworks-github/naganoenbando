@@ -10,10 +10,13 @@ Rails.application.routes.draw do
 
   devise_for :customers, path: :users, controllers: { registrations: 'users/registrations' }
 
-  patch '/carts/info', to: 'carts#info'
+  patch '/carts/update', to: 'carts#update'
+  get '/carts/thanks', to: 'carts#thanks'
+  get '/carts/info', to: 'carts#info'
   get '/carts/confirm', to: 'carts#confirm'
   get '/carts/index', to: 'carts#index'
   delete '/carts/:id/destroy', to: 'carts#destroy', as: :destroy_cart
+  post '/cart/index', to: 'carts#in_cart_create_address', as: :cart_address
 
   resources :items do
     resource :carts, only: [:create]

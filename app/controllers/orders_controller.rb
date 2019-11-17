@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   def create
+  	redirect_to carts_thanks_path
   end
   def index
   	@orders = Order.all

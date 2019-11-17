@@ -1,28 +1,104 @@
-<h1>支払方法・配送先設定</h1>
-
-
-
-
 <div class="container">
-	<table class="table">
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>商品ID</th>
-				<th>顧客ID</th>
-				<th>商品点数</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% @cart_items.each do |item| %>
-			<tr>
-				<td><%= item.id %></td>
-				<td><%= item.item_id %></td>
-				<td><%= item.customer_id %></td>
-				<td><%= item.quantity %></td>
-			</tr>
+	<h1>お届け先・お支払い方法</h1>
+
+	<div class="container">
+	<h2>カート内商品</h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>商品ID</th>
+					<th>顧客ID</th>
+					<th>商品点数</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @cart_items.each do |item| %>
+				<tr>
+					<td><%= item.id %></td>
+					<td><%= item.item_id %></td>
+					<td><%= item.customer_id %></td>
+					<td><%= item.quantity %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+
+
+	<div class="container">
+		<h2>お届け先</h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>選択</th>
+					<th>郵便番号</th>
+					<th>住所</th>
+					<th>名前</th>
+					<th>電話番号</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td></td>
+					<td><%= @customer.post_code %></td>
+					<td><%= @customer.address %></td>
+					<td><%= @customer.last_name + @customer.first_name %></td>
+					<td><%= @customer.phone_number %></td>
+				</tr>
+				<% @deliveries.each do |d| %>
+				<tr>
+					<td></td>
+					<td><%= d.post_code %></td>
+					<td><%= d.address %></td>
+					<td><%= d.last_name + d.first_name %></td>
+					<td><%= d.phone_number %></td>
+				</tr>
+				<% end %>
+			</tbody>
+			<thead>
+				<tr>
+					<th></th>
+					<th>名前</th>
+					<th>ナマエ</th>
+					<th>郵便番号</th>
+					<th>住所</th>
+					<th>電話番号</th>
+				</tr>
+			</thead>
+			<%= form_for @delivery, url: cart_address_path, method: :post do |f| %>
+			<tbody>
+				<tr>
+					<td>追加</td>
+					<td><%= f.text_field :last_name %><%= f.text_field :first_name %></td>
+					<td><%= f.text_field :last_furigana %><%= f.text_field :first_furigana %></td>
+					<td><%= f.text_field :post_code %></td>
+					<td><%= f.text_field :address %></td>
+					<td><%= f.text_field :phone_number %></td>
+					<td><%= f.submit "追加" %></td>
+				</tr>
+			</tbody>
 			<% end %>
+		</table>
+	</div>
+	<h2>お支払い方法</h2>
+	<table>
+		<%= form_with model: @order, url: carts_confirm_path, method: :get do |f| %>
+		<tbody>
+			<tr>
+				<td><label><%= f.radio_button :payment_method, "銀行振込" %>現金振込</label></td>
+			</tr>
+			<tr>
+				<td><label><%= f.radio_button :payment_method, "1" %>クレジットカード</label></td>
+			</tr>
+			<tr>
+				<td><label><%= f.radio_button :payment_method, "2" %>代金引換</label></td>
+			</tr>
 		</tbody>
 	</table>
+	<%= f.submit %>
+		<% end %>
+	<br>
+	<br>
+	<p><%= link_to "注文確認", carts_confirm_path %></p>
 </div>
-
