@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
+
+  root 'items#index'
+
   namespace :admin do
     get 'items/new'
   end
 
   resources :items, only: [:index, :show]
 
-  devise_for :customers, path: :users
-
-  root 'items#index'
+  devise_for :customers, path: :users, controllers: { registrations: 'users/registrations' }
 
   patch '/carts/info', to: 'carts#info'
   get '/carts/confirm', to: 'carts#confirm'
