@@ -11,13 +11,13 @@
 
   <body>
     <header id="header" class="">
-      <div class="" style="height: 200px; width:100%; background-color: gray;">
+      <div class="" style="height: 100px; width:100%; background-color: gray;">
         <h1>長野円盤堂</h1>
-        <ul class="nav">
-          <li><%= link_to "ログイン", new_customer_session_path %></li>
-          <li><%= link_to "会員登録", new_customer_registration_path %></li>
-          <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
-          <li><%= link_to "カート", carts_index_path %></li>
+        <ul class="navbar-nav">
+          <li class="p-3"><%= link_to "ログイン", new_customer_session_path %></li>
+          <li class="mr-3"><%= link_to "会員登録", new_customer_registration_path %></li>
+          <li class="mr-3"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
+          <li class="mr-3"><%= link_to "カート", carts_index_path %></li>
         </ul>
       </div>
     </header>

@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   protected
   #devise
   def configure_permitted_parameters
+    #会員登録
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_furigana])
@@ -17,6 +18,15 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:address])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:phone_number])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
+    #情報編集
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:last_name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_furigana])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:last_furigana])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:post_code])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:address])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:phone_number])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:email])
   end
 
 
