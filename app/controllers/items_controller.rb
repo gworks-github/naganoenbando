@@ -11,9 +11,9 @@ class ItemsController < ApplicationController
 
   def index
   	@items = Item.all
-    # @artists = Artist.all
-    # @labels = Label.all
-    # @genres = Genre.all
+    @artists = Artist.all
+    @labels = Label.all
+    @genres = Genre.all
     # @q = Item.ransack(params[:q])
     # @items = @q.result(distinct: true)
   end
@@ -32,6 +32,25 @@ class ItemsController < ApplicationController
 
   def destroy
 
+  end
+
+  def search
+    @artists = Artist.all
+    @labels = Label.all
+    @genres = Genre.all
+
+    # if params,[:artist][:id] == nil
+    @items = Item.where(artist_id: params[:artist][:id].to_i, label_id: params[:label][:id].to_i, genre_id: params[:genre][:id].to_i)
+    # else
+    @find_artist = Item.where(artist_id: params[:artist][:id].to_i)
+    @find_label = Item.where(label_id: params[:label][:id].to_i)
+    @find_genre = Item.where(genre_id: params[:genre][:id].to_i)
+    # end
+
+    # タイトル検索　# モデルクラス.where("列名 LIKE ?", "%値%")
+    @items =  Item.where("name LIKE ?", "%#{params[:name]}%")
+
+    render :index
   end
 
   private

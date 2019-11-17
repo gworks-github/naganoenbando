@@ -125,6 +125,7 @@ end
   post_code: post_code,
   address: address,
   phone_number: phone_number)
+end
 
 ## likes
 #10.times do |n|
