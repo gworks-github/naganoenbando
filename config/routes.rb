@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  get 'info/index'
+
   namespace :admin do
-    get 'items/new'
+    resources :items
   end
 
   resources :items, only: [:index, :show]
@@ -17,10 +19,6 @@ Rails.application.routes.draw do
   end
 
   resources :orders
-
-  namespace :admin do
-    resources :items
-  end
 
 
 end

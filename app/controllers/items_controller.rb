@@ -11,6 +11,11 @@ class ItemsController < ApplicationController
 
   def index
   	@items = Item.all
+    # @artists = Artist.all
+    # @labels = Label.all
+    # @genres = Genre.all
+    # @q = Item.ransack(params[:q])
+    # @items = @q.result(distinct: true)
   end
 
   def show
@@ -30,7 +35,8 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-  	params.require(:item).permit(:name,:artist_id,:format,:jacket_image,:genre_id,:prices,:tax_id,:label_id,:quantity,:release_date,:is_selling)
+  	params.require(:item).permit!
+    params.require(:q).permit(:name,:artist_id,:label_id,:genre_id)
   end
 
 end
