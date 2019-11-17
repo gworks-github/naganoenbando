@@ -1,5 +1,5 @@
-<p>退会しますか?</p>
+<p>本当に退会しますか?</p>
 <p>この操作は取り消しすることができません。</p>
 
-<%= link_to "はい、退会する", customer_registration_path, data: { confirm: "本当に退会しますか?" }, method: :delete %>
+<%= link_to "はい、退会する", customer_registration_path, method: :delete %>
 <%= link_to "キャンセル", show_customer_path %>

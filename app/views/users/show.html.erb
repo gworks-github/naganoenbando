@@ -80,7 +80,7 @@
   </div>
 <% end %>
 
-
 <%= link_to "購入履歴", orders_path %>
 <%= link_to "いいねした商品", likes_path %>
+<%# "deletメソッドを使用しているが、実際はdevise/registrationへのリダイレクトのみ%>
 <%= link_to "退会手続き", destroy_customer_path, method: :delete %>
