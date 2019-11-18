@@ -125,13 +125,14 @@ end
   post_code: post_code,
   address: address,
   phone_number: phone_number)
+end
 
-## likes
-#10.times do |n|
-#  customer_id = "#{n+1}"
-#  item_id = "#{n+2}"
-#
-#  Like.create!(
-#  customer_id: customer_id,
-#  item_id: item_id)
-#end
+## Admin
+name = Gimei.first.kanji
+email = "admin@gmail.com"
+password = "password"
+
+Admin.create!(
+  name: name,
+  email: email,
+  password: password)
