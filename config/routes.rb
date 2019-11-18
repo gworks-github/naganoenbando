@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
+  ## エンドユーザ用
   root 'items#index'
 
   resources :items, only: [:index, :show]
-
+  post '/search', to:'items#search'
   devise_for :customers, path: :users, controllers: { registrations: 'users/registrations' }
 
   get '/carts/index', to: 'carts#index'
@@ -24,13 +25,6 @@ Rails.application.routes.draw do
     resource :order_details
   end
 
-  namespace :admin do
-    get '/ready_items/index', to: 'admin/ready_items#index'
-    resources :items do
-      resource :ready_items
-    end
-  end
-
   #マイページ閲覧、退会手続き画面、いいね一覧
   scope :users do
     get    '/:id(.:format)',       to: 'users#show',      as: :show_customer
@@ -39,6 +33,18 @@ Rails.application.routes.draw do
   end
 
   resources :deliveries, only: [:create, :destroy]
+
+  ## 管理者用
+  namespace :admin do
+    resources :arrived_items
+    resources :ready_items, only: [:create, :destroy, :index]
+    resources :items
+  end
+
+  devise_for :admins, controllers: {
+    registrations: 'admins/registrations',
+    sessions:      'admins/sessions'
+  }
 
 end
 

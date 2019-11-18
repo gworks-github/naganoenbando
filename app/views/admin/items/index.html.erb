@@ -1,5 +1,6 @@
 <div class="container">
 
+
 <h1>商品一覧</h1>
 <table class="table">
     <thead>
@@ -24,10 +25,10 @@
             <td><%=item.release_date %></td>
             <td><%=item.prices %></td>
             <td>zaikosu</td>
-            <td><%= link_to "入荷", admin_item_ready_items_path(item.id), method: :post %></td>
+            <td><%= link_to "入荷", admin_ready_items_path(id: item.id), method: :post %></td>
         </tr>
          <% end %>
     </tbody>
 </table>
-
+<%= link_to "入荷一覧", admin_ready_items_path %>
 </div>

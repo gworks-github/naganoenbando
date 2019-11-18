@@ -11,6 +11,13 @@ class ItemsController < ApplicationController
 
   def index
   	@items = Item.all
+
+    @artists = Artist.all
+    @labels = Label.all
+    @genres = Genre.all
+    # @q = Item.ransack(params[:q])
+    # @items = @q.result(distinct: true)
+    
     #本番
     #@likes_ranks = Item.find(Like.where(created_at:1.week.ago.beginning_of_day..1.day.ago.end_of_day).group(:item_id).order(Arel.sql('count(item_id) desc')).limit(5).pluck(:item_id))
     #test
@@ -41,10 +48,30 @@ class ItemsController < ApplicationController
 
   end
 
+  def search
+    @artists = Artist.all
+    @labels = Label.all
+    @genres = Genre.all
+
+    # if params,[:artist][:id] == nil
+    @items = Item.where(artist_id: params[:artist][:id].to_i, label_id: params[:label][:id].to_i, genre_id: params[:genre][:id].to_i)
+    # else
+    @find_artist = Item.where(artist_id: params[:artist][:id].to_i)
+    @find_label = Item.where(label_id: params[:label][:id].to_i)
+    @find_genre = Item.where(genre_id: params[:genre][:id].to_i)
+    # end
+
+    # タイトル検索　# モデルクラス.where("列名 LIKE ?", "%値%")
+    @items =  Item.where("name LIKE ?", "%#{params[:name]}%")
+
+    render :index
+  end
+
   private
 
   def item_params
-  	params.require(:item).permit(:name,:artist_id,:format,:jacket_image,:genre_id,:prices,:tax_id,:label_id,:quantity,:release_date,:is_selling)
+  	params.require(:item).permit!
+    params.require(:q).permit(:name,:artist_id,:label_id,:genre_id)
   end
 
 end

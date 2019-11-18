@@ -1,6 +1,6 @@
 <div class="container">
 	<h1>入荷予定商品一覧</h1>
-	<table>
+	<table class="table">
 		<thead>
 			<tr>
 				<th>ジャケット</th>
@@ -15,18 +15,37 @@
 			</tr>
 		</thead>
 		<tbody>
-			<%= @ready_items.each do |item| %>
+			<% @ready_items_id.each do |id| %>
 			<tr>
-				<td><%= item.id %></td>
-				<td><%= item.title %></td>
-				<td><%= item.format %></td>
-				<td><%=%></td>
-				<td><%=%></td>
-				<td><%=%></td>
-				<td><%=%></td>
-				<td><%=%></td>
-				<td><%=%></td>
+				<td><%= id %></td>
+				<td><%= Item.find(id).id %></td>
+				<td><%#= item.name %></td>
+				<td><%#= item.format %></td>
+				<td><%#= Artist.find(item.artist_id).name %></td>
+				<td><%#= Label.find(item.label_id).name %></td>
+				<td><%#= Genre.find(item.genre_id).name %></td>
+				<td><%#= item.prices %></td>
+				<td><%#= text_field_tag :quantity %></td>
+				<td><%#= link_to "削除", admin_ready_item_path(item.id), method: :delete %></td>
+			</tr>
+		</tbody>
+		<% end %>
+	</table>
+	<br>
+	<br>
+	<br>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>入荷日</th>
+				<td>日付：<%= text_field_tag :daytime %></td>
+			</tr>
+			<tr>
+				<th>入荷時間</th>
+				<td><%= text_field_tag :hh %>時<%= text_field_tag :mm %>分</td>
 			</tr>
 		</tbody>
 	</table>
+	<%= submit_tag "登録" %>
 </div>
