@@ -19,11 +19,9 @@ Rails.application.routes.draw do
 
   resources :orders
 
-  #マイページ閲覧、基本情報の更新/編集、退会、いいね一覧
+  #マイページ閲覧、退会手続き画面、いいね一覧
   scope :users do
     get    '/:id(.:format)',       to: 'users#show',      as: :show_customer
-    patch  '/:id(.:format)',       to: 'users#update',    as: :update_customer
-    get    '/:id/edit(.:format)',  to: 'users#edit',      as: :edit_customer
     delete '/:id(.:format)',       to: 'users#destroy',   as: :destroy_customer
     get    '/:id/likes(.:format)', to: 'likes#index',     as: :likes
   end
