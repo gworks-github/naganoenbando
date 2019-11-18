@@ -33,10 +33,6 @@
             <td><%= @item.label_id %></td>
         </tr>
         <tr>
-            <th>税率</th>
-            <td><%= @item.tax_id %></td>
-        </tr>
-        <tr>
             <th>ジャンル</th>
             <td><%= @item.genre_id %></td>
         </tr>
@@ -83,3 +79,5 @@
 
 
 </div>
+
+<%= render 'likes/ranks', likes_ranks:@likes_ranks, likes_ranks_count:@likes_ranks_count, ranks_number:@ranks_number %>
