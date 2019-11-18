@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
 
+  ## エンドユーザ用
   root 'items#index'
-
-  namespace :admin do
-    get 'items/new'
-  end
 
   resources :items, only: [:index, :show]
 
@@ -22,10 +19,6 @@ Rails.application.routes.draw do
 
   resources :orders
 
-  namespace :admin do
-    resources :items
-  end
-
   #マイページ閲覧、基本情報の更新/編集、退会、いいね一覧
   scope :users do
     get    '/:id(.:format)',       to: 'users#show',      as: :show_customer
@@ -36,6 +29,16 @@ Rails.application.routes.draw do
   end
 
   resources :deliveries, only: [:create, :destroy]
+
+  ## 管理者用
+  namespace :admin do
+    resources :items
+  end
+
+  devise_for :admins, controllers: {
+    registrations: 'admins/registrations',
+    sessions:      'admins/sessions'
+  }
 
 end
 
