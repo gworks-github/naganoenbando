@@ -37,6 +37,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:address])
     devise_parameter_sanitizer.permit(:account_update, keys: [:phone_number])
     devise_parameter_sanitizer.permit(:account_update, keys: [:email])
+    #管理者情報用
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
 
 end
