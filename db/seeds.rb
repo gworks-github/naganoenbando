@@ -66,6 +66,11 @@ Track.create!(
    name: '夏',
 )
 
+10.times do |n|
+  name = Faker::Track.name
+  Track.create!(name: name)
+end
+
 # artist
 10.times do |n|
   name  = Faker::Artist.name
@@ -126,6 +131,7 @@ end
   address: address,
   phone_number: phone_number)
 end
+
 
 ## likes
 #10.times do |n|

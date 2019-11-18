@@ -2,7 +2,6 @@
 <h1>商品詳細</h1>
 
 <table class="table">
-
     <tbody>
         <tr>
             <th>ジャケット画像</th>
@@ -14,7 +13,7 @@
         </tr>
         <tr>
             <th>アーティスト</th>
-            <td><%= @item.artist_id %></td>
+            <td><%= Artist.find(@item.artist_id).name %></td>
         </tr>
         <tr>
             <th>シングル/アルバム</th>
@@ -30,11 +29,11 @@
         </tr>
         <tr>
             <th>レーベル</th>
-            <td><%= @item.label_id %></td>
+            <td><%= Label.find(@item.label_id).name %></td>
         </tr>
         <tr>
             <th>ジャンル</th>
-            <td><%= @item.genre_id %></td>
+            <td><%= Genre.find(@item.genre_id).name %></td>
         </tr>
         <tr>
             <th>ステータス</th>
@@ -44,6 +43,29 @@
 </table>
 
     	<!-- 　在庫関連の参考サイト：https://qiita.com/phantomspecial/items/22146e7e6c6d3a38fefc -->
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Disc.No</th>
+                <th>Track.No</th>
+                <th>曲名</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                    <td><%= Disk.find(@item.id).disk_number %></td>
+                <% @item.disks.each do |disk_number| %>
+                    <% disk.tracks.each do |track_number,name| %>
+                        <td><%= Track.find(Disk.find(@item.id).disk_number).track_number %></td>
+                        <td><%= Track.find(Disk.find(@item.id).disk_number).name %></td>
+                    <% end %>
+                <% end %>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
 
 <%= form_for [@item,@cart_item], url: item_carts_path(@item), html: {method: :post} do |f| %>
     <div class="row">
