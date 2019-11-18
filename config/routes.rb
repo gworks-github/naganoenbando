@@ -2,19 +2,16 @@ Rails.application.routes.draw do
 
   root 'items#index'
 
-  namespace :admin do
-    get 'items/new'
-  end
-
   resources :items, only: [:index, :show]
 
   devise_for :customers, path: :users, controllers: { registrations: 'users/registrations' }
 
+  get '/carts/index', to: 'carts#index'
   patch '/carts/update', to: 'carts#update'
   get '/carts/thanks', to: 'carts#thanks'
+  post '/carts/info', to: 'carts#info'
   get '/carts/info', to: 'carts#info'
   get '/carts/confirm', to: 'carts#confirm'
-  get '/carts/index', to: 'carts#index'
   delete '/carts/:id/destroy', to: 'carts#destroy', as: :destroy_cart
   post '/cart/index', to: 'carts#in_cart_create_address', as: :cart_address
 
@@ -23,10 +20,15 @@ Rails.application.routes.draw do
     resource :likes, only: [:create, :destroy]
   end
 
-  resources :orders
+  resources :orders do
+    resource :order_details
+  end
 
   namespace :admin do
-    resources :items
+    get '/ready_items/index', to: 'admin/ready_items#index'
+    resources :items do
+      resource :ready_items
+    end
   end
 
   #マイページ閲覧、退会手続き画面、いいね一覧

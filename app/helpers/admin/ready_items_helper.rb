@@ -1,0 +1,2 @@
+module Admin::ReadyItemsHelper
+end

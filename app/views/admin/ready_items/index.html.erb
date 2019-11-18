@@ -1,0 +1,32 @@
+<div class="container">
+	<h1>入荷予定商品一覧</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>ジャケット</th>
+				<th>タイトル</th>
+				<th>フォーマット</th>
+				<th>アーティスト</th>
+				<th>レーベル</th>
+				<th>ジャンル</th>
+				<th>税別金額（円）</th>
+				<th>入荷枚数</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<%= @ready_items.each do |item| %>
+			<tr>
+				<td><%= item.id %></td>
+				<td><%= item.title %></td>
+				<td><%= item.format %></td>
+				<td><%=%></td>
+				<td><%=%></td>
+				<td><%=%></td>
+				<td><%=%></td>
+				<td><%=%></td>
+				<td><%=%></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

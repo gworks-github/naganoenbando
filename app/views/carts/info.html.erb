@@ -1,31 +1,5 @@
 <div class="container">
 	<h1>お届け先・お支払い方法</h1>
-
-	<div class="container">
-	<h2>カート内商品</h2>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>商品ID</th>
-					<th>顧客ID</th>
-					<th>商品点数</th>
-				</tr>
-			</thead>
-			<tbody>
-				<% @cart_items.each do |item| %>
-				<tr>
-					<td><%= item.id %></td>
-					<td><%= item.item_id %></td>
-					<td><%= item.customer_id %></td>
-					<td><%= item.quantity %></td>
-				</tr>
-				<% end %>
-			</tbody>
-		</table>
-	</div>
-
-
 	<div class="container">
 		<h2>お届け先</h2>
 		<table class="table">
@@ -39,16 +13,17 @@
 				</tr>
 			</thead>
 			<tbody>
+				<%= form_tag url: carts_confirm_path, method: :get do %>
 				<tr>
-					<td></td>
+					<td><%= radio_button_tag "address", "0", checked = true %></td>
 					<td><%= @customer.post_code %></td>
 					<td><%= @customer.address %></td>
 					<td><%= @customer.last_name + @customer.first_name %></td>
 					<td><%= @customer.phone_number %></td>
 				</tr>
-				<% @deliveries.each do |d| %>
+				<% @deliveries.each_with_index do |d, index| %>
 				<tr>
-					<td></td>
+					<td><%= radio_button_tag "address", index+1 %></td>
 					<td><%= d.post_code %></td>
 					<td><%= d.address %></td>
 					<td><%= d.last_name + d.first_name %></td>
@@ -56,6 +31,39 @@
 				</tr>
 				<% end %>
 			</tbody>
+		</table>
+	</div>
+	<h2>お支払い方法</h2>
+	<table class="table" style="width: 50%;">
+		<tbody>
+			<tr>
+				<td><%= radio_button_tag :payment_method, "0", checked = true %></td>
+				<td>現金振込</td>
+			</tr>
+			<tr>
+				<td><%= radio_button_tag :payment_method, "1" %></td>
+				<td>クレジットカード</td>
+			</tr>
+			<tr>
+				<td><%= radio_button_tag :payment_method, "2" %></td>
+				<td>代金引換</td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<br>
+	<p><%= submit_tag "注文確認" %></p>
+	<% end %>
+
+
+
+
+
+
+
+
+<h2>お届け先の追加</h2>
+		<table class="table">
 			<thead>
 				<tr>
 					<th></th>
@@ -80,25 +88,5 @@
 			</tbody>
 			<% end %>
 		</table>
-	</div>
-	<h2>お支払い方法</h2>
-	<table>
-		<%= form_with model: @order, url: carts_confirm_path, method: :get do |f| %>
-		<tbody>
-			<tr>
-				<td><label><%= f.radio_button :payment_method, "銀行振込" %>現金振込</label></td>
-			</tr>
-			<tr>
-				<td><label><%= f.radio_button :payment_method, "1" %>クレジットカード</label></td>
-			</tr>
-			<tr>
-				<td><label><%= f.radio_button :payment_method, "2" %>代金引換</label></td>
-			</tr>
-		</tbody>
-	</table>
-	<%= f.submit %>
-		<% end %>
-	<br>
-	<br>
-	<p><%= link_to "注文確認", carts_confirm_path %></p>
-</div>
+
+		</div>

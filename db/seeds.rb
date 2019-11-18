@@ -176,3 +176,17 @@ end
   customer_id: customer_id,
   item_id: item_id)
 end
+
+
+
+# TaxInPostage
+  TaxInPostage.create!(
+    price: 500,
+  end
+)
+
+# Tax
+  Tax.create!(
+    rate: 0.1,
+  end
+)

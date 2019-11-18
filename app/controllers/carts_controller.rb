@@ -34,7 +34,6 @@ before_action :authenticate_customer!
 		@customer = current_customer
 		@deliveries = Delivery.where(customer: current_customer[:id])
 		@cart_items = CartItem.where(customer: current_customer[:id])
-		@order = Order.new(payment_method: 0)
 		@order_detail = OrderDetail.new
 	end
 
@@ -51,6 +50,13 @@ before_action :authenticate_customer!
 
 	def confirm
 		@cart_items = CartItem.where(customer: current_customer[:id])
+		@tax = Tax.last.rate + 1
+		@postage = TaxInPostage.last.price
+		@total_price = 0
+		@cart_items.each do |item|
+			@total_price += Item.find(item.item_id).prices * item.quantity * @tax
+		end
+		@total_price += @postage
 	end
 
 	def thanks

@@ -18,7 +18,9 @@
           <li class="mr-3"><%= link_to "会員登録", new_customer_registration_path %></li>
           <li class="mr-3"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
           <li class="mr-3"><%= link_to "カート", carts_index_path %></li>
+          <% if current_customer != nil %>
           <li class="mr-3"><%= link_to "マイページ", show_customer_path(current_customer.id) %></li>
+          <% end %>
         </ul>
       </div>
     </header>
