@@ -125,13 +125,54 @@ end
   post_code: post_code,
   address: address,
   phone_number: phone_number)
+end
 
-## likes
-#10.times do |n|
-#  customer_id = "#{n+1}"
-#  item_id = "#{n+2}"
-#
-#  Like.create!(
-#  customer_id: customer_id,
-#  item_id: item_id)
-#end
+# likes
+6.times do |n|
+  customer_id = "#{n+1}"
+  item_id = "3"
+
+  Like.create!(
+  customer_id: customer_id,
+  item_id: item_id)
+end
+5.times do |n|
+  customer_id = "#{n+1}"
+  item_id = "5"
+
+  Like.create!(
+  customer_id: customer_id,
+  item_id: item_id)
+end
+4.times do |n|
+  customer_id = "#{n+1}"
+  item_id = "2"
+
+  Like.create!(
+  customer_id: customer_id,
+  item_id: item_id)
+end
+3.times do |n|
+  customer_id = "#{n+1}"
+  item_id = "9"
+
+  Like.create!(
+  customer_id: customer_id,
+  item_id: item_id)
+end
+2.times do |n|
+  customer_id = "#{n+1}"
+  item_id = "6"
+
+  Like.create!(
+  customer_id: customer_id,
+  item_id: item_id)
+end
+1.times do |n|
+  customer_id = "#{n+1}"
+  item_id = "7"
+
+  Like.create!(
+  customer_id: customer_id,
+  item_id: item_id)
+end
