@@ -24,6 +24,36 @@
   password: password)
 end
 
+#Disk.create!(
+#   item_id: '1',
+#   disk_number: '1',
+#   quantity: '10',
+#)
+#
+#Track.create!(
+#   disk_id: '1',
+#   track_number: '1',
+#   name: '夏',
+#)
+
+# artist
+10.times do |n|
+  name  = Faker::Artist.name
+  Artist.create!(name: name)
+end
+
+# label
+10.times do |n|
+  name = Faker::Food.dish
+  Label.create!(name: name)
+end
+
+# genre
+10.times do |n|
+  name = Faker::Music.genre
+  Genre.create!(name: name)
+end
+
 #Item
 I18n.locale = 'ja'
 10.times do |n|
@@ -51,37 +81,6 @@ I18n.locale = 'ja'
   is_selling: is_selling,
   prices: prices,
   tax_id: tax_id)
-end
-
-
-Disk.create!(
-   item_id: '1',
-   disk_number: '1',
-   quantity: '10',
-)
-
-Track.create!(
-   disk_id: '1',
-   track_number: '1',
-   name: '夏',
-)
-
-# artist
-10.times do |n|
-  name  = Faker::Artist.name
-  Artist.create!(name: name)
-end
-
-# label
-10.times do |n|
-  name = Faker::Food.dish
-  Label.create!(name: name)
-end
-
-# genre
-10.times do |n|
-  name = Faker::Music.genre
-  Genre.create!(name: name)
 end
 
 # deliveries
@@ -175,4 +174,45 @@ end
   Like.create!(
   customer_id: customer_id,
   item_id: item_id)
+end
+
+# disk
+10.times do |n|
+  item_id = "#{n+1}"
+  disk_number = "1"
+  quantity = 15
+  Disk.create!(
+    item_id: item_id,
+    disk_number: disk_number,
+    quantity: quantity
+  )
+end
+Disk.create!(
+  item_id: "1",
+  disk_number: "2",
+  quantity: 5
+)
+
+# track
+10.times do |n|
+  disk_id = "#{n+1}"
+  15.times do |m|
+    track_number = "#{m+1}"
+    name = Faker::Book.title
+    Track.create!(
+      disk_id: disk_id,
+      track_number: track_number,
+      name: name
+    )
+  end
+end
+5.times do |n|
+  disk_id = "11"
+  track_number = "#{n+1}"
+  name = Faker::Book.title
+    Track.create!(
+      disk_id: disk_id,
+      track_number: track_number,
+      name: name
+    )
 end
