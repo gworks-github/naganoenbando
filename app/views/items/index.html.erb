@@ -1,3 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+
+      <%= form_tag(search_path, method: :post) do %>
+          <%= label :artist_id, "アーティスト" %>
+          <%= collection_select(:artist, :id, @artists, :id, :name,:include_blank => '指定なし') %>
+          <%#= collection_select_tag :artist_id, @items, :name, :artist_id, :include_blank => '指定なし' %>
+
+          <%= label :label_id, "レーベル" %>
+          <%= collection_select(:label, :id, @labels, :id, :name,:include_blank => '指定なし') %>
+          <%#= f.collection_select :label_id, @items, :name, :label_id, :include_blank => '指定なし' %>
+
+
+          <%= label :genre_id, "ジャンル" %>
+          <%= collection_select(:genre, :id, @genres, :id, :name,:include_blank => '指定なし') %>
+          <%#= f.collection_select :genre_id, @items, :name, :genre_id, :include_blank => '指定なし' %>
+
+          <%= label :name, "タイトル" %>
+          <%= text_field_tag :name %>
+          <%#= f.search_field :name %>
+
+          <%= submit_tag "検索" %>
+
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
 
 <div class="container">
     <h1>商品一覧</h1>
@@ -7,6 +37,7 @@
                 <th>ジャケット</th>
                 <th>タイトル</th>
                 <th>アーティスト名</th>
+                <th>レーベル名</th>
                 <th>価格</th>
             </tr>
         </thead>
@@ -15,7 +46,8 @@
             <tr>
                 <td><%=link_to attachment_image_tag(item, :jacket_image, :fill, 100, 100, format: 'jpeg',fallback: "no_image.png",size: "100x100" ), item_path(item.id) %></td>
                 <td><%=link_to item.name, item_path(item.id) %></td>
-                <td><%=link_to item.artist_id, item_path(item.id) %></td>
+                <td><%=link_to item.artist.name, item_path(item.id) %></td>
+                <td><%=link_to item.label.name, item_path(item.id) %></td>
                 <td><%=link_to item.prices, item_path(item.id) %></td>
             </tr>
         </tbody>
