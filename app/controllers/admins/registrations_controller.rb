@@ -59,4 +59,10 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  protected
+  #情報更新後のリダイレクト先
+  def after_update_path_for(resource)
+    admin_items_path
+  end
 end
