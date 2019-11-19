@@ -15,11 +15,17 @@ class Admin::CustomersController < ApplicationController
 
   def update
   	@customer = Customer.find(params[:id])
-    @customer.update(customer_params)
-    redirect_to admin_customer_path(@customer)
+    if @customer.update(customer_params)
+      redirect_to admin_customer_path(@customer)
+    else
+      redirect_to edit_admin_customer_path(@customer)
+    end
   end
 
   def destroy
+    customer = Customer.find(params[:id])
+    customer.destroy
+    redirect_to admin_customers_path
   end
 
   def search

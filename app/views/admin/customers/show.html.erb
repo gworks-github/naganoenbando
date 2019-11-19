@@ -39,4 +39,4 @@
     <% end %>
   <% end %>
 <% end %>
-<%= link_to "退会手続き", destroy_customer_path, method: :delete %>
+<%= link_to "退会", admin_customer_path, data: { confirm: "本当に退会させますか?" }, method: :delete %>
