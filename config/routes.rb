@@ -35,16 +35,20 @@ Rails.application.routes.draw do
   resources :deliveries, only: [:create, :destroy]
 
   ## 管理者用
-  namespace :admin do
-    resources :arrived_items
-    resources :ready_items, only: [:create, :destroy, :index]
-    resources :items
+  # 認証されたadminのみadmin/以下のURLにアクセスできます
+  # admin以下のルートはnamespace以下に追加してください
+  authenticated :admin do
+    namespace :admin do
+      resources :arrived_items
+      resources :ready_items, only: [:create, :destroy, :index]
+      resources :items
+    end
   end
 
   devise_for :admins, controllers: {
     registrations: 'admins/registrations',
-    sessions:      'admins/sessions'
+    sessions:      'admins/sessions',
+    passwords:     'admins/passwords'
   }
 
 end
-

@@ -114,6 +114,15 @@ end
   phone_number: phone_number)
 end
 
+## Admin
+name = Gimei.first.kanji
+email = "admin@gmail.com"
+password = "password"
+Admin.create!(
+  name: name,
+  email: email,
+  password: password)
+
 # likes
 6.times do |n|
   customer_id = "#{n+1}"
