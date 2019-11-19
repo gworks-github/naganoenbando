@@ -18,4 +18,9 @@ class Admin::CustomersController < ApplicationController
   def destroy
   end
 
+  def search
+    @customers = Customer.all.cust_search(params)
+    render :index
+  end
+
 end

@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   ## 管理者用
   namespace :admin do
     resources :items
+    get 'customers/search', to:'customers#search', as: :customers_search
     resources :customers, except: [:new]
   end
 
