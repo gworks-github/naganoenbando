@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   ## 管理者用
   namespace :admin do
     resources :items
+    resources :customers, except: [:new]
   end
 
   devise_for :admins, controllers: {
