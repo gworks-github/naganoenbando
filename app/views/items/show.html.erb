@@ -53,8 +53,11 @@
             </tr>
         </thead>
         <tbody>
+
+
+
             <tr>
-                    <td><%= Disk.find(@item.id).disk_number %></td>
+                   <td><%= Disk.find(@item.id).disk_number %></td>
                 <% @item.disks.each do |disk_number| %>
                     <% disk.tracks.each do |track_number,name| %>
                         <td><%= Track.find(Disk.find(@item.id).disk_number).track_number %></td>
@@ -62,6 +65,9 @@
                     <% end %>
                 <% end %>
             </tr>
+
+
+            
         </tbody>
     </table>
 </div>
@@ -101,3 +107,5 @@
 
 
 </div>
+
+<%= render 'likes/ranks', likes_ranks:@likes_ranks, likes_ranks_count:@likes_ranks_count, ranks_number:@ranks_number %>

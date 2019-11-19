@@ -1,29 +1,39 @@
 <h1>情報マスタ</h1>
 
 
-<%= form_for @item do |f| %>
+<%= form_for(@item) do |f| %>
 
-    <h4>アーティスト名</h4>
-    <%= f.text_area :artist_id %>
+  <div class="field">
+    <%= f.select :name, ['ジャンル', 'アーティスト', 'レーベル'], {include_blank: '選択ボックス'} %>
+    <%= f.text_field :name %>
 
-    <%= f.submit '登録'%>
+    <%= f.submit "登録"%>
+  </div>
 
 <% end %>
 
 
 <table>
-
   <tbody>
     <% @items.each do |item| %>
       <tr>
 
         <td><%= item.id %></td>
-        <td><%=item.artist_id %></td>
+        <td><%= Genre.find(item.genre_id).name %></td>
 
-        <td><%= link_to '編集', info_index_path %></td>
-        <td><%= link_to '削除', info_index_path %></td>
+        <td><%= item.id %></td>
+        <td><%= Artist.find(item.artist_id).name %></td>
+
+        <td><%= item.id %></td>
+        <td><%= Label.find(item.label_id).name %></td>
+
+        <td><%= link_to '編集', info_path(item) %></td>
+
+        <td><%= link_to "削除", info_path(item), method: :delete,"data-confirm" => "本当に削除しますか？" %></td>
+
       </tr>
     <% end %>
   </tbody>
 </table>
+
 
