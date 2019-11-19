@@ -47,4 +47,18 @@ class Customer < ApplicationRecord
     result
   end
 
+  #顧客検索
+  scope :cust_search, -> (search_params) do
+    last_name_like(search_params[:last_name])
+      .first_name_like(search_params[:first_name])
+      .address_like(search_params[:address])
+      .phone_number_like(search_params[:phone_number])
+      .email_like(search_params[:email])
+  end
+  scope :last_name_like, -> (last_name) {where(['Last_name like ?', "%#{last_name}%"]) if last_name.present? }
+  scope :first_name_like, -> (first_name) {where(['first_name like ?', "%#{first_name}%"]) if first_name.present?}
+  scope :address_like, -> (address) {where(['address like ?', "%#{address}%"]) if address.present?}
+  scope :phone_number_like, -> (phone_number) {where(['phone_number like ?', "%#{phone_number}%"]) if phone_number.present?}
+  scope :email_like, -> (email) {where(['email like ?', "%#{email}%"]) if email.present?}
+
 end

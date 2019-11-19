@@ -42,6 +42,8 @@ Rails.application.routes.draw do
       resources :arrived_items
       resources :ready_items, only: [:create, :destroy, :index]
       resources :items
+      get 'customers/search', to:'customers#search', as: :customers_search
+      resources :customers, except: [:new]
     end
   end
 

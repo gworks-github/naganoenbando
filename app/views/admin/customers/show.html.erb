@@ -1,0 +1,42 @@
+<h3>基本情報</h3>
+<p>
+<%= @customer.last_name %> <%= @customer.first_name %>
+(<%= @customer.last_furigana %> <%= @customer.first_furigana %>)
+</p>
+
+<p>
+<%= @customer.post_code %> <br>
+<%= @customer.address %>
+</p>
+
+<p>
+<%= @customer.phone_number %> <br>
+<%= @customer.email %>
+</p>
+<%= link_to '変更', edit_customer_registration_path %>
+
+<% if @deliveries %>
+  <h3>追加のお届け先</h3>
+  <% @deliveries.each do |delivery| %>
+    <% unless delivery.last_name.nil? %>
+
+      <p>
+      <%= delivery.last_name %> <%= delivery.first_name %>
+      (<%= delivery.last_furigana %> <%= delivery.first_furigana %>)
+      </p>
+
+      <p>
+      <%= delivery.post_code %> <br>
+      <%= delivery.address %>
+      </p>
+
+      <p>
+      <%= delivery.phone_number %> <br>
+      </p>
+
+      <%= link_to '削除', delivery_path(delivery), method: :delete %>
+
+    <% end %>
+  <% end %>
+<% end %>
+<%= link_to "退会手続き", destroy_customer_path, method: :delete %>
