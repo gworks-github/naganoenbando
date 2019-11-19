@@ -13,7 +13,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<%= form_tag url: carts_confirm_path, method: :get do %>
+				<%= form_tag carts_confirm_path, method: :get do %>
 				<tr>
 					<td><%= radio_button_tag "address", "0", checked = true %></td>
 					<td><%= @customer.post_code %></td>
@@ -37,15 +37,15 @@
 	<table class="table" style="width: 50%;">
 		<tbody>
 			<tr>
-				<td><%= radio_button_tag :payment_method, "0", checked = true %></td>
+				<td><%= radio_button_tag :pay, "0", checked = true %></td>
 				<td>現金振込</td>
 			</tr>
 			<tr>
-				<td><%= radio_button_tag :payment_method, "1" %></td>
+				<td><%= radio_button_tag :pay, "1" %></td>
 				<td>クレジットカード</td>
 			</tr>
 			<tr>
-				<td><%= radio_button_tag :payment_method, "2" %></td>
+				<td><%= radio_button_tag :pay, "2" %></td>
 				<td>代金引換</td>
 			</tr>
 		</tbody>

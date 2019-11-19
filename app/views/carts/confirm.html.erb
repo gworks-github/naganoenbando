@@ -34,28 +34,49 @@
 		<table class="table" style="width: 50%">
 			<tbody>
 				<tr>
+					<th>ユーザID</th>
+					<td><%= current_customer.id %></td>
+				</tr>
+				<tr>
 					<th>合計金額</th>
 					<td>¥<%= @total_price %>（税込）</td>
 				</tr>
 				<tr>
 					<th>支払方法</th>
-					<td>カード</td>
+					<!-- paramsのpayment数値から、支払方法の文字列を取得 -->
+					<td><%= Order.get_payment(params[:pay].to_i) %></td>
 				</tr>
+				<!-- paramsのaddress数値を条件分岐 -->
+				<% if params[:address] == "0" %>
 				<tr>
 					<th>お客様名</th>
-					<td>前頁で選択した配送先の名前</td>
+					<td><%= @customer.last_name + " " + @customer.first_name %></td>
 				</tr>
 				<tr>
-					<th>お届け先</th>
-					<td>前頁で選択した配送先住所</td>
+					<th>お届け先（基本）</th>
+					<td><%= @customer.address %></td>
 				</tr>
 				<tr>
 					<th>電話番号</th>
-					<td>前頁で選択した電話番号</td>
+					<td><%= @customer.phone_number %></td>
 				</tr>
+				<% else %>
+				<tr>
+					<th>お客様名</th>
+					<td><%= @delivery.last_name + " " + @delivery.first_name %></td>
+				</tr>
+				<tr>
+					<th>お届け先（追加）</th>
+					<td><%= @delivery.address %></td>
+				</tr>
+				<tr>
+					<th>電話番号</th>
+					<td><%= @delivery.phone_number %></td>
+				</tr>
+				<% end %>
 			</tbody>
 		</table>
-		<p><%= link_to "注文確定", carts_thanks_path %></p>
+		<p><%= link_to "注文確定", orders_path(pay: params[:pay], address: params[:address]), :method => :post %></p>
 		<p><%= link_to "修正する", carts_index_path %></p>
 	</div>
 </div>

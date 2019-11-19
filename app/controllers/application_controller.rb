@@ -3,6 +3,16 @@ class ApplicationController < ActionController::Base
   #devise
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  #ログイン後のリダイレクト先
+  def after_sign_in_path_for(resource)
+    case resource
+    when Admin
+      admin_items_path
+    when Customer
+      root_path
+    end
+  end
+
 	def idex
 	end
 
@@ -28,6 +38,5 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:phone_number])
     devise_parameter_sanitizer.permit(:account_update, keys: [:email])
   end
-
 
 end

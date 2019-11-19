@@ -34,7 +34,6 @@ before_action :authenticate_customer!
 		@customer = current_customer
 		@deliveries = Delivery.where(customer: current_customer[:id])
 		@cart_items = CartItem.where(customer: current_customer[:id])
-		@order_detail = OrderDetail.new
 	end
 
 	def update
@@ -49,9 +48,16 @@ before_action :authenticate_customer!
 	end
 
 	def confirm
+		@customer = current_customer
+		deliveries = Delivery.where(customer_id: current_customer[:id])
+		if params[:address] != "0"
+			puts deliveries[0].address
+			@delivery = deliveries[params[:address].to_i - 1]
+		end
 		@cart_items = CartItem.where(customer: current_customer[:id])
 		@tax = Tax.last.rate + 1
 		@postage = TaxInPostage.last.price
+		# 税込総額の計算
 		@total_price = 0
 		@cart_items.each do |item|
 			@total_price += Item.find(item.item_id).prices * item.quantity * @tax
