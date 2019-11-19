@@ -24,18 +24,6 @@
   password: password)
 end
 
-#Disk.create!(
-#   item_id: '1',
-#   disk_number: '1',
-#   quantity: '10',
-#)
-#
-#Track.create!(
-#   disk_id: '1',
-#   track_number: '1',
-#   name: '夏',
-#)
-
 # artist
 10.times do |n|
   name  = Faker::Artist.name
@@ -184,6 +172,15 @@ end
   customer_id: customer_id,
   item_id: item_id)
 end
+
+# TaxInPostage
+  TaxInPostage.create!(
+    price: 500)
+
+
+# Tax
+  Tax.create!(
+    rate: 0.1)
 
 # disk
 10.times do |n|
