@@ -44,6 +44,7 @@ Rails.application.routes.draw do
       resources :items
       get 'customers/search', to:'customers#search', as: :customers_search
       resources :customers, except: [:new]
+      delete 'deliveries/:id(.:format)', to: 'deliveries#destroy',   as: :delivery
     end
   end
 
