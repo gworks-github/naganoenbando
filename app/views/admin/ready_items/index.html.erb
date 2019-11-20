@@ -3,6 +3,8 @@
 	<table class="table">
 		<thead>
 			<tr>
+				<th>No</th>
+				<th>アイテムID</th>
 				<th>ジャケット</th>
 				<th>タイトル</th>
 				<th>フォーマット</th>
@@ -15,18 +17,22 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% @ready_items_id.each do |id| %>
+
+      <%= form_for(@arrived_items, url: admin_arrived_items_path) do |f| %>
+
+			<% @ready_items.each.with_index(1) do |item,idx| %>
 			<tr>
-				<td><%= id %></td>
-				<td><%= Item.find(id).id %></td>
-				<td><%#= item.name %></td>
-				<td><%#= item.format %></td>
-				<td><%#= Artist.find(item.artist_id).name %></td>
-				<td><%#= Label.find(item.label_id).name %></td>
-				<td><%#= Genre.find(item.genre_id).name %></td>
-				<td><%#= item.prices %></td>
-				<td><%#= text_field_tag :quantity %></td>
-				<td><%#= link_to "削除", admin_ready_item_path(item.id), method: :delete %></td>
+				<td><%= idx %></td>
+				<td><%= item.id %></td>
+				<td><%= item.jacket_image_id %></td>
+				<td><%= item.name %></td>
+				<td><%= item.format %></td>
+				<td><%= item.artist.name %></td>
+				<td><%= item.label.name %></td>
+				<td><%= item.genre.name %></td>
+				<td><%= item.prices %></td>
+				<td><%= f.number_field :quantity %></td>
+				<td><%= link_to "削除", admin_ready_item_path(item.id), method: :delete %></td>
 			</tr>
 		</tbody>
 		<% end %>
@@ -47,5 +53,7 @@
 			</tr>
 		</tbody>
 	</table>
-	<%= submit_tag "登録" %>
+	<%= f.submit "登録" %>
 </div>
+
+<% end %>

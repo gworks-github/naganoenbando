@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   ## エンドユーザ用
   root 'items#index'
 
+  ## 情報マスタ用
+  resources :info,only: [:create,:index,:update,:destroy]
+
   resources :items, only: [:index, :show]
   post '/search', to:'items#search'
   devise_for :customers, path: :users, controllers: { registrations: 'users/registrations' }
@@ -25,6 +28,9 @@ Rails.application.routes.draw do
     resource :order_details
   end
 
+
+  #マイページ閲覧、基本情報の更新/編集、退会、いいね一覧
+
   #マイページ閲覧、退会手続き画面、いいね一覧
   scope :users do
     get    '/:id(.:format)',       to: 'users#show',      as: :show_customer
@@ -44,6 +50,7 @@ Rails.application.routes.draw do
       resources :items
       get 'customers/search', to:'customers#search', as: :customers_search
       resources :customers, except: [:new]
+      delete 'deliveries/:id(.:format)', to: 'deliveries#destroy',   as: :delivery
     end
   end
 
