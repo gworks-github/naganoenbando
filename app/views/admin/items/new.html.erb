@@ -1,35 +1,36 @@
 
-<%= form_for(@item,local: true, url: '/admin/items') do |f| %>
+<%= form_for([:admin, @item]) do |f| %>
 
 
     <h4>タイトル</h4>
     <%= f.text_field :name %>
 
     <h4>アーティスト名</h4>
-    <%= f.text_area :artist_id %>
+    <%= f.text_field :artist_id %>
 
     <h4>
-        <label><%=f.radio_button :format, "true"%>シングル</label>
-        <label><%=f.radio_button :format, "false"%>アルバム</label>
+        <%= f.text_field :format %>
+        <!-- <label><%=f.radio_button :format, "true"%>シングル</label>
+        <label><%=f.radio_button :format, "false"%>アルバム</label> -->
     </h4>
 
     <h4>ジャケット画像</h4>
     <%= f.attachment_field :jacket_image %>
 
     <h4>価格（税抜き）</h4>
-    <%= f.text_area :prices %>
+    <%= f.text_field :prices %>
 
     <h4>発売日</h4>
-    <%= f.text_area :release_date %>
+    <%= f.text_field :release_date %>
 
     <h4>レーベル</h4>
-    <%= f.text_area :label_id %>
+    <%= f.text_field :label_id %>
 
     <h4>ジャンル</h4>
     <%= f.text_field :genre_id %>
 
     <h4>
-        <%= f.text_area :is_selling %>
+        <%= f.text_field :is_selling %>
 <!--         <%= f.radio_button :is_selling,{value: :true, style: "display: inline-block;"} %> 販売中
         <%= f.radio_button :is_selling,{value: :false, style: "display: inline-block;"} %> 販売停止中 -->
     </h4>
@@ -37,6 +38,30 @@
     <h4>収録曲数</h4>
     <%= f.text_field :quantity %>
 
+     <!--  <div class="field">
+        <%= f.label :name, "name" %>
+        <%= f.text_field :name %>
+      </div>
+     -->
+    <h3>disks</h3>
+    <div id="disks">
+        <%= f.fields_for :disks do |disk| %>
+          <%= render 'disk_fields', f: disk %>
+        <% end %>
+        <div id="links">
+
+          <%= link_to_add_association 'add disk',f, :disks %>
+        </div>
+    </div>
+
     <%= f.submit '登録'%>
 
 <% end %>
+
+
+
+
+
+
+
+

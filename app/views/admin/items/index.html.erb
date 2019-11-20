@@ -18,12 +18,11 @@
     <tbody>
          <% @items.each do |item| %>
 
-
         <tr>
             <td> <%=link_to item.id,admin_item_path(item.id) %></td>
             <td><%= item.name %></td>
-            <td><%=item.is_selling %></td>
-            <td><%=item.artist_id %></td>
+            <td><%=item.format %></td>
+            <td><%=Artist.find(item.artist_id).name %></td>
             <td><%=item.release_date %></td>
             <td><%=item.prices %></td>
             <td>zaikosu</td>
