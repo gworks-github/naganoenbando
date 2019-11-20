@@ -1,105 +1,106 @@
-
-<h1>商品詳細</h1>
-
-<table class="table">
-    <tbody>
-        <tr>
-            <th>ジャケット画像</th>
-            <td><%= attachment_image_tag @item, :jacket_image, :fill, 300, 300, format: 'jpeg',fallback: "no_image.png",size: "300x300" %></td>
-        </tr>
-        <tr>
-            <th>タイトル</th>
-            <td><%= @item.name %></td>
-        </tr>
-        <tr>
-            <th>アーティスト</th>
-            <td><%= Artist.find(@item.artist_id).name %></td>
-        </tr>
-        <tr>
-            <th>シングル/アルバム</th>
-            <td><%= @item.format %></td>
-        </tr>
-        <tr>
-            <th>価格</th>
-            <td><%= @item.prices %></td>
-        </tr>
-        <tr>
-            <th>発売日</th>
-            <td><%= @item.release_date%></td>
-        </tr>
-        <tr>
-            <th>レーベル</th>
-            <td><%= Label.find(@item.label_id).name %></td>
-        </tr>
-        <tr>
-            <th>ジャンル</th>
-            <td><%= Genre.find(@item.genre_id).name %></td>
-        </tr>
-        <tr>
-            <th>ステータス</th>
-            <td><%= @item.is_selling %></td>
-        </tr>
-    </tbody>
-</table>
-
-    	<!-- 　在庫関連の参考サイト：https://qiita.com/phantomspecial/items/22146e7e6c6d3a38fefc -->
 <div class="container">
+
+    <h1>商品詳細</h1>
+
     <table class="table">
-        <thead>
-            <tr>
-                <th>Disc.No</th>
-                <th>Track.No</th>
-                <th>曲名</th>
-            </tr>
-        </thead>
         <tbody>
             <tr>
-                   <td><%= Disk.find(@item.id).disk_number %></td>
-                <% @item.disks.each do |disk_number| %>
-                    <% disk_number.tracks.each do |track_number,name| %>
-                        <td><%= Track.find(Disk.find(@item.id).disk_number).track_number %></td>
-                        <td><%= Track.find(Disk.find(@item.id).disk_number).name %></td>
-                    <% end %>
-                <% end %>
+                <th>ジャケット画像</th>
+                <td><%= attachment_image_tag @item, :jacket_image, :fill, 300, 300, format: 'jpeg',fallback: "no_image.png",size: "300x300" %></td>
+            </tr>
+            <tr>
+                <th>タイトル</th>
+                <td><%= @item.name %></td>
+            </tr>
+            <tr>
+                <th>アーティスト</th>
+                <td><%= Artist.find(@item.artist_id).name %></td>
+            </tr>
+            <tr>
+                <th>シングル/アルバム</th>
+                <td><%= @item.format %></td>
+            </tr>
+            <tr>
+                <th>価格</th>
+                <td>¥<%= (@item.prices * (Tax.last.rate + 1)).floor %>（税込）</td>
+            </tr>
+            <tr>
+                <th>発売日</th>
+                <td><%= @item.release_date%></td>
+            </tr>
+            <tr>
+                <th>レーベル</th>
+                <td><%= Label.find(@item.label_id).name %></td>
+            </tr>
+            <tr>
+                <th>ジャンル</th>
+                <td><%= Genre.find(@item.genre_id).name %></td>
+            </tr>
+            <tr>
+                <th>ステータス</th>
+                <td><%= @item.is_selling %></td>
             </tr>
         </tbody>
     </table>
-</div>
 
 
-<%= form_for [@item,@cart_item], url: item_carts_path(@item), html: {method: :post} do |f| %>
-    <div class="row">
-        <div class="col-sm-12">
-           <%= f.select :quantity, options_for_select((1..29).to_a) %>
-            <%#= f.hidden_field :customer_id, :value => current_customer.id %>
-            <%= f.hidden_field :item_id, :value => @item.id %>
-        </div>
+        	<!-- 　在庫関連の参考サイト：https://qiita.com/phantomspecial/items/22146e7e6c6d3a38fefc -->
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Disc.No</th>
+                    <th>Track.No</th>
+                    <th>曲名</th>
+                </tr>
+            </thead>
+            <tbody>
+                <p><%= Disk.find(@item.id).disk_number %>枚目</p>
+                <% @item.disks.each do |disk_number| %>
+                <% disk_number.tracks.each do |track_number,name| %>
+                <tr>
+                    <td><%= Track.find(Disk.find(@item.id).disk_number).track_number %></td>
+                    <td><%= Track.find(Disk.find(@item.id).disk_number).name %></td>
+                </tr>
+                    <% end %>
+                    <% end %>
+            </tbody>
+        </table>
     </div>
-    <%= f.submit "カートへ入れる", class: "btn", style: "color: blue;" %>
-<% end %>
 
 
-<% if customer_signed_in? %>
-  <% if @likes.find_by(customer_id: current_customer.id) %>
-    <li>
-      <%= link_to item_likes_path(@item), method: :delete do %>
-        <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-        いいね済
+    <%= form_for [@item,@cart_item], url: item_carts_path(@item), html: {method: :post} do |f| %>
+        <div class="row">
+            <div class="col-sm-12">
+               <%= f.select :quantity, options_for_select((1..29).to_a) %>
+                <%#= f.hidden_field :customer_id, :value => current_customer.id %>
+                <%= f.hidden_field :item_id, :value => @item.id %>
+            </div>
+        </div>
+        <%= f.submit "カートへ入れる", class: "btn", style: "color: blue;" %>
+    <% end %>
+
+
+    <% if customer_signed_in? %>
+      <% if @likes.find_by(customer_id: current_customer.id) %>
+        <li>
+          <%= link_to item_likes_path(@item), method: :delete do %>
+            <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+            いいね済
+          <% end %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to item_likes_path(@item), method: :post do %>
+            <i class="fa fa-heart-o" aria-hidden="true"></i>
+            いいねしていない
+          <% end %>
+        </li>
       <% end %>
-    </li>
-  <% else %>
-    <li>
-      <%= link_to item_likes_path(@item), method: :post do %>
-        <i class="fa fa-heart-o" aria-hidden="true"></i>
-        いいねしていない
-      <% end %>
-    </li>
-  <% end %>
-<% else %>
-  <%! "ログインしないといいねボタンが表示されない" %>
-<% end %>
+    <% else %>
+      <%! "ログインしないといいねボタンが表示されない" %>
+    <% end %>
 
+    <%= render 'likes/ranks', likes_ranks:@likes_ranks, likes_ranks_count:@likes_ranks_count, ranks_number:@ranks_number %>
 
-</div>
-
-<%= render 'likes/ranks', likes_ranks:@likes_ranks, likes_ranks_count:@likes_ranks_count, ranks_number:@ranks_number %>
+    </div>

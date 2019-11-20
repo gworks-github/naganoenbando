@@ -17,9 +17,9 @@
 					<tr>
 						<td><%= item.item_id %></td>
 						<td><%= Item.find(item.item_id).name %></td>
-						<td>¥<%= Item.find(item.item_id).prices * @tax  %>（税込）</td>
+						<td>¥<%= (Item.find(item.item_id).prices * @tax).floor %>（税込）</td>
 						<td><%= item.quantity %></td>
-						<td>¥<%= item.quantity * Item.find(item.item_id).prices * @tax %> （税込）</td>
+						<td>¥<%= item.quantity * (Item.find(item.item_id).prices * @tax).floor %> （税込）</td>
 					</tr>
 					<% end %>
 				</tbody>

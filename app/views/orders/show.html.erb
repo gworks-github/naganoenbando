@@ -1,8 +1,63 @@
-<h1>order show</h1>
+<div class="container">
+	<h1>購入履歴詳細</h1>
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>注文時間</th>
+				<td><%= @order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+			</tr>
+			<tr>
+				<th>点数</th>
+				<td><%= @order_details.sum(:order_quantity) %>点</td>
+			</tr>
+			<tr>
+				<th>送料</th>
+				<td>¥<%= TaxInPostage.find(@order.tax_in_postage_id).price %>（税込）</td>
+			</tr>
+			<tr>
+				<th>合計金額</th>
+				<td>¥<%= @order.tax_in_total_price %>（税込）</td>
+			</tr>
+			<tr>
+				<th>配送先</th>
+				<td><%= @order.address %></td>
+			</tr>
+			<tr>
+				<th>氏名</th>
+				<td><%= @order.name %><%= @order.furigana %></td>
+			</tr>
+			<tr>
+				<th>支払方法</th>
+				<td><%= @order.payment_method %></td>
+			</tr>
+			<tr>
+				<th>ステータス</th>
+				<td><%= @order.order_status %></td>
+			</tr>
+		</tbody>
+	</table>
 
-<% @order_details.each do |order| %>
-	<p><%= order.id %></p>
-	<p><%=  %></p>
-	<br>
-	<br>
-<% end %>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>タイトル</th>
+				<th>アーティスト</th>
+				<th>枚数</th>
+				<th>価格（税込）</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @order_details.each do |order| %>
+			<tr>
+				<td><%= order.id %></td>
+				<td><%= Item.find(order.item_id).name %></td>
+				<td><%= Artist.find(Item.find(order.item_id).artist_id).name %></td>
+				<td><%= order.order_quantity %></td>
+				<td><%= order.price %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

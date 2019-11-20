@@ -60,7 +60,7 @@ before_action :authenticate_customer!
 		# 税込総額の計算
 		@total_price = 0
 		@cart_items.each do |item|
-			@total_price += Item.find(item.item_id).prices * item.quantity * @tax
+			@total_price += (Item.find(item.item_id).prices * item.quantity * @tax).floor
 		end
 		@total_price += @postage
 	end
