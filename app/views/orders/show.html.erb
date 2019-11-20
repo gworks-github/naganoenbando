@@ -3,16 +3,32 @@
 	<table class="table">
 		<tbody>
 			<tr>
-				<th>情報</th>
-				<td><%= @order.created_at %>　　　<%= @order_details.sum(:order_quantity) %>点　　送料：¥<%= TaxInPostage.find(@order.tax_in_postage_id).price %>（税込）　合計金額：¥<%= @order.tax_in_total_price %>（税込）</td>
+				<th>注文時間</th>
+				<td><%= @order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+			</tr>
+			<tr>
+				<th>点数</th>
+				<td><%= @order_details.sum(:order_quantity) %>点</td>
+			</tr>
+			<tr>
+				<th>送料</th>
+				<td>¥<%= TaxInPostage.find(@order.tax_in_postage_id).price %>（税込）</td>
+			</tr>
+			<tr>
+				<th>合計金額</th>
+				<td>¥<%= @order.tax_in_total_price %>（税込）</td>
 			</tr>
 			<tr>
 				<th>配送先</th>
-				<td><%= @order.adress %></td>
+				<td><%= @order.address %></td>
 			</tr>
 			<tr>
 				<th>氏名</th>
-				<td>カラムなしのため、未対応</td>
+				<td><%= @order.name %><%= @order.furigana %></td>
+			</tr>
+			<tr>
+				<th>支払方法</th>
+				<td><%= @order.payment_method %></td>
 			</tr>
 			<tr>
 				<th>ステータス</th>

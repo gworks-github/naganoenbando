@@ -11,13 +11,11 @@ class ItemsController < ApplicationController
 
   def index
   	@items = Item.all
-
     @artists = Artist.all
     @labels = Label.all
     @genres = Genre.all
     # @q = Item.ransack(params[:q])
     # @items = @q.result(distinct: true)
-    
     #本番
     #@likes_ranks = Item.find(Like.where(created_at:1.week.ago.beginning_of_day..1.day.ago.end_of_day).group(:item_id).order(Arel.sql('count(item_id) desc')).limit(5).pluck(:item_id))
     #test

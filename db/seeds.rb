@@ -78,12 +78,10 @@ Disk.create!(
    quantity: '10',
 )
 
-
-
-10.times do |n|
-  name = Faker::Track.name
-  Track.create!(name: name)
-end
+# 10.times do |n|
+#   name = Faker::Track.name
+#   Track.create!(name: name)
+# end
 
 # artist
 10.times do |n|
