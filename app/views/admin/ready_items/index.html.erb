@@ -1,0 +1,59 @@
+<div class="container">
+	<h1>入荷予定商品一覧</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>No</th>
+				<th>アイテムID</th>
+				<th>ジャケット</th>
+				<th>タイトル</th>
+				<th>フォーマット</th>
+				<th>アーティスト</th>
+				<th>レーベル</th>
+				<th>ジャンル</th>
+				<th>税別金額（円）</th>
+				<th>入荷枚数</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+
+      <%= form_for(@arrived_items, url: admin_arrived_items_path) do |f| %>
+
+			<% @ready_items.each.with_index(1) do |item,idx| %>
+			<tr>
+				<td><%= idx %></td>
+				<td><%= item.id %></td>
+				<td><%= item.jacket_image_id %></td>
+				<td><%= item.name %></td>
+				<td><%= item.format %></td>
+				<td><%= item.artist.name %></td>
+				<td><%= item.label.name %></td>
+				<td><%= item.genre.name %></td>
+				<td><%= item.prices %></td>
+				<td><%= f.number_field :quantity %></td>
+				<td><%= link_to "削除", admin_ready_item_path(item.id), method: :delete %></td>
+			</tr>
+		</tbody>
+		<% end %>
+	</table>
+	<br>
+	<br>
+	<br>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>入荷日</th>
+				<td>日付：<%= text_field_tag :daytime %></td>
+			</tr>
+			<tr>
+				<th>入荷時間</th>
+				<td><%= text_field_tag :hh %>時<%= text_field_tag :mm %>分</td>
+			</tr>
+		</tbody>
+	</table>
+	<%= f.submit "登録" %>
+</div>
+
+<% end %>

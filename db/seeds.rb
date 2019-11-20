@@ -24,7 +24,6 @@
   password: password)
 end
 
-
 # artist
 10.times do |n|
   name  = Faker::Artist.name
@@ -148,6 +147,14 @@ end
   phone_number: phone_number)
 end
 
+## Admin
+name = Gimei.first.kanji
+email = "admin@gmail.com"
+password = "password"
+Admin.create!(
+  name: name,
+  email: email,
+  password: password)
 
 # likes
 6.times do |n|
@@ -198,6 +205,15 @@ end
   customer_id: customer_id,
   item_id: item_id)
 end
+
+# TaxInPostage
+  TaxInPostage.create!(
+    price: 500)
+
+
+# Tax
+  Tax.create!(
+    rate: 0.1)
 
 # disk
 10.times do |n|

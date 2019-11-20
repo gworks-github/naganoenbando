@@ -1,0 +1,45 @@
+<h3>情報編集</h2>
+
+<%= form_for(@customer, url: admin_customer_path, method: :put) do |f| %>
+
+  <div class="field">
+    <%= f.label :"名前（姓・名）" %><br />
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+  </div>
+  <div class="field">
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"名前（カナ姓・カナ名）"%><br />
+    <%= f.text_field :last_furigana, autofocus: true, autocomplete: "last_furigana" %>
+  </div>
+  <div class="field">
+    <%= f.text_field :first_furigana, autofocus: true, autocomplete: "first_furigana" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"電話番号" %><br />
+    <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"郵便番号" %><br />
+    <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"住所" %><br />
+    <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"メールアドレス" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "更新" %>
+  </div>
+<% end %>
+<%= link_to "キャンセル", :back %>

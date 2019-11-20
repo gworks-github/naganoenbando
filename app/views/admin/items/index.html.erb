@@ -1,37 +1,36 @@
 <div class="container">
-    <h1>商品一覧</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>商品ID</th>
-                <th>タイトル</th>
-                <th>シングル</th>
-                <th>アーティスト名</th>
-                <th>発売日</th>
-                <th>価格</th>
-                <th>在庫数</th>
-            </tr>
-        </thead>
-         <% @items.each do |item| %>
-        <tbody>
-            <tr>
-                <!-- <p>商品ID</p> -->
-                <td><%=link_to item.id,admin_item_path(item.id) %></td>
-                <!-- <p>タイトル</p> -->
-                <td><%= item.name %></td>
-                <!-- <p>フォーマット</p> -->
-                <td><%=item.format %></td>
-                <!-- <p>アーティスト名</p> -->
-                <td><%=item.artist_id %></td>
-                <!-- <p>発売日</p> -->
-                <td><%=item.release_date %></td>
-                <!-- <p>価格</p> -->
-                <td><%=item.prices %></td>
-                <td>在庫数</td>
-                <td><%= link_to "入荷" %></td>
-            </tr>
-        </tbody>
-         <% end %>
-    </table>
-</div>
 
+
+<h1>商品一覧</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>商品ID</th>
+            <th>タイトル</th>
+            <th>フォーマット</th>
+            <th>アーティスト名</th>
+            <th>発売日</th>
+            <th>価格</th>
+            <th>在庫数</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+         <% @items.each do |item| %>
+
+
+        <tr>
+            <td> <%=link_to item.id,admin_item_path(item.id) %></td>
+            <td><%= item.name %></td>
+            <td><%=item.is_selling %></td>
+            <td><%=item.artist_id %></td>
+            <td><%=item.release_date %></td>
+            <td><%=item.prices %></td>
+            <td>zaikosu</td>
+            <td><%= link_to "入荷", admin_ready_items_path(id: item.id), method: :post %></td>
+        </tr>
+         <% end %>
+    </tbody>
+</table>
+<%= link_to "入荷一覧", admin_ready_items_path %>
+</div>
