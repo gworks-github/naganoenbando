@@ -70,7 +70,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-  	params.require(:item).permit!
+  	params.require(:item).permit(:name,:artist_id,:label_id,:genre_id,:format,:quantity,:release_date,:is_selling,:prices,:jacket_image_id,:tax_id)
     params.require(:q).permit(:name,:artist_id,:label_id,:genre_id)
   end
 

@@ -1,54 +1,39 @@
 <h1>情報マスタ</h1>
 
-<%= form_for(@artists) do |f| %>
-  <% if @artists.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@artists.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% @artists.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for(@item) do |f| %>
 
-  <div class="名前">
-    <%= f.label :artist %><br>
-    <%= f.text_field :note %>
+  <div class="field">
+    <%= f.select :name, ['ジャンル', 'アーティスト', 'レーベル'], {include_blank: '選択ボックス'} %>
+    <%= f.text_field :name %>
+
+    <%= f.submit "登録"%>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
 <% end %>
 
 
 <table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <!-- <th>Age</th>
-      <th>Note</th> -->
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
   <tbody>
-    <% @artists.each do |artist| %>
+    <% @items.each do |item| %>
       <tr>
-        <td><%= artists.name %></td>
-        <!-- <td><%= user.age %></td>
-        <td><%= user.note %></td> -->
-        <td><%= link_to 'Show', info_index_path %></td>
-        <td><%= link_to 'Edit', info_index_path %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td><%= item.id %></td>
+        <td><%= Genre.find(item.genre_id).name %></td>
+
+        <td><%= item.id %></td>
+        <td><%= Artist.find(item.artist_id).name %></td>
+
+        <td><%= item.id %></td>
+        <td><%= Label.find(item.label_id).name %></td>
+
+        <td><%= link_to '編集', info_path(item) %></td>
+
+        <td><%= link_to "削除", info_path(item), method: :delete,"data-confirm" => "本当に削除しますか？" %></td>
+
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New User', new_user_path %>
-<h1>Info#index</h1>
-<p>Find me in app/views/info/index.html.erb</p>

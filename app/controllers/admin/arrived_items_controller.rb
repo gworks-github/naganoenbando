@@ -5,4 +5,5 @@ class Admin::ArrivedItemsController < ApplicationController
 
 	def create
 	end
+
 end
