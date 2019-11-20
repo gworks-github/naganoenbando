@@ -71,6 +71,39 @@ I18n.locale = 'ja'
   tax_id: tax_id)
 end
 
+
+Disk.create!(
+   item_id: '1',
+   disk_number: '1',
+   quantity: '10',
+)
+
+
+
+10.times do |n|
+  name = Faker::Track.name
+  Track.create!(name: name)
+end
+
+# artist
+10.times do |n|
+  name  = Faker::Artist.name
+  Artist.create!(name: name)
+end
+
+# label
+10.times do |n|
+  name = Faker::Food.dish
+  Label.create!(name: name)
+end
+
+# genre
+10.times do |n|
+  name = Faker::Music.genre
+  Genre.create!(name: name)
+end
+
+
 # deliveries
 10.times do |n|
   customer_id = "#{n+1}"
@@ -222,3 +255,4 @@ end
       name: name
     )
 end
+
