@@ -53,21 +53,15 @@
             </tr>
         </thead>
         <tbody>
-
-
-
             <tr>
                    <td><%= Disk.find(@item.id).disk_number %></td>
                 <% @item.disks.each do |disk_number| %>
-                    <% disk.tracks.each do |track_number,name| %>
+                    <% disk_number.tracks.each do |track_number,name| %>
                         <td><%= Track.find(Disk.find(@item.id).disk_number).track_number %></td>
                         <td><%= Track.find(Disk.find(@item.id).disk_number).name %></td>
                     <% end %>
                 <% end %>
             </tr>
-
-
-            
         </tbody>
     </table>
 </div>
