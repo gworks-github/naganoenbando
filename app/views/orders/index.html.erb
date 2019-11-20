@@ -1,9 +1,29 @@
-<h1>order index</h1>
-
-
-<% @orders.each do |order| %>
-	<p><%= order.id %></p>
-	<p><%=  %></p>
-	<br>
-	<br>
-<% end %>
+<div class="container">
+	<h1>購入履歴</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>注文ID</th>
+					<th>購入日</th>
+					<th>購入点数</th>
+					<th>送料</th>
+					<th>合計金額</th>
+					<th>ステータス</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @orders.each do |order| %>
+				<tr>
+					<td><%= order.id %></td>
+					<td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+					<td><%= OrderDetail.where(order_id: order.id).sum(:order_quantity) %></td>
+					<td><%= TaxInPostage.find(order.tax_in_postage_id).price %></td>
+					<td><%= order.tax_in_total_price %></td>
+					<td><%= Order.get_status(order.order_status.to_i) %></td>
+					<td><%= link_to "詳細", order_path(order.id) %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+</div>

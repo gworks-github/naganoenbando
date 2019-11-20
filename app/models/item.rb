@@ -9,4 +9,10 @@ class Item < ApplicationRecord
 	belongs_to :label
 	belongs_to :artist
 
+
+	def self.add_tax
+		method = (self.prices * (Tax.last.rate + 1)).floor
+		return method
+	end
+
 end
