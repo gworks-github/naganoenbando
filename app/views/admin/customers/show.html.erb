@@ -34,7 +34,7 @@
       <%= delivery.phone_number %> <br>
       </p>
 
-      <%= link_to '削除', delivery_path(delivery), method: :delete %>
+      <%= link_to '削除', admin_delivery_path(delivery), data: { confirm: "本当に削除しますか?" }, method: :delete %>
 
     <% end %>
   <% end %>
