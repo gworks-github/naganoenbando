@@ -120,3 +120,10 @@ gem 'faker'
 # 論理削除
 gem 'paranoia'
 
+# 動的フォーム追加1
+gem 'cocoon'
+
+# 動的フォーム追加2
+# rails5からはjQueryのサポートがないので、gemのインストールが必要
+gem "jquery-rails"
+

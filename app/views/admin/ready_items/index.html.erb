@@ -18,29 +18,35 @@
 		</thead>
 		<tbody>
 
-      <%= form_for(@arrived_items, url: admin_arrived_items_path) do |f| %>
+      <%= form_tag(admin_arrived_items_path, method: :post) do %>
+        <% @arrived_items.each.with_index(1) do |item,idx| %>
+          <%= fields_for "item[]", item do |f| %>
+            <tr>
+              <td><%= idx %></td>
+              <td><%= item.item.id %></td>
+              <%= f.hidden_field :item_id, :value => item.item.id %>
+              <td><%= item.item.jacket_image_id %></td>
+              <td><%= item.item.name %></td>
+              <td><%= item.item.format %></td>
+              <td><%= item.item.artist.name %></td>
+              <td><%= item.item.label.name %></td>
+              <td><%= item.item.genre.name %></td>
+              <td><%= item.item.prices %></td>
+              <td><%= f.number_field :quantity %></td>
+              <td><%= link_to "削除", admin_ready_item_path(item.item.id), method: :delete %></td>
+            </tr>
+    </tbody>
+  <% end %>
+<% end %>
+  </table>
+  <br>
+  <br>
+  <br>
 
-			<% @ready_items.each.with_index(1) do |item,idx| %>
-			<tr>
-				<td><%= idx %></td>
-				<td><%= item.id %></td>
-				<td><%= item.jacket_image_id %></td>
-				<td><%= item.name %></td>
-				<td><%= item.format %></td>
-				<td><%= item.artist.name %></td>
-				<td><%= item.label.name %></td>
-				<td><%= item.genre.name %></td>
-				<td><%= item.prices %></td>
-				<td><%= f.number_field :quantity %></td>
-				<td><%= link_to "削除", admin_ready_item_path(item.id), method: :delete %></td>
-			</tr>
-		</tbody>
-		<% end %>
-	</table>
-	<br>
-	<br>
-	<br>
+  <%= text_field_tag :date %>
+  <%= submit_tag "登録" %>
 
+  <%#
 	<table class="table">
 		<tbody>
 			<tr>
@@ -49,11 +55,11 @@
 			</tr>
 			<tr>
 				<th>入荷時間</th>
-				<td><%= text_field_tag :hh %>時<%= text_field_tag :mm %>分</td>
+				<td><%# text_field_tag :hh %>時<%# text_field_tag :mm %>分</td>
 			</tr>
 		</tbody>
 	</table>
-	<%= f.submit "登録" %>
+	<%#= f.submit "登録" %>
 </div>
 
 <% end %>
