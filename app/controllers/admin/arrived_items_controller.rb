@@ -1,4 +1,5 @@
 class Admin::ArrivedItemsController < ApplicationController
+    layout 'admin'
 
 	def index
     @items = ArrivedItem.all

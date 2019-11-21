@@ -1,4 +1,6 @@
 class Admin::DeliveriesController < ApplicationController
+	    layout 'admin'
+	    
   def destroy
     delivery = Delivery.find(params[:id])
     delivery.destroy
