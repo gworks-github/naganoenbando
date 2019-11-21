@@ -91,6 +91,7 @@ gem 'form-bootstrap'
 # bootstrap
 gem 'bootstrap-sass'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # select box
 gem 'bootstrap-select-rails'

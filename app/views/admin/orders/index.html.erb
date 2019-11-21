@@ -12,8 +12,9 @@
 			</tr>
 			<tr>
 				<th>購入日</th>
-				<td>月</td>
-				<td>日</td>
+				<td colspan="2">
+					<%= date_field_tag :created_at %>
+				</td>
 			</tr>
 			<tr>
 				<th>注文番号</th>
@@ -54,7 +55,7 @@
 				<td><%= order.name %></td>
 				<td><%= order.tax_in_total_price %></td>
 				<td><%= OrderDetail.where(order_id: order.id).sum(:order_quantity) %></td>
-				<td><%= order.order_status %></td>
+				<td><%= link_to order.order_status, admin_order_path(order.id) %></td>
 			</tr>
 			<% end %>
 		</tbody>
