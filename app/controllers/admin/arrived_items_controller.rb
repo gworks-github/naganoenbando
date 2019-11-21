@@ -1,7 +1,12 @@
 class Admin::ArrivedItemsController < ApplicationController
 
-	def index
+  def index
     @items = ArrivedItem.all
+
+    #検索フォーム用
+    @artists = Artist.all
+    @labels  = Label.all
+    @genres  = Genre.all
 	end
 
   def create
@@ -27,8 +32,14 @@ class Admin::ArrivedItemsController < ApplicationController
   end
 
   def search
+    #検索結果
     @items = ArrivedItem.item_search(params)
-    binding.pry
+
+    #検索フォーム用
+    @artists = Artist.all
+    @labels  = Label.all
+    @genres  = Genre.all
+
     render :index
   end
 
