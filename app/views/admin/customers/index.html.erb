@@ -1,16 +1,4 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-2" style="background-color: gray">
-      <p><%= link_to "ログアウト", destroy_admin_session_path %></p>
-      <p><%= link_to "商品登録", new_admin_item_path %></p>
-      <p><%= link_to "商品一覧", admin_items_path %></p>
-      <p><%= link_to "入荷登録", admin_ready_items_path %></p>
-      <p>入荷履歴</p>
-      <p><%= link_to "受注履歴", admin_orders_path %></p>
-      <p><%= link_to "顧客一覧", admin_customers_path %></p>
-      <p>情報マスタ</p>
-    </div>
-    <div class="col-md-10">
+
       <div class="container"><!-- 本体 -->
         <div class="row">
           <div class="col-md-2">
@@ -64,6 +52,4 @@
                <% end %>
           </table>
       </div><!-- /本体 -->
-    </div>
-  </div>
-</div>
+   

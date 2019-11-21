@@ -1,5 +1,8 @@
 class Admin::ReadyItemsController < ApplicationController
 
+      layout 'admin'
+
+
 	def index
 		@ready_items_id = ReadyItem.pluck(:item_id)
 		@ready_items = Item.find(@ready_items_id)
