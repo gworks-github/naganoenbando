@@ -103,6 +103,9 @@ gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-timepicker-rails'
 gem 'bootstrap_datetimepicker'
 
+gem 'momentjs-rails'
+gem 'bootstrap3-datetimepicker-rails'
+
 # image upload
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
@@ -120,10 +123,12 @@ gem 'faker'
 # 論理削除
 gem 'paranoia'
 
+# reloadしないとjavascriptが動かない対応
+gem 'jquery-turbolinks'
+
 # 動的フォーム追加1
 gem 'cocoon'
 
 # 動的フォーム追加2
 # rails5からはjQueryのサポートがないので、gemのインストールが必要
 gem "jquery-rails"
-
