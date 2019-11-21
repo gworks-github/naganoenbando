@@ -14,4 +14,16 @@
  *= require_self
  */
  @import "bootstrap-sprockets";  /*ここを追加*/
-    @import "bootstrap";            /*ここを追加*/
+ @import "bootstrap";            /*ここを追加*/
+
+
+
+.genre-form {
+	display:none;
+}
+.artist-form {
+	display:none;
+}
+.label-form {
+	display:none;
+}

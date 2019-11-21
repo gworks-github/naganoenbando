@@ -15,6 +15,7 @@ class Admin::GenreController < ApplicationController
   end
 
   def destroy
+  	binding.pry
   	genre = Genre.find(params[:id])
     genre.destroy
     redirect_to info_index_path
