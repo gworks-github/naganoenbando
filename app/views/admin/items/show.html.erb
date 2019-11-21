@@ -13,7 +13,7 @@
     <p><%= @item.name %></p>
  
     <h3>アーティスト名</h3>
-    <p><%= @item.artist_id %></p>
+    <p><%= Artist.find(@item.artist_id).name %></p>
 
     <h4>シングル/アルバム</h4>
     <p><%= @item.format %></p>
@@ -25,10 +25,10 @@
     <p><%= @item.release_date%></p>
 
     <h4>レーベル</h4>
-    <p><%= @item.label_id %></p>
+    <p><%= Label.find(@item.label_id).name %></p>
 
     <h4>ジャンル</h4>
-    <p><%= @item.genre_id %></p>
+    <p><%= Genre.find(@item.genre_id).name %></p>
 
     <h4>ステータス</h4>
     <p><%= @item.is_selling %></p>
