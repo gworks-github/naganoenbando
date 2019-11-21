@@ -46,6 +46,7 @@ Rails.application.routes.draw do
   authenticated :admin do
     namespace :admin do
       resources :arrived_items
+      get 'orders/search', to:'orders#search', as: :orders_search
       resources :orders
       resources :ready_items, only: [:create, :destroy, :index]
       resources :items
