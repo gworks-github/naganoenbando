@@ -14,6 +14,7 @@
 //= require activestorage
 //= require jquery
 //= require jquery.turbolinks
+//= require cocoon
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require moment
@@ -25,4 +26,3 @@
     $('.datetimepicker').datetimepicker({
     });
   });
-

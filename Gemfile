@@ -126,4 +126,9 @@ gem 'paranoia'
 # reloadしないとjavascriptが動かない対応
 gem 'jquery-turbolinks'
 
+# 動的フォーム追加1
+gem 'cocoon'
 
+# 動的フォーム追加2
+# rails5からはjQueryのサポートがないので、gemのインストールが必要
+gem "jquery-rails"
