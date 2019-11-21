@@ -5,6 +5,16 @@ Rails.application.routes.draw do
 
   ## 情報マスタ用
   resources :info,only: [:create,:index,:update,:destroy]
+  namespace :admin do
+    resources :artist,only: [:new,:create,:update,:destroy]
+  end
+  namespace :admin do
+    resources :label,only: [:new,:create,:update,:destroy]
+  end
+  namespace :admin do
+    resources :genre,only: [:new,:create,:update,:destroy]
+  end
+
 
   resources :items, only: [:index, :show]
   post '/search', to:'items#search'

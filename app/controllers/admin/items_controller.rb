@@ -14,7 +14,7 @@ class Admin::ItemsController < ApplicationController
     # end
     #item[:format] = Boolean.new.cast(item_params[:format])
     #binding.pry
-    item.save!
+    item.save
     redirect_to admin_items_path
   end
 

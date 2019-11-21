@@ -120,3 +120,6 @@ gem 'faker'
 # 論理削除
 gem 'paranoia'
 
+# 画面遷移無しで名称変更
+gem 'best_in_place'
+

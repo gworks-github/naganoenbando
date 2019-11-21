@@ -1,39 +1,75 @@
 <h1>情報マスタ</h1>
+<select>
+  <option>ジャンル</option>
+  <option>アーティスト</option>
+  <option>レーベル</option>
+</select>
+
+  <%= form_for (@genre), url:  admin_genre_index_path do |f| %>
+      <%= f.text_field :name %>
+      <%= f.submit "登録"%>
+  <% end %>
+
+  <%= form_for (@artist), url:  admin_artist_index_path do |f| %>
+      <%= f.text_field :name %>
+      <%= f.submit "登録"%>
+  <% end %>
+
+  <%= form_for (@label), url:  admin_label_index_path do |f| %>
+      <%= f.text_field :name %>
+      <%= f.submit "登録"%>
+  <% end %>
 
 
-<%= form_for(@item) do |f| %>
 
-  <div class="field">
-    <%= f.select :name, ['ジャンル', 'アーティスト', 'レーベル'], {include_blank: '選択ボックス'} %>
-    <%= f.text_field :name %>
-
-    <%= f.submit "登録"%>
-  </div>
-
-<% end %>
+<!-- セレクトボックス  -->
+<!-- 変数まとめる！！！　配列！！！ -->
 
 
-<table>
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
 
-        <td><%= item.id %></td>
-        <td><%= Genre.find(item.genre_id).name %></td>
 
-        <td><%= item.id %></td>
-        <td><%= Artist.find(item.artist_id).name %></td>
 
-        <td><%= item.id %></td>
-        <td><%= Label.find(item.label_id).name %></td>
 
-        <td><%= link_to '編集', info_path(item) %></td>
 
-        <td><%= link_to "削除", info_path(item), method: :delete,"data-confirm" => "本当に削除しますか？" %></td>
-
+<table class="table">
+    <thead>
+        <tr>
+            <th>ジャンル</th>
+            <th>アーティスト</th>
+            <th>レーベル</th>
+            <th>税率</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <% @genres.each do |genre| %>
+          <td><%= genre.id %></td>
+          <td><%= best_in_place genre.id, :name, :as => :input %></td>
+          <td><%= link_to '編集', info_path(genre) %></td>
+          <td><%= link_to "削除", info_path(genre), method: :delete,"data-confirm" => "本当に削除しますか？" %></td>
+          <% end %>
       </tr>
-    <% end %>
-  </tbody>
+
+      <tr>
+          <% @artists.each do |artist| %>
+          <td><%= artist.id %></td>
+          <td><%= artist.name %></td>
+          <td><%= link_to '編集', info_path(artist) %></td>
+          <td><%= link_to "削除", info_path(artist), method: :delete,"data-confirm" => "本当に削除しますか？" %></td>
+          <% end %>
+      </tr>
+
+      <tr>
+          <% @labels.each do |label| %>
+          <td><%= label.id %></td>
+          <td><%= label.name %></td>
+          <td><%= link_to '編集', info_path(label)%></td>
+          <td><%= link_to "削除", info_path(label), method: :delete,"data-confirm" => "本当に削除しますか？" %></td>
+          <% end %>
+      </tr>
+    </tbody>
 </table>
+
+
 
 
