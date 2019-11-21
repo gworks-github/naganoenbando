@@ -1,7 +1,5 @@
 <div class="container">
-
     <h1>商品詳細</h1>
-
     <table class="table">
         <tbody>
             <tr>
@@ -40,6 +38,10 @@
                 <th>ステータス</th>
                 <td><%= @item.is_selling %></td>
             </tr>
+             <tr>
+                <th>枚数</th>
+                <td><%= @item.quantity %>枚入り</td>
+            </tr>
         </tbody>
     </table>
 
@@ -49,37 +51,37 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Disc.No</th>
+                    <th>Disk.No</th>
                     <th>Track.No</th>
                     <th>曲名</th>
                 </tr>
             </thead>
             <tbody>
-                <p><%= Disk.find(@item.id).disk_number %>枚目</p>
-                <% @item.disks.each do |disk_number| %>
-                <% disk_number.tracks.each do |track_number,name| %>
-                <tr>
-                    <td><%= Track.find(Disk.find(@item.id).disk_number).track_number %></td>
-                    <td><%= Track.find(Disk.find(@item.id).disk_number).name %></td>
-                </tr>
+                <% @disks.each do |disk| %>
+                    <% Track.where(disk_id: disk.id).each do |track| %>
+                    <tr>
+                        <td><%= @disks.find(track.disk_id).disk_number %></td>
+                        <td><%= track.track_number %></td>
+                        <td><%= track.name %></td>
+                    </tr>
                     <% end %>
-                    <% end %>
+                <% end %>
             </tbody>
         </table>
     </div>
 
 
-    <%= form_for [@item,@cart_item], url: item_carts_path(@item), html: {method: :post} do |f| %>
-        <div class="row">
-            <div class="col-sm-12">
-               <%= f.select :quantity, options_for_select((1..29).to_a) %>
-                <%#= f.hidden_field :customer_id, :value => current_customer.id %>
-                <%= f.hidden_field :item_id, :value => @item.id %>
-            </div>
-        </div>
-        <%= f.submit "カートへ入れる", class: "btn", style: "color: blue;" %>
-    <% end %>
 
+
+    <%= form_for [@item,@cart_item], url: item_carts_path(@item), html: {method: :post} do |f| %>
+    <div class="row">
+        <div class="col-sm-12">
+           <%= f.select :quantity, options_for_select((1..29).to_a) %>
+            <%= f.hidden_field :item_id, :value => @item.id %>
+        </div>
+    </div>
+    <%= f.submit "カートへ入れる", class: "btn", style: "color: blue;" %>
+    <% end %>
 
     <% if customer_signed_in? %>
       <% if @likes.find_by(customer_id: current_customer.id) %>
