@@ -26,6 +26,12 @@ class Admin::ArrivedItemsController < ApplicationController
     redirect_to admin_arrived_items_path
   end
 
+  def search
+    @items = ArrivedItem.item_search(params)
+    binding.pry
+    render :index
+  end
+
   private
   def items_params
     params.permit(:date, item: [:item_id, :quantity])

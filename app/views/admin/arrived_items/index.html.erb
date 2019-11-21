@@ -1,4 +1,35 @@
 <div class="container">
+  <div class="row">
+    <div class="col-md-2">
+
+      <%= form_tag(admin_arrived_items_search_path, method: :get) do %>
+
+          <%= label :name, "タイトル名" %>
+          <%= text_field_tag :name %>
+
+          <%= label :artist, "アーティスト名" %>
+          <%= text_field_tag :artist %>
+
+          <%= label :format, "シングル/アルバム" %>
+          <%= text_field_tag :format %>
+
+          <%= label :label, "レーベル" %>
+          <%= text_field_tag :label %>
+
+          <%= label :genre, "ジャンル" %>
+          <%= text_field_tag :genre %>
+
+          <%= label :date, "入荷日" %>
+          <%= text_field_tag :date %>
+
+          <%= submit_tag "検索", :name => nil %>
+
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
   <h1>入荷履歴</h1>
   <table class="table">
     <thead>

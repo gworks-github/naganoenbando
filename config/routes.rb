@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   # admin以下のルートはnamespace以下に追加してください
   authenticated :admin do
     namespace :admin do
+      get 'arrived_items/search', to:'arrived_items#search', as: :arrived_items_search
       resources :arrived_items
       resources :ready_items, only: [:create, :destroy, :index]
       resources :items
