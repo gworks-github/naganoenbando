@@ -12,5 +12,17 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= require jquery
+//= require jquery.turbolinks
 //= require turbolinks
+//= require bootstrap-sprockets
+//= require moment
+//= require moment/ja.js
+//= require bootstrap-datetimepicker
 //= require_tree .
+
+  $(function(){
+    $('.datetimepicker').datetimepicker({
+    });
+  });
+

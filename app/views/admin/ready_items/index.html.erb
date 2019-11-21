@@ -40,26 +40,21 @@
 <% end %>
   </table>
   <br>
-  <br>
-  <br>
+  <div class="container">
+    <div class="row">
+      <div class='col-sm-6'>
+        <div class="form-group">
+          <div class='input-group date datetimepicker' id='datetimepicker2'>
+            <%= text_field_tag :date, nil, {class: "form_control"} %>
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <%= text_field_tag :date %>
   <%= submit_tag "登録" %>
-
-  <%#
-	<table class="table">
-		<tbody>
-			<tr>
-				<th>入荷日</th>
-				<td>日付：<%= text_field_tag :daytime %></td>
-			</tr>
-			<tr>
-				<th>入荷時間</th>
-				<td><%# text_field_tag :hh %>時<%# text_field_tag :mm %>分</td>
-			</tr>
-		</tbody>
-	</table>
-	<%#= f.submit "登録" %>
-</div>
 
 <% end %>
