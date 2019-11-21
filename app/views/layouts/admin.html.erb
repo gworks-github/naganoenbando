@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>管理画面</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header id="header" class="">
+      <div class="" style="height: 100px; width:100%; background-color: gray; color:black; padding: 10px;">
+        <h1><a href="/admin/items" style="color:orange">長野円盤堂（管理者）</a><span><%= link_to "サイトTOP", items_path %></span></h1>
+      </div>
+    </header>
+
+
+    <div class="container" style="padding-left: 0; margin-left: 0;">
+      <div class="row">
+        <div class="col-md-2" style="background-color: gray; text-align: center; padding: 10px">
+          <p><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></p>
+          <p><%= link_to "商品登録", new_admin_item_path %></p>
+          <p><%= link_to "商品一覧", admin_items_path %></p>
+          <p><%= link_to "入荷登録", admin_ready_items_path %></p>
+          <p><%= link_to "入荷履歴", admin_arrived_items_path %></p>
+          <p><%= link_to "受注履歴", admin_orders_path %></p>
+          <p><%= link_to "顧客一覧", admin_customers_path %></p>
+          <p>情報マスタ</p>
+        </div>
+        <div class="col-md-10">
+        <!-- /header -->
+        <%= yield %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

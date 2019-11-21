@@ -1,4 +1,5 @@
 class Admin::OrdersController < ApplicationController
+	layout 'admin'
 	def update
 		order = Order.find(params[:id])
 		order.order_status = params[:order_status].to_i
