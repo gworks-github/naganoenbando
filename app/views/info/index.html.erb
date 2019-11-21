@@ -5,6 +5,8 @@
   <option value="genre">ジャンル</option>
   <option value="artist">アーティスト</option>
   <option value="label">レーベル</option>
+  <option value="tax">税率</option>
+  <option value="tax_in_postage">送料</option>
 </select>
 
   <div class="genre-form">
@@ -13,18 +15,36 @@
         <%= f.submit "登録"%>
     <% end %>
   </div>
+
   <div class="artist-form">
     <%= form_for (@artist), url:  admin_artist_index_path do |f| %>
         <%= f.text_field :name %>
         <%= f.submit "登録"%>
     <% end %>
   </div>
+
   <div class="label-form">
     <%= form_for (@label), url:  admin_label_index_path do |f| %>
         <%= f.text_field :name %>
         <%= f.submit "登録"%>
     <% end %>
   </div>
+
+  <div class="tax-form">
+    <%= form_for (@tax), url:  admin_tax_index_path do |f| %>
+        <%= f.text_field :rate %>
+        <%= f.submit "登録"%>
+    <% end %>
+  </div>
+
+  <div class="tax_in_postage-form">
+    <%= form_for (@tax_in_postage), url:  admin_tax_in_postage_index_path do |f| %>
+        <%= f.text_field :price %>
+        <%= f.submit "登録"%>
+    <% end %>
+  </div>
+
+
 
 <table class="table">
     <thead>
@@ -33,6 +53,7 @@
             <th>アーティスト</th>
             <th>レーベル</th>
             <th>税率</th>
+            <th>送料</th>
         </tr>
     </thead>
     <tbody>
@@ -41,7 +62,6 @@
           <td><%= genre.id %></td>
           <td><%= genre.name %></td>
           <!-- best_in_place -->
-          <td><%= link_to '編集', info_path(genre) %></td>
           <td><%= link_to "削除", info_path(genre,"genre"), method: :delete,"data-confirm" => "本当に削除しますか？" %></td>
           <% end %>
       </tr>
@@ -50,7 +70,6 @@
           <% @artists.each do |artist| %>
           <td><%= artist.id %></td>
           <td><%= artist.name %></td>
-          <td><%= link_to '編集', info_path(artist) %></td>
           <td><%= link_to "削除", info_path(artist,"artist"), method: :delete,"data-confirm" => "本当に削除しますか？" %></td>
           <% end %>
       </tr>
@@ -59,16 +78,16 @@
           <% @labels.each do |label| %>
           <td><%= label.id %></td>
           <td><%= label.name %></td>
-          <td><%= link_to '編集', info_path(label)%></td>,
           <td><%= link_to "削除", info_path(label,"label"), method: :delete,"data-confirm" => "本当に削除しますか？" %></td>
           <% end %>
       </tr>
 
       <tr>
-          <h4>税率</h4>
-          <% @taxes.each do |tax| %>
-            <td><%= tax.rate*100 %>%</td>
-          <% end %>
+          <td><%= @tax_last.rate*100 %>%</td>
+      </tr>
+
+      <tr>
+          <td><%= @tax_in_postage_last.price %>円</td>
       </tr>
 
     </tbody>
@@ -87,6 +106,8 @@ $(function(){
     $('.genre-form').hide();
     $('.artist-form').hide();
     $('.label-form').hide();
+    $('.tax-form').hide();
+    $('.tax_in_postage-form').hide();
 
     if (text == 'ジャンル') {
       console.log("aaaa");
@@ -95,6 +116,10 @@ $(function(){
       $('.artist-form').css('display','block');
     } else if (text == 'レーベル') {
       $('.label-form').css('display','block');
+    } else if (text == '税率') {
+      $('.tax-form').css('display','block');
+    } else if (text == '送料') {
+      $('.tax_in_postage-form').css('display','block');
     }
 
   });

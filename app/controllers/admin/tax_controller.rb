@@ -1,5 +1,4 @@
 class Admin::TaxController < ApplicationController
-end
 
   def new
     @tax = Tax.new
@@ -17,7 +16,7 @@ end
 
   private
 
-  def genre_params
+  def tax_params
   	params.require(:tax).permit(:rate)
   end
 

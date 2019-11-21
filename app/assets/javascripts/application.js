@@ -9,10 +9,22 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+//= require jquery
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require jquery
-//= require best_in_place
+//= require jquery.turbolinks
+//= require cocoon
+//= require turbolinks
+//= require jquery-ui/widgets/datepicker
+//= require jquery-ui/i18n/datepicker-ja
+//= require bootstrap-sprockets
+//= require moment
+//= require moment/ja.js
+//= require bootstrap-datetimepicker
 //= require_tree .
+
+  $(function(){
+    $('.datetimepicker').datetimepicker({
+    });
+  });

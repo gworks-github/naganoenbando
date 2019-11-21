@@ -20,6 +20,7 @@
           <li class="mr-3"><%= link_to "カート", carts_index_path %></li>
           <% if current_customer != nil %>
           <li class="mr-3"><%= link_to "マイページ", show_customer_path(current_customer.id) %></li>
+          <li class="mr-3"><%= link_to "　　　　　管理者", admin_items_path %></li>
           <% end %>
         </ul>
       </div>

@@ -8,7 +8,9 @@ class InfoController < ApplicationController
     @label = Label.new
     @labels = Label.all
     @tax = Tax.new
-    @taxes = Tax.all
+    @tax_last = Tax.last
+    @tax_in_postage = TaxInPostage.new
+    @tax_in_postage_last = TaxInPostage.last
   end
 
   def update

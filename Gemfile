@@ -91,6 +91,7 @@ gem 'form-bootstrap'
 # bootstrap
 gem 'bootstrap-sass'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # select box
 gem 'bootstrap-select-rails'
@@ -102,6 +103,9 @@ gem 'bootstrap-select-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-timepicker-rails'
 gem 'bootstrap_datetimepicker'
+
+gem 'momentjs-rails'
+gem 'bootstrap3-datetimepicker-rails'
 
 # image upload
 gem "refile", require: "refile/rails", github: 'manfe/refile'
@@ -120,6 +124,12 @@ gem 'faker'
 # 論理削除
 gem 'paranoia'
 
-# 画面遷移無しで名称変更
-gem 'best_in_place'
+# reloadしないとjavascriptが動かない対応
+gem 'jquery-turbolinks'
 
+# 動的フォーム追加1
+gem 'cocoon'
+
+# 動的フォーム追加2
+# rails5からはjQueryのサポートがないので、gemのインストールが必要
+gem "jquery-rails"

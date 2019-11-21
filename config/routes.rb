@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'items#index'
 
   ## 情報マスタ用
+
   resources :info,only: [:create,:index,:update,:destroy]
   namespace :admin do
     resources :artist,only: [:new,:create,:update,:destroy]
@@ -16,6 +17,9 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     resources :tax,only: [:new,:create,:update]
+  end
+  namespace :admin do
+    resources :tax_in_postage,only: [:new,:create,:update]
   end
 
 
@@ -59,6 +63,8 @@ Rails.application.routes.draw do
   authenticated :admin do
     namespace :admin do
       resources :arrived_items
+      get 'orders/search', to:'orders#search', as: :orders_search
+      resources :orders
       resources :ready_items, only: [:create, :destroy, :index]
       resources :items
       get 'customers/search', to:'customers#search', as: :customers_search

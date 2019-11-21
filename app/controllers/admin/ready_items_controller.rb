@@ -3,7 +3,10 @@ class Admin::ReadyItemsController < ApplicationController
 	def index
 		@ready_items_id = ReadyItem.pluck(:item_id)
 		@ready_items = Item.find(@ready_items_id)
-		@arrived_items = ArrivedItem.new
+    @arrived_items = []
+    @ready_items.each do |item|
+      @arrived_items <<  ArrivedItem.new(item_id:item.id)
+    end
 	end
 
   def create

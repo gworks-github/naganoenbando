@@ -2,11 +2,13 @@ class Admin::ItemsController < ApplicationController
 # require 'to_bool'
   def new
     @item = Item.new
+    @disk = @item.disks.build
+    @track = @disk.tracks.build
   end
 
   def create
     item = Item.new(item_params)
-    item_params[:format] = item_params[:format].to_bool
+    # item_params[:format] = item_params[:format].to_bool
     # if item_params[:format] = "true"
     #   item_params[:format] = item_params[:format].to_bool
     # elsif item_params[:format] = "false"
@@ -44,6 +46,7 @@ class Admin::ItemsController < ApplicationController
 
   def item_params
   	params.require(:item).permit(:name,:artist_id,:label_id,:genre_id,:format,:quantity,:release_date,:is_selling,:prices,:jacket_image_id,:tax_id)
+    params.require(:item).permit(:name, :description, disks_attributes: [:id, :description, :done, :_destroy,tracks_attributes: [:id, :description, :_destroy]])
   end
 
 end
