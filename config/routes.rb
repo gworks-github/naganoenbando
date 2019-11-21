@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'items#index'
 
   ## 情報マスタ用
-  resources :info,only: [:create,:index,:update,:destroy]
+  resources :info,only: [:new,:create,:index,:update,:destroy]
 
   resources :items, only: [:index, :show]
   post '/search', to:'items#search'

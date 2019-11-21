@@ -12,10 +12,9 @@
 //= require jquery
 //= require rails-ujs
 //= require activestorage
+//= require jquery
+//= require cocoon
 //= require turbolinks
 //= require jquery-ui/widgets/datepicker
 //= require jquery-ui/i18n/datepicker-ja
 //= require_tree .
-
-
-
