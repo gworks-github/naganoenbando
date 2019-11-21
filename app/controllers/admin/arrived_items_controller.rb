@@ -1,6 +1,7 @@
 class Admin::ArrivedItemsController < ApplicationController
 
 	def index
+    @items = ArrivedItem.all
 	end
 
   def create
@@ -19,6 +20,9 @@ class Admin::ArrivedItemsController < ApplicationController
       arrived_item = ArrivedItem.new(item_id:item_id,quantity:quantity,date:date)
       arrived_item.save
     end
+
+    ReadyItem.all.delete_all
+
     redirect_to admin_arrived_items_path
   end
 
