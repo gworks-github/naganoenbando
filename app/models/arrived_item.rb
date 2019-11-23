@@ -4,8 +4,7 @@ class ArrivedItem < ApplicationRecord
   scope :item_search, -> (search_params) do
     name_like(search_params[:name])
       .artist_select(search_params[:artist][:id])
-      .single_check(search_params[:single])
-      .album_check(search_params[:album])
+      .format_check((search_params[:single]),(search_params[:album]))
       .label_select(search_params[:label][:id])
       .genre_select(search_params[:genre][:id])
       .date_search((search_params[:date_from]),(search_params[:date_to]))
@@ -19,11 +18,8 @@ class ArrivedItem < ApplicationRecord
     includes(:item).where(['items.id = ?', "#{artist}"]).references(:items) if artist.present?
   }
 
-  scope :single_check, -> (single) {
-    includes(:item).where(['items.format = ?', true]).references(:items) if single.present?
-  }
-  scope :album_check, -> (album) {
-    includes(:item).where(['items.format = ?', false]).references(:items) if album.present?
+  scope :format_check, -> (single,album) {
+    includes(:item).where(['items.format = ? or items.format = ?', "#{single}", "#{album}"]).references(:items) if single.present? or album.present?
   }
 
   scope :label_select, -> (label)   {
