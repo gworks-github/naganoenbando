@@ -31,6 +31,11 @@ class ItemsController < ApplicationController
     @cart_item = CartItem.new
     @likes = Like.where(item_id: @item.id)
 
+    #検索フォーム用
+    @artists_search = Artist.all
+    @labels_search = Label.all
+    @genres_search = Genre.all
+
     #いいねランキング用
     #本番
     #@likes_ranks = Item.find(Like.where(created_at:1.week.ago.beginning_of_day..1.day.ago.end_of_day).group(:item_id).order(Arel.sql('count(item_id) desc')).limit(5).pluck(:item_id))
