@@ -1,8 +1,7 @@
 <div class="container">
     <h1>商品登録</h1>
-
+    <%= form_with(model: @item, url: admin_items_path, method: :post) do |f| %>
     <table class="table">
-    <%= form_with(model: @item, url: admin_items_path) do |f| %>
         <tbody>
             <tr>
                 <th>タイトル</th>

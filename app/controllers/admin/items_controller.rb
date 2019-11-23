@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
 
-      layout 'admin'
+  layout 'admin'
 
   def new
     @item = Item.new
@@ -9,19 +9,8 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
-      item = Item.create(item_params)
-      redirect_to admin_items_path
-    # item = Item.new(item_params)
-    # item_params[:format] = item_params[:format].to_bool
-    # if item_params[:format] = "true"
-    #   item_params[:format] = item_params[:format].to_bool
-    # elsif item_params[:format] = "false"
-    #   item_params[:format] = item_params[:format].to_bool
-    # end
-    # item[:format] = Boolean.new.cast(item_params[:format])
-    # binding.pry
-    # item.save
-    # redirect_to admin_items_path
+    item = Item.create(item_params)
+    redirect_to admin_items_path
   end
 
   def index
