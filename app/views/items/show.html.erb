@@ -74,13 +74,17 @@
 
 
     <%= form_for [@item,@cart_item], url: item_carts_path(@item), html: {method: :post} do |f| %>
-    <div class="row">
+      <div class="row">
         <div class="col-sm-12">
-           <%= f.select :quantity, options_for_select((1..29).to_a) %>
+          <% if @stock > 0 %>
+            <%= f.select :quantity, options_for_select((1..@stock).to_a) %>
             <%= f.hidden_field :item_id, :value => @item.id %>
         </div>
-    </div>
-    <%= f.submit "カートへ入れる", class: "btn", style: "color: blue;" %>
+      </div>
+      <%= f.submit "カートへ入れる", class: "btn", style: "color: blue;" %>
+    <% else %>
+      <label>入荷待ちです</label>
+    <% end %>
     <% end %>
 
     <% if customer_signed_in? %>
