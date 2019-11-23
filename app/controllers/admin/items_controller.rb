@@ -30,6 +30,12 @@ class Admin::ItemsController < ApplicationController
 
   def show
 	  @item = Item.find(params[:id])
+
+    #在庫数
+    arrived_item_quantity = ArrivedItem.arrived_item_quantity(params[:id])
+    order_item_quantity = OrderDetail.order_item_quantity(params[:id])
+    @stock = arrived_item_quantity.merge(order_item_quantity) {
+      |key,arrived,order| arrived - order }.values[0]
   end
 
   def edit

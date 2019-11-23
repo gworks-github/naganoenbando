@@ -34,4 +34,8 @@ class ArrivedItem < ApplicationRecord
     where(['date >= ? and date <= ?', "#{date_from} 00:00:00", "#{date_to} 23:59:59"]) if date_from.present? and date_to.present?
   }
 
+  #入荷履歴
+  scope :arrived_item_quantity, -> (id) {
+    where(item_id:id).group(:item_id).sum(:quantity)
+  }
 end
