@@ -16,4 +16,28 @@ class Item < ApplicationRecord
 		return method
 	end
 
+  #商品検索
+  scope :item_search, -> (search_params) do
+    artist_select(search_params[:artist][:id])
+      .label_select(search_params[:label][:id])
+      .genre_select(search_params[:genre][:id])
+      .name_like(search_params[:name])
+  end
+
+  scope :artist_select, -> (artist)   {
+    where(['id = ?', "#{artist}"]) if artist.present?
+  }
+
+  scope :label_select, -> (label)   {
+    where(['label_id = ?', "#{label}"]) if label.present?
+  }
+
+  scope :genre_select, -> (genre)   {
+    where(['genre_id = ?', "#{genre}"]) if genre.present?
+  }
+
+  scope :name_like, -> (name)     {
+    where(['name like ?', "%#{name}%"]).references(:items) if name.present?
+  }
+
 end
