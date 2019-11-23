@@ -16,4 +16,21 @@
  */
  @import "bootstrap-sprockets";  /*ここを追加*/
  @import "bootstrap";            /*ここを追加*/
+
+.genre-form {
+	display:none;
+}
+.artist-form {
+	display:none;
+}
+.label-form {
+	display:none;
+}
+.tax-form {
+	display:none;
+}
+.tax_in_postage-form {
+	display:none;
+}
+
  @import 'bootstrap-datetimepicker';
