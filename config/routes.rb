@@ -3,30 +3,11 @@ Rails.application.routes.draw do
   ## エンドユーザ用
   root 'items#index'
 
-  ## 情報マスタ用
-
-  resources :info,only: [:create,:index,:update,:destroy]
-  namespace :admin do
-    resources :artist,only: [:new,:create,:update,:destroy]
-  end
-  namespace :admin do
-    resources :label,only: [:new,:create,:update,:destroy]
-  end
-  namespace :admin do
-    resources :genre,only: [:new,:create,:update,:destroy]
-  end
-  namespace :admin do
-    resources :tax,only: [:new,:create,:update]
-  end
-  namespace :admin do
-    resources :tax_in_postage,only: [:new,:create,:update]
-  end
-
-
   resources :items, only: [:index, :show]
   get '/search', to:'items#search'
   devise_for :customers, path: :users, controllers: { registrations: 'users/registrations' }
 
+  #カート
   get '/carts/index', to: 'carts#index'
   patch '/carts/update', to: 'carts#update'
   get '/carts/thanks', to: 'carts#thanks'
@@ -71,6 +52,13 @@ Rails.application.routes.draw do
       get 'customers/search', to:'customers#search', as: :customers_search
       resources :customers, except: [:new]
       delete 'deliveries/:id(.:format)', to: 'deliveries#destroy',   as: :delivery
+      # 情報マスタ用
+      resources :info
+      resources :artist,only: [:new,:create,:update,:destroy]
+      resources :label,only: [:new,:create,:update,:destroy]
+      resources :genre,only: [:new,:create,:update,:destroy]
+      resources :tax,only: [:new,:create,:update]
+      resources :tax_in_postage,only: [:new,:create,:update]
     end
   end
 

@@ -6,7 +6,7 @@ class Admin::TaxInPostageController < ApplicationController
   def create
   	tax_in_postage = TaxInPostage.new(tax_in_postage_params)
   	tax_in_postage.save
-  	redirect_to info_index_path
+  	redirect_to admin_info_index_path
   end
 
   def update

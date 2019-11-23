@@ -7,7 +7,7 @@ class Admin::LabelController < ApplicationController
   def create
   	label = Label.new(label_params)
   	label.save
-  	redirect_to info_index_path
+  	redirect_to admin_info_index_path
   end
 
   def update
@@ -17,7 +17,7 @@ class Admin::LabelController < ApplicationController
   def destroy
   	label = Label.find(params[:id])
     label.destroy
-    redirect_to info_index_path
+    redirect_to admin_info_index_path
   end
 
   private

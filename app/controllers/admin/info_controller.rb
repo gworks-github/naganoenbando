@@ -1,6 +1,7 @@
-class InfoController < ApplicationController
+class Admin::InfoController < ApplicationController
+  layout 'admin'
 
-  def index
+	def index
     @genre = Genre.new
     @genres = Genre.all
     @artist = Artist.new

@@ -10,9 +10,15 @@
   </head>
 
   <body>
-    <header id="header" class="">
-      <div class="" style="height: 100px; width:100%; background-color: gray; color:black; padding: 10px;">
-        <h1><a href="/admin/items" style="color:orange">長野円盤堂（管理者）</a><span><%= link_to "サイトTOP", items_path %></span></h1>
+    <header id="header" class="row">
+      <div style="height: 100px; width:100%; background-color: gray; color:black; padding: 10px;">
+        <h1 class="col-md-4"><a href="/admin/items" style="color:orange">長野円盤堂（管理者）</a></h1>
+        <span class="col-md-4"><%= link_to "サイトTOP", items_path %></span>
+        <ul class="nav nav-bar col-md-4">
+          <li>未発送：<%= Order.where(order_status: 2).count %>件</li>
+          <li>本日の売上：<%= Order.where(created_at: Date.today.in_time_zone.all_day).sum(:tax_in_total_price) %>円</li>
+          <li>今月の売上：<%= Order.where(created_at: Date.today.in_time_zone.all_month).sum(:tax_in_total_price) %>円</li>
+        </ul>
       </div>
     </header>
 
@@ -27,7 +33,7 @@
           <p><%= link_to "入荷履歴", admin_arrived_items_path %></p>
           <p><%= link_to "受注履歴", admin_orders_path %></p>
           <p><%= link_to "顧客一覧", admin_customers_path %></p>
-          <p>情報マスタ</p>
+          <p><%= link_to "情報マスタ", admin_info_index_path %></p>
         </div>
         <div class="col-md-10">
         <!-- /header -->

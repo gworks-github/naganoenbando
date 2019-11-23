@@ -7,7 +7,7 @@ class Admin::GenreController < ApplicationController
   def create
   	genre = Genre.new(genre_params)
   	genre.save
-  	redirect_to info_index_path
+  	redirect_to admin_info_index_path
   end
 
   def update
@@ -18,7 +18,7 @@ class Admin::GenreController < ApplicationController
   	binding.pry
   	genre = Genre.find(params[:id])
     genre.destroy
-    redirect_to info_index_path
+    redirect_to admin_info_index_path
   end
 
   private

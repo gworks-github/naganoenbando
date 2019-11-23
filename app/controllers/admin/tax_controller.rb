@@ -6,8 +6,9 @@ class Admin::TaxController < ApplicationController
 
   def create
   	tax = Tax.new(tax_params)
+    tax.rate = tax.rate / 100
   	tax.save
-  	redirect_to info_index_path
+  	redirect_to admin_info_index_path
   end
 
   def update

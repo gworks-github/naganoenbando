@@ -7,7 +7,7 @@ class Admin::ArtistController < ApplicationController
   def create
   	artist = Artist.new(artist_params)
   	artist.save
-  	redirect_to info_index_path
+  	redirect_to admin_info_index_path
   end
 
   def update
@@ -17,7 +17,7 @@ class Admin::ArtistController < ApplicationController
   def destroy
   	artist = Artist.find(params[:id])
     artist.destroy
-    redirect_to info_index_path
+    redirect_to admin_info_index_path
   end
 
   private
