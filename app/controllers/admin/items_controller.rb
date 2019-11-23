@@ -25,7 +25,15 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-  	@items = Item.all
+    @items = Item.all
+
+    @stocks = []
+    @items.each do |item|
+      arrived_item_quantity = ArrivedItem.arrived_item_quantity(item.id)
+      order_item_quantity = OrderDetail.order_item_quantity(item.id)
+      @stocks << arrived_item_quantity.merge(order_item_quantity) {
+        |key,arrived,order| arrived - order }.values[0].to_i
+    end
   end
 
   def show
@@ -35,7 +43,7 @@ class Admin::ItemsController < ApplicationController
     arrived_item_quantity = ArrivedItem.arrived_item_quantity(params[:id])
     order_item_quantity = OrderDetail.order_item_quantity(params[:id])
     @stock = arrived_item_quantity.merge(order_item_quantity) {
-      |key,arrived,order| arrived - order }.values[0] || 0
+      |key,arrived,order| arrived - order }.values[0].to_i
   end
 
   def edit
