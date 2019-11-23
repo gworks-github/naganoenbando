@@ -1,4 +1,15 @@
 class ItemsController < ApplicationController
+  def new
+  	# @item = Item.new
+   #  disk = @item.disks.new
+   #  disk.tracks.new
+  end
+
+  def create
+  	# item = Item.create(item_params)
+   #  redirect_to items_path
+  end
+
 
   def index
   	@items = Item.all
@@ -19,9 +30,10 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @disks = Disk.where(item_id: @item.id)
     @cart_item = CartItem.new
     @likes = Like.where(item_id: @item.id)
-
+    
     #検索フォーム用
     @artists_search = Artist.all
     @labels_search = Label.all
@@ -29,6 +41,7 @@ class ItemsController < ApplicationController
 
     #いいねランキング用
     #本番
+
     #@likes_ranks = Item.find(Like.where(created_at:1.week.ago.beginning_of_day..1.day.ago.end_of_day).group(:item_id).order(Arel.sql('count(item_id) desc')).limit(5).pluck(:item_id))
     #test
     @likes_ranks = Item.find(Like.where(created_at:1.week.ago.beginning_of_day..Time.zone.now.end_of_day).group(:item_id).order(Arel.sql('count(item_id) desc')).limit(5).pluck(:item_id))
@@ -69,8 +82,20 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-  	params.require(:item).permit(:name,:artist_id,:label_id,:genre_id,:format,:quantity,:release_date,:is_selling,:prices,:jacket_image_id,:tax_id)
+  	params.require(:item).permit(:name,
+                                 :artist_id,
+                                 :label_id,
+                                 :genre_id,
+                                 :format,
+                                 :quantity,
+                                 :release_date,
+                                 :is_selling,
+                                 :prices,
+                                 :jacket_image_id,
+                                 :tax_id,
+                                 disks_attributes:
+                                 [:disk_number, :_destroy, tracks_attributes:
+                                  %i(track_number, name, _destroy)])
     params.require(:q).permit(:name,:artist_id,:label_id,:genre_id)
   end
-
 end

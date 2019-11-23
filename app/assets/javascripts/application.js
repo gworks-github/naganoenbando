@@ -28,4 +28,3 @@
     $('.datetimepicker').datetimepicker({
     });
   });
-
