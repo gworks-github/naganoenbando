@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :info,only: [:create,:index,:update,:destroy]
 
   resources :items, only: [:index, :show]
-  post '/search', to:'items#search'
+  get '/search', to:'items#search'
   devise_for :customers, path: :users, controllers: { registrations: 'users/registrations' }
 
   get '/carts/index', to: 'carts#index'

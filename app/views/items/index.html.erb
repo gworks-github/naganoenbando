@@ -1,25 +1,21 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
 
       <!-- 部分テンプレート行う！！！ -->
-      <%= form_tag(search_path, method: :post) do %>
+      <%= form_tag(search_path, method: :get) do %>
           <%= label :artist_id, "アーティスト" %>
-          <%= collection_select(:artist, :id, @artists, :id, :name,:include_blank => '指定なし') %>
-          <%#= collection_select_tag :artist_id, @items, :name, :artist_id, :include_blank => '指定なし' %>
+          <%= collection_select(:artist, :id, @artists_search, :id, :name,:include_blank => '指定なし') %>
 
           <%= label :label_id, "レーベル" %>
-          <%= collection_select(:label, :id, @labels, :id, :name,:include_blank => '指定なし') %>
-          <%#= f.collection_select :label_id, @items, :name, :label_id, :include_blank => '指定なし' %>
+          <%= collection_select(:label, :id, @labels_search, :id, :name,:include_blank => '指定なし') %>
 
 
           <%= label :genre_id, "ジャンル" %>
-          <%= collection_select(:genre, :id, @genres, :id, :name,:include_blank => '指定なし') %>
-          <%#= f.collection_select :genre_id, @items, :name, :genre_id, :include_blank => '指定なし' %>
+          <%= collection_select(:genre, :id, @genres_search, :id, :name,:include_blank => '指定なし') %>
 
           <%= label :name, "タイトル" %>
           <%= text_field_tag :name %>
-          <%#= f.search_field :name %>
 
           <%= submit_tag "検索" %>
 
