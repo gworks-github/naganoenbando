@@ -54,9 +54,9 @@ Rails.application.routes.draw do
       delete 'deliveries/:id(.:format)', to: 'deliveries#destroy',   as: :delivery
       # 情報マスタ用
       resources :info
-      resources :artist,only: [:new,:create,:update,:destroy]
-      resources :label,only: [:new,:create,:update,:destroy]
-      resources :genre,only: [:new,:create,:update,:destroy]
+      resources :artist,only: [:edit, :new,:create,:update,:destroy]
+      resources :label,only: [:edit, :new,:create,:update,:destroy]
+      resources :genre,only: [:edit, :new,:create,:update,:destroy]
       resources :tax,only: [:new,:create,:update]
       resources :tax_in_postage,only: [:new,:create,:update]
     end

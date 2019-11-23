@@ -79,7 +79,6 @@
 <%= f.select :order_status, Order.order_statuses, :selected=>Order.order_statuses[@order.order_status] %>
 <%= f.submit "更新" %>
 <% end %>
-
 <%= link_to "戻る", admin_orders_path %>
 </div>
 <br>

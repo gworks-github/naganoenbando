@@ -1,7 +1,13 @@
 class Admin::ArtistController < ApplicationController
- 
+
+    layout 'admin'
+
   def new
     @artist = Artist.new
+  end
+
+  def edit
+    @artist = Artist.find(params[:id])
   end
 
   def create
@@ -11,7 +17,9 @@ class Admin::ArtistController < ApplicationController
   end
 
   def update
-
+    artist = Artist.find(params[:id])
+    artist.update(artist_params)
+    redirect_to admin_info_index_path
   end
 
   def destroy

@@ -1,7 +1,13 @@
 class Admin::LabelController < ApplicationController
- 
+
+    layout 'admin'
+
   def new
     @label = Label.new
+  end
+
+  def edit
+    @label = Label.find(params[:id])
   end
 
   def create
@@ -11,7 +17,9 @@ class Admin::LabelController < ApplicationController
   end
 
   def update
-
+    label = Label.find(params[:id])
+    label.update(label_params)
+    redirect_to admin_info_index_path
   end
 
   def destroy
