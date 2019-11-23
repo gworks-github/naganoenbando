@@ -49,7 +49,7 @@ Rails.application.routes.draw do
       resources :customers, except: [:new]
       delete 'deliveries/:id(.:format)', to: 'deliveries#destroy',   as: :delivery
       # 情報マスタ用
-      resources :info, only: [:index]
+      resources :info, only: [:index, :destroy]
       resources :artist, only: [:edit, :new, :create, :update, :destroy]
       resources :label, only:  [:edit, :new, :create, :update, :destroy]
       resources :genre, only:  [:edit, :new, :create, :update, :destroy]
