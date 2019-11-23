@@ -16,16 +16,16 @@
         </tr>
     </thead>
     <tbody>
-        <% @items.each do |item| %>
+        <% @items.zip(@stocks).each do |item,stock| %>
 
         <tr>
-            <td> <%=link_to item.id,admin_item_path(item.id) %></td>
+            <td><%= link_to item.id,admin_item_path(item.id) %></td>
             <td><%= item.name %></td>
-            <td><%=item.format %></td>
-            <td><%=Artist.find(item.artist_id).name %></td>
-            <td><%=item.release_date %></td>
-            <td><%=item.prices %></td>
-            <td>zaikosu</td>
+            <td><%= item.format %></td>
+            <td><%= Artist.find(item.artist_id).name %></td>
+            <td><%= item.release_date %></td>
+            <td><%= item.prices %></td>
+            <td><%= stock %></td>
             <td><%= link_to "入荷", admin_ready_items_path(id: item.id), method: :post %></td>
         </tr>
         <% end %>
