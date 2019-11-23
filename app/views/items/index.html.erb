@@ -1,30 +1,43 @@
 <div class="container">
-    <h1>商品一覧</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>ジャケット</th>
-                <th>タイトル</th>
-                <th>アーティスト名</th>
-                <th>レーベル名</th>
-                <th>価格（税込）</th>
-            </tr>
-        </thead>
-         <% @items.each do |item| %>
-        <tbody>
-            <tr>
-                <td><%= link_to attachment_image_tag(item, :jacket_image, :fill, 100, 100, format: 'jpeg',fallback: "no_image.png",size: "100x100" ), item_path(item.id) %></td>
-                <td><%= link_to item.name, item_path(item.id) %></td>
-                <td><%= link_to Artist.find(item.artist_id).name, item_path(item.id) %></td>
-                <td><%= link_to Label.find(item.label_id).name, item_path(item.id) %></td>
-                <td><%= (item.prices * (Tax.last.rate + 1)).floor %></td>
-            </tr>
-        </tbody>
-         <% end %>
-    </table>
+    <div class="row">
+        <div class="mv">
+        </div>
+        <div class="col-lg-3">
+            <h2>詳細検索</h2>
+            <%# 検索フォーム %>
+            <%= render 'items/item_search', artists_search:@artists_search, labels_search:@labels_search, genres_search:@genres_search %>
+            <h2>週間いいねランキング</h2>
+            <%# いいねランキング %>
+            <%= render 'likes/ranks', likes_ranks:@likes_ranks, likes_ranks_count:@likes_ranks_count, ranks_number:@ranks_number %>
+        </div>
+        <div class="col-lg-9">
+            <h1>商品一覧</h1>
+            <!-- <table class="table">
+                <thead>
+                    <tr>
+                        <th>ジャケット</th>
+                        <th>タイトル</th>
+                        <th>アーティスト名</th>
+                        <th>レーベル名</th>
+                        <th>価格（税込）</th>
+                    </tr>
+                </thead>
+            </table> -->
+            <section class="music">
+                    <% @items.each do |item| %>
+                            <div class="m-box">
+                                <div class="m-image">
+                                <%= link_to attachment_image_tag(item, :jacket_image, :fill, 150, 150, format: 'jpeg',fallback: "no_image.png",size: "150x150" ), item_path(item.id) %>
+                                </div>
+                                <div class="m-text">
+                                <p><%= link_to item.name, item_path(item.id) %></p>
+                                <p><%= link_to Artist.find(item.artist_id).name, item_path(item.id) %></p>
+                                <!-- <p><%= link_to Label.find(item.label_id).name, item_path(item.id) %></p> -->
+                                <p>￥<%= (item.prices * (Tax.last.rate + 1)).floor %>(税込)</p>
+                                </div>
+                            </div>
+                    <% end %>
+            </section>
+        </div>
+    </div>
 </div>
-
-<%# 検索フォーム %>
-<%= render 'items/item_search', artists_search:@artists_search, labels_search:@labels_search, genres_search:@genres_search %>
-<%# いいねランキング %>
-<%= render 'likes/ranks', likes_ranks:@likes_ranks, likes_ranks_count:@likes_ranks_count, ranks_number:@ranks_number %>
