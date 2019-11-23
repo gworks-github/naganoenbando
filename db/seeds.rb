@@ -48,7 +48,7 @@ I18n.locale = 'ja'
   name  = Faker::Music.album
   format = "True"
   artist_id = "#{n+1}"
-  jacket_image_id = "#{n+1}"
+  # jacket_image_id = "#{n+1}"
   genre_id = "#{n+1}"
   label_id = "#{n+1}"
   quantity = "#{n+1}"
@@ -61,7 +61,7 @@ I18n.locale = 'ja'
   name: name,
   format: format,
   artist_id: artist_id,
-  jacket_image_id: jacket_image_id,
+  # jacket_image_id: jacket_image_id,
   genre_id: genre_id,
   label_id: label_id,
   quantity: quantity,

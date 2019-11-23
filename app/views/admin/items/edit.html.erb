@@ -1,68 +1,71 @@
-
-
-<%= form_for([:admin, @item]) do |f| %>
-
-
-    <h4>タイトル</h4>
-    <%= f.text_field :name %>
-
-    <h4>アーティスト名</h4>
-    <%= f.text_field :artist_id %>
-
-    <h4>
-        <%= f.text_field :format %>
-        <!-- <label><%=f.radio_button :format, "true"%>シングル</label>
-        <label><%=f.radio_button :format, "false"%>アルバム</label> -->
-    </h4>
-
-    <h4>ジャケット画像</h4>
-    <%= f.attachment_field :jacket_image %>
-
-    <h4>価格（税抜き）</h4>
-    <%= f.text_field :prices %>
-
-    <h4>発売日</h4>
-    <%= f.text_field :release_date %>
-
-    <h4>レーベル</h4>
-    <%= f.text_field :label_id %>
-
-    <h4>ジャンル</h4>
-    <%= f.text_field :genre_id %>
-
-    <h4>
-        <%= f.text_field :is_selling %>
-<!--         <%= f.radio_button :is_selling,{value: :true, style: "display: inline-block;"} %> 販売中
-        <%= f.radio_button :is_selling,{value: :false, style: "display: inline-block;"} %> 販売停止中 -->
-    </h4>
-
-    <h4>収録曲数</h4>
-    <%= f.text_field :quantity %>
-
-     <!--  <div class="field">
-        <%= f.label :name, "name" %>
-        <%= f.text_field :name %>
-      </div>
-     -->
-    <h3>disks</h3>
-    <div id="disks">
-        <%= f.fields_for :disks do |disk| %>
-          <%= render 'disk_fields', f: disk %>
-        <% end %>
-        <div id="links">
-
-          <%= link_to_add_association 'add disk',f, :disks %>
-        </div>
-    </div>
-
+<div class="container">
+    <h1>商品登録</h1>
+    <%= form_with(model: @item, url: admin_item_path(@item.id)) do |f| %>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>タイトル</th>
+                <td><%= f.text_field :name %></td>
+            </tr>
+            <tr>
+                <th>アーティスト名</th>
+                <td><%= f.select :artist_id, Artist.pluck(:name,:id) %></td>
+            </tr>
+            <tr>
+                <th>シングル　アルバム</th>
+                <td>
+                    <label><%=f.radio_button :format, :true, checked: true %>シングル</label>
+                    <label><%=f.radio_button :format, :false %>アルバム</label>
+                </td>
+            </tr>
+            <tr>
+                <th>ジャケット画像</th>
+                <td><%= f.attachment_field :jacket_image %></td>
+            </tr>
+            <tr>
+                <th>価格（税抜）</th>
+                <td><%= f.text_field :prices %></td>
+            </tr>
+            <tr>
+                <th>発売日</th>
+                <td><%= f.date_select :release_date %></td>
+            </tr>
+            <tr>
+                <th>レーベル</th>
+                <td><%= f.select :label_id, Label.pluck(:name,:id) %></td>
+            </tr>
+             <tr>
+                <th>ジャンル</th>
+                <td><%= f.select :genre_id, Genre.pluck(:name,:id) %></td>
+            </tr>
+             <tr>
+                <th>ステータス</th>
+                <td>
+                    <label><%= f.radio_button :is_selling, :true, checked: true %> 販売中</label>
+                    <label><%= f.radio_button :is_selling, :false %> 販売停止中</label>
+                </td>
+            </tr>
+            <tr>
+                <th>ディスク枚数</th>
+                <td>
+                    <%= f.text_field :quantity %>
+                </td>
+            </tr>
+             <tr>
+                <th></th>
+                <td>
+                    <div id="disks">
+                        <%= f.fields_for :disks do |disk| %>
+                            <%= render 'disk_fields', f: disk %>
+                        <% end %>
+                        <div id="links">
+                            <%= link_to_add_association 'ディスクを追加', f, :disks %>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <%= f.submit '更新'%>
-
-<% end %>
-
-
-
-
-
-
-
-
+    <% end %>
+</div>
