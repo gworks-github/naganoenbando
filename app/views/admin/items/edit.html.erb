@@ -1,6 +1,6 @@
 
 
-<%= form_for([:admin, @item]) do |f| %>
+<%= form_with(model: @item, url: admin_item_path(@item.id)) do |f| %>
 
 
     <h4>タイトル</h4>
@@ -39,18 +39,12 @@
     <h4>収録曲数</h4>
     <%= f.text_field :quantity %>
 
-     <!--  <div class="field">
-        <%= f.label :name, "name" %>
-        <%= f.text_field :name %>
-      </div>
-     -->
     <h3>disks</h3>
     <div id="disks">
         <%= f.fields_for :disks do |disk| %>
           <%= render 'disk_fields', f: disk %>
         <% end %>
         <div id="links">
-
           <%= link_to_add_association 'add disk',f, :disks %>
         </div>
     </div>

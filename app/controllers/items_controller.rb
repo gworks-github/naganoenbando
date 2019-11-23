@@ -1,13 +1,14 @@
 class ItemsController < ApplicationController
-  # def new
-  # 	@item = Item.new
-  # end
+  def new
+  	# @item = Item.new
+   #  disk = @item.disks.new
+   #  disk.tracks.new
+  end
 
-  # def create
-  # 	item = Item.new(item_params)
-  # 	item.save
-  #   redirect_to items_path
-  # end
+  def create
+  	# item = Item.create(item_params)
+   #  redirect_to items_path
+  end
 
   def index
   	@items = Item.all
@@ -69,8 +70,20 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-  	params.require(:item).permit(:name,:artist_id,:label_id,:genre_id,:format,:quantity,:release_date,:is_selling,:prices,:jacket_image_id,:tax_id)
+  	params.require(:item).permit(:name,
+                                 :artist_id,
+                                 :label_id,
+                                 :genre_id,
+                                 :format,
+                                 :quantity,
+                                 :release_date,
+                                 :is_selling,
+                                 :prices,
+                                 :jacket_image_id,
+                                 :tax_id,
+                                 disks_attributes:
+                                 [:disk_number, :_destroy, tracks_attributes:
+                                  %i(track_number, name, _destroy)])
     params.require(:q).permit(:name,:artist_id,:label_id,:genre_id)
   end
-
 end
