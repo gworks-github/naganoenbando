@@ -2,6 +2,9 @@ class Admin::ItemsController < ApplicationController
 
   layout 'admin'
 
+
+  layout 'admin'
+# require 'to_bool'
   def new
     @item = Item.new
     disk = @item.disks.build
