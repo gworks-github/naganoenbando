@@ -9,8 +9,6 @@
 				<th>タイトル</th>
 				<th>フォーマット</th>
 				<th>アーティスト</th>
-				<th>レーベル</th>
-				<th>ジャンル</th>
 				<th>税別金額（円）</th>
 				<th>入荷枚数</th>
 				<th></th>
@@ -29,8 +27,6 @@
               <td><%= item.item.name %></td>
               <td><%= item.item.format %></td>
               <td><%= item.item.artist.name %></td>
-              <td><%= item.item.label.name %></td>
-              <td><%= item.item.genre.name %></td>
               <td><%= item.item.prices %></td>
               <td><%= f.number_field :quantity %></td>
               <td><%= link_to "削除", admin_ready_item_path(item.item.id), method: :delete %></td>
