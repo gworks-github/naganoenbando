@@ -10,13 +10,13 @@
             <th>フォーマット</th>
             <th>アーティスト名</th>
             <th>発売日</th>
-            <th>価格</th>
+            <th>価格(税抜)</th>
             <th>在庫数</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-         <% @items.each do |item| %>
+        <% @items.each do |item| %>
 
         <tr>
             <td> <%=link_to item.id,admin_item_path(item.id) %></td>
@@ -28,7 +28,7 @@
             <td>zaikosu</td>
             <td><%= link_to "入荷", admin_ready_items_path(id: item.id), method: :post %></td>
         </tr>
-         <% end %>
+        <% end %>
     </tbody>
 </table>
 <%= link_to "入荷一覧", admin_ready_items_path %>
