@@ -1,8 +1,13 @@
 class Admin::ArrivedItemsController < ApplicationController
     layout 'admin'
 
-	def index
+  def index
     @items = ArrivedItem.all
+
+    #検索フォーム用
+    @artists = Artist.all
+    @labels  = Label.all
+    @genres  = Genre.all
 	end
 
   def create
@@ -25,6 +30,18 @@ class Admin::ArrivedItemsController < ApplicationController
     ReadyItem.all.delete_all
 
     redirect_to admin_arrived_items_path
+  end
+
+  def search
+    #検索結果
+    @items = ArrivedItem.item_search(params)
+
+    #検索フォーム用
+    @artists = Artist.all
+    @labels  = Label.all
+    @genres  = Genre.all
+
+    render :index
   end
 
   private

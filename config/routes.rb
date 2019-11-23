@@ -4,10 +4,27 @@ Rails.application.routes.draw do
   root 'items#index'
 
   ## 情報マスタ用
-  resources :info,only: [:new,:create,:index,:update,:destroy]
+
+  resources :info,only: [:create,:index,:update,:destroy]
+  namespace :admin do
+    resources :artist,only: [:new,:create,:update,:destroy]
+  end
+  namespace :admin do
+    resources :label,only: [:new,:create,:update,:destroy]
+  end
+  namespace :admin do
+    resources :genre,only: [:new,:create,:update,:destroy]
+  end
+  namespace :admin do
+    resources :tax,only: [:new,:create,:update]
+  end
+  namespace :admin do
+    resources :tax_in_postage,only: [:new,:create,:update]
+  end
+
 
   resources :items, only: [:index, :show]
-  post '/search', to:'items#search'
+  get '/search', to:'items#search'
   devise_for :customers, path: :users, controllers: { registrations: 'users/registrations' }
 
   get '/carts/index', to: 'carts#index'
@@ -45,6 +62,7 @@ Rails.application.routes.draw do
   # admin以下のルートはnamespace以下に追加してください
   authenticated :admin do
     namespace :admin do
+      get 'arrived_items/search', to:'arrived_items#search', as: :arrived_items_search
       resources :arrived_items
       get 'orders/search', to:'orders#search', as: :orders_search
       resources :orders

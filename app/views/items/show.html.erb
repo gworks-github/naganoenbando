@@ -51,7 +51,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Disk.No</th>
+
                     <th>Track.No</th>
                     <th>曲名</th>
                 </tr>
@@ -103,6 +103,9 @@
       <%! "ログインしないといいねボタンが表示されない" %>
     <% end %>
 
+    <%# 検索フォーム %>
+    <%= render 'items/item_search', artists_search:@artists_search, labels_search:@labels_search, genres_search:@genres_search %>
+    <%# いいねランキング %>
     <%= render 'likes/ranks', likes_ranks:@likes_ranks, likes_ranks_count:@likes_ranks_count, ranks_number:@ranks_number %>
 
-    </div>
+</div>
