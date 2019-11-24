@@ -14,21 +14,65 @@
  *= require_tree .
  *= require_self
  */
+
+
+ // bootstrap
  @import "bootstrap-sprockets";  /*ここを追加*/
  @import "bootstrap";            /*ここを追加*/
 
-.genre-form {
-	display:none;
+/* リセットCSS HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
 }
-.label-form {
-	display:none;
+body {
+	line-height: 1;
 }
-.tax-form {
-	display:none;
+ol, ul {
+	list-style: none;
 }
-.tax_in_postage-form {
-	display:none;
+blockquote, q {
+	quotes: none;
 }
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a {
+    color: #db0000;
+    text-decoration: none;
+    overflow-wrap: break-word;
+}
+
+/* Remove default margin */
+/* デフォルトのmarginを削除 */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  font-family: 'GT America Standard', 'Helvetica Neue', 'Helvetica', 'Yu Gothic', '游ゴシック', YuGothic, '游ゴシック体', -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', meiryo, sans-serif;
+    font-weight: 400;
+    color: #db0000;
+}
+
+
+
 
  @import 'bootstrap-datetimepicker';
 
