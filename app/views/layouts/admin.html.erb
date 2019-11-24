@@ -10,36 +10,30 @@
   </head>
 
   <body>
-    <header id="header" class="row">
-      <div style="height: 100px; width:100%; background-color: gray; color:black; padding: 10px;">
-        <h1 class="col-md-4"><a href="/admin/items" style="color:orange">長野円盤堂（管理者）</a></h1>
-        <span class="col-md-4"><%= link_to "サイトTOP", items_path %></span>
-        <ul class="nav nav-bar col-md-4">
-          <li>未発送：<%= Order.where(order_status: 2).count %>件</li>
-          <li>本日の売上：<%= Order.where(created_at: Date.today.in_time_zone.all_day).sum(:tax_in_total_price) %>円</li>
-          <li>今月の売上：<%= Order.where(created_at: Date.today.in_time_zone.all_month).sum(:tax_in_total_price) %>円</li>
-        </ul>
+    <header id="header" class="row" style="background-color: #232F3E; color:white; padding: 10px;">
+      <div class="col-sm-4">
+          <h1><a href="/admin/items" style="color:orange; padding: 20px">長野円盤堂（管理者）</a></h1>
       </div>
-    </header>
-
-
-    <div class="container" style="padding-left: 0; margin-left: 0;">
-      <div class="row">
-        <div class="col-md-2" style="background-color: gray; text-align: center; padding: 10px">
-          <p><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></p>
-          <p><%= link_to "商品登録", new_admin_item_path %></p>
-          <p><%= link_to "商品一覧", admin_items_path %></p>
-          <p><%= link_to "入荷登録", admin_ready_items_path %></p>
-          <p><%= link_to "入荷履歴", admin_arrived_items_path %></p>
-          <p><%= link_to "受注履歴", admin_orders_path %></p>
-          <p><%= link_to "顧客一覧", admin_customers_path %></p>
-          <p><%= link_to "情報マスタ", admin_info_index_path %></p>
-        </div>
-        <div class="col-md-10">
+      <div class="col-sm-8">
+          <ul class="navbar-nav nav" style="color: white; padding: 15px; padding-bottom: 0;">
+            <li>未発送：<%= Order.where(order_status: 2).count %>件</li>
+            <li>本日の売上：<%= Order.where(created_at: Date.today.in_time_zone.all_day).sum(:tax_in_total_price) %>円</li>
+            <li>今月の売上：<%= Order.where(created_at: Date.today.in_time_zone.all_month).sum(:tax_in_total_price) %>円</li>
+          </ul>
+          <ul class="navbar-nav nav" style="color: white">
+            <li><%= link_to "サイトTOP", items_path %></li>
+            <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+            <li><%= link_to "商品登録", new_admin_item_path %></li>
+            <li><%= link_to "商品一覧", admin_items_path %></li>
+            <li><%= link_to "入荷登録", admin_ready_items_path %></li>
+            <li><%= link_to "入荷履歴", admin_arrived_items_path %></li>
+            <li><%= link_to "受注履歴", admin_orders_path %></li>
+            <li><%= link_to "顧客一覧", admin_customers_path %></li>
+            <li><%= link_to "情報マスタ", admin_info_index_path %></li>
+          </ul>
+      </div>
+      </header>
         <!-- /header -->
         <%= yield %>
-        </div>
-      </div>
-    </div>
   </body>
 </html>
