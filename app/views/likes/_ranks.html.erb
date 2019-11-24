@@ -7,9 +7,9 @@
 	<%= link_to attachment_image_tag(rank, :jacket_image, :fill, 100, 100, format: 'jpeg',fallback: "no_image.png",size: "100x100" ), item_path(rank.id) %>
   </div>
   <div class="like-m-text">
-    <p><%=link_to rank.name , item_path(rank.id) %></p>
-    <p><%=link_to rank.artist.name , item_path(rank.id) %></p>
-    <p>❤️<%= count %></p>
+    <p class="like-m-content"><%=link_to rank.name , item_path(rank.id) %></p>
+    <p class="like-m-content"><%=link_to rank.artist.name , item_path(rank.id) %></p>
+    <p class="like-m-content">❤️<%= count %></p>
    </div>
 </div>
 <% end %>

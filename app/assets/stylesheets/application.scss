@@ -73,21 +73,22 @@ dd {
 
 
 // ユーザーTOP
-.m-box {
-	width:280px;
-	height: 280px;
-	float: left;
-  	padding-top: 70px;
-}
-
-.m-image {
-	text-align: center;
-}
-
-
-.m-text {
-	text-align: center;
-	padding-top: 10px;
+.music {
+	.m-box {
+		width:280px;
+		height: 280px;
+		float: left;
+	  	padding-top: 100px;
+	  	text-align: center;
+	  	.m-image {
+	  	}
+	  	.m-text {
+			margin: 20px;
+			.m-content {
+				margin: 10px;
+			}
+	  	}
+	}
 }
 
 
@@ -99,7 +100,7 @@ dd {
 	.kensaku {
 		padding-top: 50px;
 		text-decoration: underline;
-		border: 2px solid ;
+		border: 1px solid ;
 		.search-form {
 			padding-top: 20px;
 			.search_text {
@@ -115,7 +116,7 @@ dd {
 
 		padding-top: 50px;
 		text-decoration: underline;
-		border: 2px solid;
+		border: 1px solid;
 		margin-top: 70px;
 		.like-music{
 			padding-top: 20px;
@@ -130,32 +131,17 @@ dd {
 			}
 			.like-m-text{
 				margin: 20px;
-				padding-bottom: 30px;
+				padding-bottom: 25px;
+				.like-m-content {
+					margin: 15px;
+				}
 			}
-
 		}
-
 	}
-
 }
 
 
 
-
-
-// ユーザー商品詳細
-.m-image-show {
-	margin:100px;
-}
-
-.m-text-show {
-	margin:100px;
-	padding-left:30px;
-}
-
-.glyphicon-heart {
-	font-size:32px;
-}
 
 
 
