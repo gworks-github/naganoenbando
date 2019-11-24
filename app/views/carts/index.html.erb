@@ -26,7 +26,7 @@
 				<td><%= item.customer_id %></td>
 				<td>¥<%= (Item.find(item.item_id).prices * (Tax.last.rate + 1)).floor %>（税込）</td>
 				<td><%= select_tag :"#{index}" , options_for_select((1..29).to_a, :selected => item.quantity) %></td>
-				<td><%= link_to "削除", destroy_cart_path(item.id), method: :delete %></td>
+				<td><%= link_to "削除", cart_path(item.id), method: :delete %></td>
 			</tr>
 			<% end %>
 		</tbody>

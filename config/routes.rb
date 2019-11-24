@@ -1,50 +1,27 @@
 Rails.application.routes.draw do
 
   ## エンドユーザ用
+  #アイテム
   root 'items#index'
-
-  ## 情報マスタ用
-
-  resources :info,only: [:create,:index,:update,:destroy]
-  namespace :admin do
-    resources :artist,only: [:new,:create,:update,:destroy]
-  end
-  namespace :admin do
-    resources :label,only: [:new,:create,:update,:destroy]
-  end
-  namespace :admin do
-    resources :genre,only: [:new,:create,:update,:destroy]
-  end
-  namespace :admin do
-    resources :tax,only: [:new,:create,:update]
-  end
-  namespace :admin do
-    resources :tax_in_postage,only: [:new,:create,:update]
-  end
-
-
-  resources :items, only: [:index, :show]
   get '/search', to:'items#search'
   devise_for :customers, path: :users, controllers: { registrations: 'users/registrations' }
-
-  get '/carts/index', to: 'carts#index'
-  patch '/carts/update', to: 'carts#update'
-  get '/carts/thanks', to: 'carts#thanks'
-  post '/carts/info', to: 'carts#info'
-  get '/carts/info', to: 'carts#info'
-  get '/carts/confirm', to: 'carts#confirm'
-  delete '/carts/:id/destroy', to: 'carts#destroy', as: :destroy_cart
-  post '/cart/index', to: 'carts#in_cart_create_address', as: :cart_address
-
-  resources :items do
+  resources :items, only: [:index, :show] do
     resource :carts, only: [:create]
     resource :likes, only: [:create, :destroy]
   end
 
+  #カート
+  resources :carts, only: [:index, :destroy]
+  get '/carts/thanks', to: 'carts#thanks'
+  post '/carts/info', to: 'carts#info'
+  get '/carts/info', to: 'carts#info'
+  get '/carts/confirm', to: 'carts#confirm'
+  patch  '/carts/update', to: 'carts#update', as: :carts_update
+  post '/cart/index', to: 'carts#in_cart_create_address', as: :cart_address
+
   resources :orders do
     resource :order_details
   end
-
 
   #マイページ閲覧、基本情報の更新/編集、退会、いいね一覧
 
@@ -71,6 +48,13 @@ Rails.application.routes.draw do
       get 'customers/search', to:'customers#search', as: :customers_search
       resources :customers, except: [:new]
       delete 'deliveries/:id(.:format)', to: 'deliveries#destroy',   as: :delivery
+      # 情報マスタ用
+      resources :info, only: [:index, :destroy]
+      resources :artist, only: [:edit, :new, :create, :update, :destroy]
+      resources :label, only:  [:edit, :new, :create, :update, :destroy]
+      resources :genre, only:  [:edit, :new, :create, :update, :destroy]
+      resources :tax, only: [:new,:create,:update]
+      resources :tax_in_postage, only: [:new,:create,:update]
     end
   end
 

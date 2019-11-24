@@ -20,13 +20,13 @@ before_action :authenticate_customer!
 		else
 			@cart_item.save
 		end
-		redirect_to carts_index_path
+		redirect_to carts_path
 	end
 
 	def destroy
 		cart_item = CartItem.find(params[:id])
 		cart_item.destroy
-		redirect_to carts_index_path
+		redirect_to carts_path
 	end
 
 	def info

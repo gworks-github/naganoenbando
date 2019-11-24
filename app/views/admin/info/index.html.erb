@@ -1,0 +1,169 @@
+<div class="container">
+
+
+  <h1>情報マスタ</h1>
+
+  <select name="select-master">
+    <option value="-">選択してください</option>
+    <option value="genre">ジャンル</option>
+    <option value="artist" selected>アーティスト</option>
+    <option value="label">レーベル</option>
+    <option value="tax">税率</option>
+    <option value="tax_in_postage">送料</option>
+  </select>
+  <span>を表示</span>
+  <br>
+  <br>
+    <div class="genre-form">
+      <%= form_for (@genre), url:  admin_genre_index_path do |f| %>
+          <%= f.text_field :name, :placeholder => "ジャンル" %>
+          <%= f.submit "登録"%>
+      <% end %>
+    </div>
+
+    <div class="artist-form">
+      <%= form_for (@artist), url:  admin_artist_index_path do |f| %>
+          <%= f.text_field :name, :placeholder => "アーティスト" %>
+          <%= f.submit "登録"%>
+      <% end %>
+    </div>
+
+    <div class="label-form">
+      <%= form_for (@label), url:  admin_label_index_path do |f| %>
+          <%= f.text_field :name, :placeholder => "レーベル" %>
+          <%= f.submit "登録"%>
+      <% end %>
+    </div>
+
+    <div class="tax-form">
+      <%= form_for (@tax), url:  admin_tax_index_path do |f| %>
+          <%= f.text_field :rate, :placeholder => "税率(10など)" %>
+          <%= f.submit "更新"%>
+      <% end %>
+    </div>
+
+    <div class="tax_in_postage-form">
+      <%= form_for (@tax_in_postage), url:  admin_tax_in_postage_index_path do |f| %>
+          <%= f.text_field :price, :placeholder => "税込送料" %>
+          <%= f.submit "更新"%>
+      <% end %>
+    </div>
+    <br>
+    <table class="table genre-form">
+      <thead>
+          <tr>
+              <th>ID</th>
+              <th style="width:300px">ジャンル名</th>
+              <th></th>
+              <th></th>
+          </tr>
+      </thead>
+      <tbody>
+        <% @genres.each do |genre| %>
+          <tr>
+            <td><%= genre.id %></td>
+            <td><%= genre.name %></td>
+            <td><%= link_to "編集", edit_admin_genre_path(genre.id) %></td>
+            <td><%= link_to "削除", admin_info_path(genre,"genre"), method: :delete,"data-confirm" => "本当に削除しますか？" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <table class="table artist-form">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th style="width:300px">アーティスト名</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @artists.each do |artist| %>
+        <tr>
+          <td><%= artist.id %></td>
+          <td><%= artist.name %></td>
+          <td><%= link_to "編集", edit_admin_artist_path(artist.id) %></td>
+          <td><%= link_to "削除", admin_info_path(artist,"artist"), method: :delete,"data-confirm" => "本当に削除しますか？" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <table class="table label-form">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th style="width:300px">レーベル名</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @labels.each do |label| %>
+        <tr>
+          <td><%= label.id %></td>
+          <td><%= label.name %></td>
+          <td><%= link_to "編集", edit_admin_label_path(label.id) %></td>
+          <td><%= link_to "削除", admin_info_path(label,"label"), method: :delete,"data-confirm" => "本当に削除しますか？" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <table class="table tax-form">
+      <tbody>
+        <tr>
+          <th>消費税</th>
+          <td><%= (@tax_last.rate*100).floor %>%</td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="table tax_in_postage-form">
+      <tbody>
+        <tr>
+          <th>税込送料</th>
+          <td><%= @tax_in_postage_last.price %>円</td>
+        </tr>
+      </tbody>
+    </table>
+
+</div>
+
+<script>
+$(function(){
+  $('[name=select-master]').change(function() {
+    //選択されたセレクトボックスの値を var textという変数に代入
+    var text = $('option:selected').text();
+    console.log( text );
+    $('.genre-form').hide();
+    $('.artist-form').hide();
+    $('.label-form').hide();
+    $('.tax-form').hide();
+    $('.tax_in_postage-form').hide();
+
+    if (text == 'ジャンル') {
+      console.log("aaaa");
+      $('.genre-form').show();
+    } else if (text == 'アーティスト') {
+      $('.artist-form').css('display',' inline-table');
+    } else if (text == 'レーベル') {
+      $('.label-form').css('display','inline-table');
+    } else if (text == '税率') {
+      $('.tax-form').css('display','block');
+    } else if (text == '送料') {
+      $('.tax_in_postage-form').css('display','block');
+    }
+
+  });
+});
+</script>
+
+
+
+
+
+
+
+
