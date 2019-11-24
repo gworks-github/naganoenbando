@@ -14,25 +14,65 @@
  *= require_tree .
  *= require_self
  */
+
+
+ // bootstrap
  @import "bootstrap-sprockets";  /*ここを追加*/
  @import 'bootstrap-datetimepicker';@import "bootstrap";            /*ここを追加*/
 
-.genre-form {
-	display:none;
+/* リセットCSS HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
 }
-.artist-form {
-	display:none;
+body {
+	line-height: 1;
 }
-.label-form {
-	display:none;
+ol, ul {
+	list-style: none;
 }
-.tax-form {
-	display:none;
+blockquote, q {
+	quotes: none;
 }
-.tax_in_postage-form {
-	display:none;
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a {
+    color: #db0000;
+    text-decoration: none;
+    overflow-wrap: break-word;
 }
 
+/* Remove default margin */
+/* デフォルトのmarginを削除 */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  font-family: 'GT America Standard', 'Helvetica Neue', 'Helvetica', 'Yu Gothic', '游ゴシック', YuGothic, '游ゴシック体', -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', meiryo, sans-serif;
+    font-weight: 400;
+    color: #db0000;
+}
+
+
+// ユーザーTOP
 .m-box {
 	width:280px;
 	height: 280px;
@@ -50,45 +90,60 @@
 	padding-top: 10px;
 }
 
-.col-lg-3{
+
+// サイドバー
+.sidebar {
+	text-align: center;
 	padding-top: 70px;
+
+	.kensaku {
+		padding-top: 50px;
+		text-decoration: underline;
+		border: 2px solid ;
+		.search-form {
+			padding-top: 20px;
+			.search_text {
+				margin: 20px;
+			}
+			.search_bottun {
+				margin: 10px;
+				padding-bottom: 30px;
+			}
+		}
+	}
+	.iine {
+
+		padding-top: 50px;
+		text-decoration: underline;
+		border: 2px solid;
+		margin-top: 70px;
+		.like-music{
+			padding-top: 20px;
+			.number{
+				text-align: left
+			}
+			.like-m-box{
+				margin: 20px;
+			}
+			.like-m-image{
+				margin: 10px 30px;
+			}
+			.like-m-text{
+				margin: 20px;
+				padding-bottom: 30px;
+			}
+
+		}
+
+	}
+
 }
 
-.kensaku{
-	text-align: center;
-	font-size: 20px;
-	text-decoration: underline;
-}
-
-.search {
-	padding-top: 30px;
-}
-
-.search-form{
-	text-align: center;
-}
-
-.iine {
-	padding-top: 50px;
-	text-align: center;
-	font-size: 20px;
-	text-decoration: underline;
-}
-
-.like-music {
-	padding-top: 30px;
-}
-
-.like-m-image {
-	text-align: center;
-}
-
-.like-m-text {
-	text-align: center;
-	padding-top: 30px;
-}
 
 
+
+
+// ユーザー商品詳細
 .m-image-show {
 	margin:100px;
 }

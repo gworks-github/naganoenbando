@@ -2,15 +2,19 @@
     <div class="row">
         <div class="mv">
         </div>
-        <div class="col-lg-3">
-            <p class="kensaku">詳細検索</p>
-            <%# 検索フォーム %>
-            <%= render 'items/item_search', artists_search:@artists_search, labels_search:@labels_search, genres_search:@genres_search %>
-            <p class="iine">週間いいねランキング</p>
-            <%# いいねランキング %>
-            <%= render 'likes/ranks', likes_ranks:@likes_ranks, likes_ranks_count:@likes_ranks_count, ranks_number:@ranks_number %>
+        <div class="col-sm-3">
+            <div class="sidebar">
+              <div class="kensaku">詳細検索
+                <%# 検索フォーム %>
+                <%= render 'items/item_search', artists_search:@artists_search, labels_search:@labels_search, genres_search:@genres_search %>
+                </div>
+                <div class="iine">週間いいねランキング
+                <%# いいねランキング %>
+                <%= render 'likes/ranks', likes_ranks:@likes_ranks, likes_ranks_count:@likes_ranks_count, ranks_number:@ranks_number %>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-9">
+        <div class="col-sm-9">
             <!-- <h1>商品一覧</h1> -->
             <!-- <table class="table">
                 <thead>

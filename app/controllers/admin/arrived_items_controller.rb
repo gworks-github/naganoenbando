@@ -2,7 +2,7 @@ class Admin::ArrivedItemsController < ApplicationController
     layout 'admin'
 
   def index
-    @items = ArrivedItem.all
+    @items = ArrivedItem.all.order("date asc")
 
     #検索フォーム用
     @artists = Artist.all
@@ -34,7 +34,7 @@ class Admin::ArrivedItemsController < ApplicationController
 
   def search
     #検索結果
-    @items = ArrivedItem.item_search(params)
+    @items = ArrivedItem.item_search(params).order("date asc")
 
     #検索フォーム用
     @artists = Artist.all

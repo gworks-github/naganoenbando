@@ -1,6 +1,7 @@
-class InfoController < ApplicationController
+class Admin::InfoController < ApplicationController
+  layout 'admin'
 
-  def index
+	def index
     @genre = Genre.new
     @genres = Genre.all
     @artist = Artist.new
@@ -14,7 +15,21 @@ class InfoController < ApplicationController
   end
 
   def update
+    if params[:format] == "genre"
+      genre = Genre.find(params[:id])
+      genre.save
+      redirect_to admin_info_index_path
+    elsif params[:format] == "artist"
+      artist = Artist.find(params[:id])
+      artist.save
+      redirect_to admin_info_index_path
+    elsif params[:format] == "label"
+      label = Label.find(params[:id])
+      label.save
+      redirect_to admin_info_index_path
+    end
   end
+
 
   def destroy
     # まとめる！！！
