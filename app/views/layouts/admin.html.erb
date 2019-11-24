@@ -16,9 +16,9 @@
       </div>
       <div class="col-sm-8">
           <ul class="navbar-nav nav" style="color: white; padding: 15px; padding-bottom: 0;">
-            <li>未発送：<%= Order.where(order_status: 2).count %>件</li>
-            <li>本日の売上：<%= Order.where(created_at: Date.today.in_time_zone.all_day).sum(:tax_in_total_price) %>円</li>
-            <li>今月の売上：<%= Order.where(created_at: Date.today.in_time_zone.all_month).sum(:tax_in_total_price) %>円</li>
+            <li style="margin-right: 30px">未発送：<%= Order.where(order_status: 2).count %>件</li>
+            <li style="margin-right: 30px">本日の売上：<%= Order.where(created_at: Date.today.in_time_zone.all_day).sum(:tax_in_total_price) %>円</li>
+            <li style="margin-right: 30px">今月の売上：<%= Order.where(created_at: Date.today.in_time_zone.all_month).sum(:tax_in_total_price) %>円</li>
           </ul>
           <ul class="navbar-nav nav" style="color: white">
             <li><%= link_to "サイトTOP", items_path %></li>
