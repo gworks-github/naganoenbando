@@ -1,7 +1,7 @@
 <div class="container">
 
 
-<h1>商品一覧</h1>
+<h1 class="page-title">商品一覧</h1>
 <table class="table">
     <thead>
         <tr>
@@ -19,8 +19,8 @@
         <% @items.zip(@stocks).each do |item,stock| %>
 
         <tr>
-            <td><%= link_to item.id,admin_item_path(item.id) %></td>
-            <td><%= item.name %></td>
+            <td><%= item.id %></td>
+            <td><%= link_to item.name, admin_item_path(item.id) %></td>
             <td><%= item.format %></td>
             <td><%= Artist.find(item.artist_id).name %></td>
             <td><%= item.release_date %></td>
@@ -31,5 +31,5 @@
         <% end %>
     </tbody>
 </table>
-<%= link_to "入荷一覧", admin_ready_items_path %>
+<%= link_to "入荷一覧", admin_ready_items_path, class: "btn btn-sm" %>
 </div>
