@@ -91,7 +91,6 @@ dd {
 	}
 }
 
-
 // サイドバー
 .sidebar {
 	text-align: center;
@@ -139,6 +138,33 @@ dd {
 		}
 	}
 }
+
+// ユーザー商品詳細
+.show-image {
+	margin:100px;
+}
+
+.show-text {
+	margin-top:100px;
+	padding-left:60px;
+	.show-content {
+		margin: 20px;
+	}
+}
+
+.like {
+	text-align: left;
+}
+
+
+.glyphicon-heart {
+	font-size:32px;
+}
+
+.show-table {
+	margin: 30px 0px 0px 100px;
+}
+
 
 
 
