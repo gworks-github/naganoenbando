@@ -9,13 +9,15 @@
       </h3>
 
       <%# エラーメッセージ %>
-      <div class="row">
-        <% flash.each do |key, value| %>
-          <div class="error_field alert alert-danger" role="alert">
-            <%= content_tag(:div, value, class: "#{key}" "error_msg") %>
-          </div>
-        <% end %>
-      </div>
+      <% if !flash[:error].present? %>
+        <div class="row">
+          <% flash.each do |key, value| %>
+            <div class="error_field alert alert-danger" role="alert">
+              <%= content_tag(:div, value, class: "#{key}" "error_msg") %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
 
       <div class="login-form">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
