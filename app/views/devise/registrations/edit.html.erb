@@ -1,65 +1,89 @@
-<h3>情報編集</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-7 col-sm-offset-2">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+      <h3>
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-1">
+            <div class="signup-title">
+              <span class="glyphicon glyphicon-user" aria-hidden="true">会員登録</span>
+            </div>
+          </div>
+        </div>
+      </h3>
 
-  <div class="field">
-    <%= f.label :"名前（姓・名）" %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-  </div>
-  <div class="field">
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
-  </div>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class:"form-horizontal", method: :put }) do |f| %>
+        <%= devise_error_messages %>
 
-  <div class="field">
-    <%= f.label :"名前（カナ姓・カナ名）"%><br />
-    <%= f.text_field :last_furigana, autofocus: true, autocomplete: "last_furigana" %>
-  </div>
-  <div class="field">
-    <%= f.text_field :first_furigana, autofocus: true, autocomplete: "first_furigana" %>
-  </div>
+        <div class="signup-form">
+          <div class="field form-group">
+            <%= f.label :"名前（姓・名）", class:"control-label col-sm-4 text-left" %>
+            <div class="col-sm-8">
+              <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+              <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+            </div>
+          </div>
 
-  <div class="field">
-    <%= f.label :"電話番号" %><br />
-    <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
-  </div>
+          <div class="field form-group">
+            <%= f.label :"フリガナ（姓・名）", class:"control-label col-sm-4"%>
+            <div class="col-sm-8">
+              <%= f.text_field :last_furigana, autofocus: true, autocomplete: "last_furigana" %>
+              <%= f.text_field :first_furigana, autofocus: true, autocomplete: "first_furigana" %>
+            </div>
+          </div>
 
-  <div class="field">
-    <%= f.label :"郵便番号" %><br />
-    <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code" %>
-  </div>
+          <div class="field form-group">
+            <%= f.label :"電話番号", class:"control-label col-sm-4" %>
+            <div class="col-sm-8">
+              <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
+            </div>
+          </div>
 
-  <div class="field">
-    <%= f.label :"住所" %><br />
-    <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
-  </div>
+          <div class="field form-group">
+            <%= f.label :"郵便番号", class:"control-label col-sm-4" %>
+            <div class="col-sm-8">
+              <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code" %>
+            </div>
+          </div>
 
-  <div class="field">
-    <%= f.label :"メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+          <div class="field form-group">
+            <%= f.label :"住所", class:"control-label col-sm-4" %>
+            <div class="col-sm-8">
+              <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+            </div>
+          </div>
 
-  <div class="field">
-    <%= f.label :"新しいパスワード" %>
-    <% if @minimum_password_length %>
-    (<%= @minimum_password_length %> 文字以上)
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+          <div class="field form-group">
+            <%= f.label :"メールアドレス", class:"control-label col-sm-4" %>
+            <div class="col-sm-8">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </div>
+          </div>
 
-  <div class="field">
-    <%= f.label :"新しいパスワード（確認用）" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+          <div class="field form-group">
+            <%= f.label :"新しいパスワード", class:"control-label col-sm-4" %>
 
-  <div class="actions">
-    <%= f.submit "更新" %>
-  </div>
-<% end %>
-<%= link_to "キャンセル", :back %>
+            <div class="col-sm-8">
+              <%= f.password_field :password, autocomplete: "new-password" %>
+            </div>
+          </div>
 
-<%# "退会ボタン" %>
-<%# button_to "退会する", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+          <div class="field form-group">
+            <%= f.label :"確認用パスワード", class:"control-label col-sm-4" %>
+            <div class="col-sm-8">
+              <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-5 col-sm-offset-5">
+              <div class="actions">
+                <%= f.submit "登録", class:"btn btn-primary btn-lg" %>
+                <%= link_to "キャンセル", show_customer_path(resource) , class:"btn btn-lg cancel-btn" %>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
