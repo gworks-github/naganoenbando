@@ -1,8 +1,8 @@
 <div class="container">
 
 
-  <h1>情報マスタ</h1>
-
+  <h1 class="page-title">情報マスタ</h1><br>
+  <div style="width: 50%">
   <select name="select-master">
     <option value="-">選択してください</option>
     <option value="genre">ジャンル</option>
@@ -17,38 +17,41 @@
     <div class="genre-form">
       <%= form_for (@genre), url:  admin_genre_index_path do |f| %>
           <%= f.text_field :name, :placeholder => "ジャンル" %>
-          <%= f.submit "登録"%>
+          <%= f.submit "登録", class: "btn btn-sm" %>
       <% end %>
     </div>
 
     <div class="artist-form">
       <%= form_for (@artist), url:  admin_artist_index_path do |f| %>
           <%= f.text_field :name, :placeholder => "アーティスト" %>
-          <%= f.submit "登録"%>
+          <%= f.submit "登録", class: "btn btn-sm" %>
       <% end %>
     </div>
 
     <div class="label-form">
       <%= form_for (@label), url:  admin_label_index_path do |f| %>
           <%= f.text_field :name, :placeholder => "レーベル" %>
-          <%= f.submit "登録"%>
+          <%= f.submit "登録", class: "btn btn-sm" %>
       <% end %>
     </div>
 
     <div class="tax-form">
       <%= form_for (@tax), url:  admin_tax_index_path do |f| %>
           <%= f.text_field :rate, :placeholder => "税率(10など)" %>
-          <%= f.submit "更新"%>
+          <%= f.submit "登録", class: "btn btn-sm" %>
       <% end %>
     </div>
 
     <div class="tax_in_postage-form">
       <%= form_for (@tax_in_postage), url:  admin_tax_in_postage_index_path do |f| %>
           <%= f.text_field :price, :placeholder => "税込送料" %>
-          <%= f.submit "更新"%>
+          <%= f.submit "登録", class: "btn btn-sm" %>
       <% end %>
     </div>
-    <br>
+
+        <br>
+        <br>
+        <br>
     <table class="table genre-form">
       <thead>
           <tr>
@@ -69,7 +72,6 @@
         <% end %>
       </tbody>
     </table>
-
     <table class="table artist-form">
       <thead>
         <tr>
@@ -90,7 +92,6 @@
         <% end %>
       </tbody>
     </table>
-
     <table class="table label-form">
       <thead>
         <tr>
@@ -111,7 +112,6 @@
         <% end %>
       </tbody>
     </table>
-
     <table class="table tax-form">
       <tbody>
         <tr>
@@ -129,6 +129,7 @@
       </tbody>
     </table>
 
+  </div>
 </div>
 
 <script>
@@ -151,9 +152,9 @@ $(function(){
     } else if (text == 'レーベル') {
       $('.label-form').css('display','inline-table');
     } else if (text == '税率') {
-      $('.tax-form').css('display','block');
+      $('.tax-form').css('display','inline-table');
     } else if (text == '送料') {
-      $('.tax_in_postage-form').css('display','block');
+      $('.tax_in_postage-form').css('display','inline-table');
     }
 
   });

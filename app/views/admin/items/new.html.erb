@@ -28,7 +28,7 @@
             </tr>
             <tr>
                 <th>発売日</th>
-                <td><%= f.date_select :release_date %></td>
+                <td><%= f.date_select :release_date, use_month_numbers: true, start_year: 1930 %></td>
             </tr>
             <tr>
                 <th>レーベル</th>

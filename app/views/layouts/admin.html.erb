@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <header id="header" class="row" style="background-color: #232F3E; color:white; padding: 10px;">
+    <header id="header" class="row admin" style="background-color: #232F3E; color:white; padding: 10px;">
       <div class="col-sm-4">
           <h1><a href="/admin/items" style="color:orange; padding: 20px">長野円盤堂（管理者）</a></h1>
       </div>
@@ -19,6 +19,7 @@
             <li style="margin-right: 30px; color: #cccccc;">未発送：<%= Order.where(order_status: 2).count %>件</li>
             <li style="margin-right: 30px; color: #cccccc;">本日の売上：<%= Order.where(created_at: Date.today.in_time_zone.all_day).sum(:tax_in_total_price) %>円</li>
             <li style="margin-right: 30px; color: #cccccc;">今月の売上：<%= Order.where(created_at: Date.today.in_time_zone.all_month).sum(:tax_in_total_price) %>円</li>
+            <li style="margin-right: 30px; color: #cccccc;">　　　ようこそ <span style="color:orange;"><%= current_admin.name %></span> さん</li>
           </ul>
           <ul class="navbar-nav nav" style="color: white">
             <li><%= link_to "サイトTOP", items_path, :style=>"color:white;" %></li>
