@@ -1,0 +1,15 @@
+en:
+  activerecord:
+    attributes:
+      delivery:
+        customer_id: ID
+        email: メールアドレス
+        first_furigana: フリガナ(名)
+        last_furigana: フリガナ(姓)
+        post_code: 郵便番号
+        address: 住所
+        phone_number: 電話番号
+        first_name: 名前(名)
+        last_name: 名前(姓)
+    models:
+        delivery: お届け先

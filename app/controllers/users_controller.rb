@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   def show
     @deliveries = @customer.deliveries
     @delivery   = @customer.deliveries.new
+    @deli       = @customer.deliveries.new #error_check用
   end
 
   def destroy
