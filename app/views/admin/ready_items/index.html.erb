@@ -1,9 +1,8 @@
 <div class="container">
-	<h1>入荷予定商品一覧</h1>
+	<h1 class="page-title">入荷予定商品一覧</h1>
 	<table class="table">
 		<thead>
 			<tr>
-				<th>No</th>
 				<th>アイテムID</th>
 				<th>ジャケット</th>
 				<th>タイトル</th>
@@ -20,7 +19,6 @@
         <% @arrived_items.each.with_index(1) do |item,idx| %>
           <%= fields_for "item[]", item do |f| %>
             <tr>
-              <td><%= idx %></td>
               <td><%= item.item.id %></td>
               <%= f.hidden_field :item_id, :value => item.item.id %>
               <td><%= item.item.jacket_image_id %></td>
@@ -51,6 +49,11 @@
     </div>
   </div>
 
-  <%= submit_tag "登録" %>
+  <%= submit_tag "登録", class: "btn btn-sm", local: true %>
 
 <% end %>
+
+
+<div class="page-under-space-100"></div>
+<div class="page-under-space-100"></div>
+<div class="page-under-space-100"></div>

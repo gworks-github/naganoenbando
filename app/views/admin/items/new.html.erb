@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>商品登録</h1>
+    <h1 class="page-title">商品登録</h1>
     <%= form_with(model: @item, url: admin_items_path, method: :post) do |f| %>
     <table class="table">
         <tbody>
@@ -28,7 +28,7 @@
             </tr>
             <tr>
                 <th>発売日</th>
-                <td><%= f.date_select :release_date %></td>
+                <td><%= f.date_select :release_date, use_month_numbers: true, start_year: 1930 %></td>
             </tr>
             <tr>
                 <th>レーベル</th>
@@ -66,6 +66,7 @@
             </tr>
         </tbody>
     </table>
-    <%= f.submit '登録'%>
+    <%= f.submit '登録', class: "btn btn-sm"%>
     <% end %>
 </div>
+<div class="page-under-space-100"></div>

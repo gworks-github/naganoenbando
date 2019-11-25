@@ -1,8 +1,10 @@
 <div class="container">
-    <h1>商品詳細</h1>
-    <span><%= link_to "編集", edit_admin_item_path(@item) %></span>
-    <span><%= link_to "削除", admin_item_path(@item), method: :delete,"data-confirm" => "本当に削除しますか？" %></span>
-    <span><%= link_to "商品一覧", admin_items_path %></span>
+    <h1 class="page-title">商品詳細</h1>
+    <br>
+    <h2 class="table-title">基本情報</h2>
+    <span><%= link_to "編集", edit_admin_item_path(@item), class: "btn btn-sm" %></span>
+    <span><%= link_to "削除", admin_item_path(@item), method: :delete,"data-confirm" => "本当に削除しますか？", class: "btn btn-sm" %></span>
+    <span><%= link_to "商品一覧", admin_items_path, class: "btn btn-sm" %></span>
     <table class="table">
             <tbody>
                 <tr>
@@ -48,9 +50,11 @@
             </tbody>
         </table>
 </div>
+<div class="page-under-space-100"></div>
 
                 <!-- 　在庫関連の参考サイト：https://qiita.com/phantomspecial/items/22146e7e6c6d3a38fefc -->
         <div class="container">
+            <h2 class="table-title">詳細</h2>
             <table class="table">
                 <thead>
                     <tr>
@@ -71,10 +75,9 @@
                     <% end %>
                 </tbody>
             </table>
-            <span><%= link_to "編集", edit_admin_item_path(@item) %></span>
-            <span><%= link_to "削除", admin_item_path(@item), method: :delete,"data-confirm" => "本当に削除しますか？" %></span>
+            <span><%= link_to "編集", edit_admin_item_path(@item), class: "btn btn-sm" %></span>
+            <span><%= link_to "削除", admin_item_path(@item), method: :delete,"data-confirm" => "本当に削除しますか？", class: "btn btn-sm" %></span>
         </div>
-<br>
-<br>
-<br>
+<div class="page-under-space-100"></div>
+
 
