@@ -357,8 +357,10 @@ h1.title {
   .btn {
     margin-top: 10px;
 }
+.cancel-btn {
+  margin-left: 20px;
 }
-
+}
 
 footer {
 	padding: 50px 100px 50px;
@@ -367,6 +369,12 @@ footer {
 		color: white;
 	}
 }
+
 .cancel-btn {
   margin-left: 20px;
+  padding: 50px 100px 50px;
+  background-color: #DB0101;
+  p {
+    color: white;
+  }
 }
