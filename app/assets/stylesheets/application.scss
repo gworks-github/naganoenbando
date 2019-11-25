@@ -150,3 +150,28 @@ body .admin {
 }
 
 
+/* user log_in */
+.login-title {
+  margin-top: 35px;
+  margin-bottom: 10px;
+}
+.login-form {
+  margin-top: 10px;
+  .field {
+    margin: 10px;
+  }
+  .btn {
+    margin-left: 10px;
+  }
+}
+/* user sign_up */
+.signup-title {
+  margin-top: 35px;
+  margin-bottom: 10px;
+}
+.signup-form {
+  margin-top: 20px;
+  .btn {
+    margin-top: 10px;
+  }
+}
