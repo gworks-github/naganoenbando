@@ -98,6 +98,28 @@ body .admin {
 	h1,h2,h3,h4,p,li,a,{
 		color: #333333;
 	}
+	.btn {
+  display: inline-block;
+  margin-right: 30px;
+  position: relative;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+  overflow: hidden;
+  font-weight: bold;
+  background: linear-gradient(#F6DD9E 0%, #F1C350 100%);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+}
+
+.btn:active {
+  /*押したとき*/
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);/*沈むように*/
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+}
+.page-under-space-100 {
+	height: 100px;
+}
 	.page-title {
 		box-shadow: 5px 5px 15px #aaaaaa;
 		border: 1px solid #aaaaaa;
@@ -116,12 +138,13 @@ body .admin {
 		padding: 10px;
 		display: inline-block;
 		margin-bottom: 10px;
+		margin-right: 20px;
 		background-color: white;
 		font-size: 16px;
 	}
 	.box-shodow {
 	 box-shadow:5px 5px 10px;
-}
+	}
 .table {
 	background-color: white;
 	border: 1px solid #cccccc;
@@ -130,7 +153,6 @@ body .admin {
 		color: blue;
 		}
 	}
-
 }
 
 

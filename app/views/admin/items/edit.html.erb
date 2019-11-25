@@ -66,6 +66,8 @@
             </tr>
         </tbody>
     </table>
-    <%= f.submit '更新'%>
+    <%= f.submit '更新', class: "btn btn-sm" %>
+    <%= link_to "キャンセル", admin_item_path(params[:id]), class: "btn btn-sm" %>
     <% end %>
 </div>
+<div class="page-under-space-100"></div>

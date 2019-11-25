@@ -53,7 +53,6 @@
       <tr>
         <th>入荷日</th>
         <th>商品ID</th>
-        <th>ジャケット</th>
         <th>タイトル</th>
         <th>フォーマット</th>
         <th>アーティスト</th>
@@ -66,10 +65,9 @@
     <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td><%= item.date.strftime("%Y年 %m月 %d日") %></td>
-        <td> <%=link_to item.item.id, admin_item_path(item.item.id) %></td>
-        <td><%= item.item.jacket_image_id %></td>
-        <td><%= item.item.name %></td>
+        <td><%= item.date.strftime("%Y/%m/%d") %></td>
+        <td><%= item.item.id %></td>
+        <td><%=link_to item.item.name, admin_item_path(item.item.id) %></td>
         <td><%= item.item.is_selling %></td>
         <td><%= item.item.artist.name %></td>
         <td><%= item.item.label.name %></td>
@@ -81,3 +79,5 @@
     </tbody>
   </table>
 </div>
+<div class="page-under-space-100"></div>
+<div class="page-under-space-100"></div>
