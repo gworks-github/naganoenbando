@@ -23,12 +23,12 @@
 //= require bootstrap-datetimepicker
 //= require_tree .
 
-  $(function(){
+document.addEventListener("turbolinks:load",function(){
     $('.datetimepicker').datetimepicker({
     });
   });
 
-  $(function() {
+document.addEventListener("turbolinks:load", function() {
     $('.add-button').click(function(){
       $('.delivery-add').toggle();
     });
