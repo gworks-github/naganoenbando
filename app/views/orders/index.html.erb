@@ -1,18 +1,26 @@
-<div class="container">
-	<h1>購入履歴</h1>
+<div class="container cart">
 		<table class="table">
 			<thead>
 				<tr>
-					<th>注文ID</th>
-					<th>購入日</th>
-					<th>購入点数</th>
-					<th>送料</th>
-					<th>合計金額</th>
-					<th>ステータス</th>
+					<th>購入履歴</th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
 					<th></th>
 				</tr>
 			</thead>
 			<tbody>
+				<tr>
+					<td>注文ID</td>
+					<td>購入日</td>
+					<td>購入点数</td>
+					<td>送料</td>
+					<td>合計金額</td>
+					<td>ステータス</td>
+					<td></td>
+				</tr>
 				<% @orders.each do |order| %>
 				<tr>
 					<td><%= link_to order.id, order_path(order.id) %></td>
@@ -21,9 +29,10 @@
 					<td><%= TaxInPostage.find(order.tax_in_postage_id).price %></td>
 					<td><%= order.tax_in_total_price %></td>
 					<td><%#= Order.get_status(order.order_status.to_i) %><%= order.order_status %></td>
-					<td><%= link_to "詳細", order_path(order.id) %></td>
+					<td><%= link_to "詳細", order_path(order.id),class: "btn btn-sm" %></td>
 				</tr>
 				<% end %>
 			</tbody>
 		</table>
 </div>
+<div class="page-under-space-100"></div>
