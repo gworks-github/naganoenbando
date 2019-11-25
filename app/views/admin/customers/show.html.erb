@@ -1,42 +1,63 @@
-<h3>基本情報</h3>
-<p>
-<%= @customer.last_name %> <%= @customer.first_name %>
-(<%= @customer.last_furigana %> <%= @customer.first_furigana %>)
-</p>
+<div class="container">
+  
+<h1 class="page-title">顧客詳細</h1><br>
 
-<p>
-<%= @customer.post_code %> <br>
-<%= @customer.address %>
-</p>
+<div class=table-title>基本情報</div>
+<table class="table">
+  <tbody>
+    <tr>
+      <th>名前</th>
+      <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+    </tr>
+    <tr>
+      <th>フリガナ</th>
+      <td><%= @customer.last_furigana %> <%= @customer.first_furigana %></td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td><%= @customer.post_code %>　<%= @customer.address %></td>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+      <td><%= @customer.phone_number %></td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td><%= @customer.email %></td>
+    </tr>
+  </tbody>
+</table>
+<%= link_to '変更', edit_admin_customer_path, class: "btn btn-sm" %>
+<%= link_to "退会", admin_customer_path, data: { confirm: "本当に退会させますか?" }, method: :delete, class: "btn btn-sm" %>
+<div class="page-under-space-100"></div>
 
-<p>
-<%= @customer.phone_number %> <br>
-<%= @customer.email %>
-</p>
-<%= link_to '変更', edit_admin_customer_path %>
 
 <% if @deliveries %>
-  <h3>追加のお届け先</h3>
-  <% @deliveries.each do |delivery| %>
-    <% unless delivery.last_name.nil? %>
-
-      <p>
-      <%= delivery.last_name %> <%= delivery.first_name %>
-      (<%= delivery.last_furigana %> <%= delivery.first_furigana %>)
-      </p>
-
-      <p>
-      <%= delivery.post_code %> <br>
-      <%= delivery.address %>
-      </p>
-
-      <p>
-      <%= delivery.phone_number %> <br>
-      </p>
-
-      <%= link_to '削除', admin_delivery_path(delivery), data: { confirm: "本当に削除しますか?" }, method: :delete %>
-
-    <% end %>
+  <h3 class="table-title">追加のお届け先</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>名前</th>
+        <th>フリガナ</th>
+        <th>住所</th>
+        <th>電話番号</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @deliveries.each do |delivery| %>
+      <% unless delivery.last_name.nil? %>
+      <tr>
+        <td><%= delivery.last_name %> <%= delivery.first_name %></td>
+        <td><%= delivery.last_furigana %> <%= delivery.first_furigana %></td>
+        <td><%= delivery.post_code %> <%= delivery.address %></td>
+        <td><%= delivery.phone_number %></td>
+        <td><%= link_to '削除', admin_delivery_path(delivery), data: { confirm: "本当に削除しますか?" }, method: :delete %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
   <% end %>
 <% end %>
-<%= link_to "退会", admin_customer_path, data: { confirm: "本当に退会させますか?" }, method: :delete %>
+</div>
+<div class="page-under-space-100"></div>
