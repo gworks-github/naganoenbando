@@ -18,7 +18,8 @@
 
  // bootstrap
  @import "bootstrap-sprockets";  /*ここを追加*/
- @import 'bootstrap-datetimepicker';/*ここを追加*/
+ @import 'bootstrap-datetimepicker';
+ @import "bootstrap";            /*ここを追加*/
 
 /* リセットCSS HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
