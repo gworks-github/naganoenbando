@@ -64,8 +64,6 @@
                       <%! "ログインしないといいねボタンが表示されない" %>
                     <% end %>
                 </p>
-
-
             </div>
         </div>
 
@@ -74,52 +72,23 @@
                 <table class="table">
                     <thead>
                         <tr>
-
                             <th>Track.No</th>
                             <th>曲名</th>
                         </tr>
                     </thead>
                     <tbody>
-
-
-
-
-<!-- .count -->
-User.count
-User.where(first_name: "Nick").count
-
-<!-- timesメソッド -->
-オブジェクト.times{|変数|
-  実行する処理1
-  実行する処理2
-}
-                        <!-- タブ・メニュー -->
                         <% @disks.each do |disk| %>
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="disk1" data-toggle="tab">Disk<%= @disks.find(disk.id).disk_number %></a></li>
-                            <li><a href="disk2" data-toggle="tab">Disk<%= @disks.find(disk.id).disk_number+1 %></a></li>
-                            <li><a href="disk3" data-toggle="tab">Disk<%= @disks.find(disk.id).disk_number+2 %></a></li>
-                            <li><a href="disk4" data-toggle="tab">Disk<%= @disks.find(disk.id).disk_number+3 %></a></li>
-                        </ul>
-
+                        <p><%= @disks.find(disk.id).disk_number %>枚目</p>
                         <% Track.where(disk_id: disk.id).each do |track| %>
-                            <!-- タブ内容 -->
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="disk1">
-                                    <p>
-                                        <tr>
-                                            <td><%= track.track_number %></td>
-                                            <td><%= track.name %></td>
-                                        </tr>
-                                    </p>
-                                </div>
-                                <!-- <div class="tab-pane active" id="disk2">
-                                    <p>Disk2の内容</p>
-                                </div> -->
-                            </div>
+                                <p>
+                                    <tr>
+                                        <td><%= track.track_number %></td>
+                                        <td><%= track.name %></td>
+                                    </tr>
+                                </p>
                         <% end %>
                         <% end %>
-                     </tbody>
+                    </tbody>
                 </table>
             </div>
         </div>

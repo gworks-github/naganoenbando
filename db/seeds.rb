@@ -74,7 +74,7 @@ end
 
 Disk.create!(
    item_id: '1',
-   disk_number: '1',
+   disk_number: '5',
    quantity: '10',
 )
 
