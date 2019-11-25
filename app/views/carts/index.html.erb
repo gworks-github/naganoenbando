@@ -1,39 +1,53 @@
 
 
 
-<div class="container">
-	<h1>カート商品一覧</h1>
-	<% if @cart_items.first == nil %>
-	<h1>まだありません。</h1>
-	<%= link_to "商品一覧", items_path %>
-	<% else %>
-	<table class="table">
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>商品ID</th>
-				<th>顧客ID</th>
-				<th>金額</th>
-				<th>商品点数</th>
-			</tr>
-		</thead>
-		<tbody>
-			<%= form_tag(carts_update_path, method: :patch) do %>
-			<% @cart_items.each_with_index  do |item, index| %>
-			<tr>
-				<td><%= item.id %></td>
-				<td><%= item.item_id %></td>
-				<td><%= item.customer_id %></td>
-				<td>¥<%= (Item.find(item.item_id).prices * (Tax.last.rate + 1)).floor %>（税込）</td>
-				<td><%= select_tag :"#{index}" , options_for_select((1..29).to_a, :selected => item.quantity) %></td>
-				<td><%= link_to "削除", cart_path(item.id), method: :delete %></td>
-			</tr>
+<div class="container cart">
+	<div class="row">
+		<div class="col-sm-8">
+			<% if @cart_items.first == nil %>
+			<p class="mb-5">商品はまだありません。</p>
+			<%= link_to "商品一覧", items_path, class: "btn btn-sm" %>
+			<% else %>
+
+			<div class="items-in-cart">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Cart</th>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<%= form_tag(carts_update_path, method: :patch) do %>
+						<% @cart_items.each_with_index  do |item, index| %>
+						<tr>
+							<td>商品番号：<%= item.item_id %></td>
+							<td><%= Item.find(item.item_id).name %></td>
+							<td><%= Artist.find(Item.find(item.item_id).artist_id).name %></td>
+							<td>¥<%= (Item.find(item.item_id).prices * (Tax.last.rate + 1)).floor %>（税込）</td>
+							<td><%= select_tag :"#{index}" , options_for_select((1..29).to_a, :selected => item.quantity) %></td>
+							<td><%= link_to "削除", cart_path(item.id), method: :delete, class: "" %></td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="col-sm-4 cart-right-card">
+			<p class="mb-3">送料：¥<%= TaxInPostage.last.price %>（税込）</p>
+				<%= submit_tag "レジに進む", class: "btn btn-sm", local: true %>
 			<% end %>
-		</tbody>
-	</table>
-    <%= submit_tag "レジに進む", class: "btn", style: "color: blue;" %>
-	<% end %>
-	<% end %>
+			<% end %>
+		</div>
+	</div>
 </div>
+<div class="page-under-space-100"></div>
+<div class="page-under-space-100"></div>
+<div class="page-under-space-100"></div>
+
 
 

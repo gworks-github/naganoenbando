@@ -18,7 +18,8 @@
 
  // bootstrap
  @import "bootstrap-sprockets";  /*ここを追加*/
- @import "bootstrap";            /*ここを追加*/
+ @import 'bootstrap-datetimepicker';/*ここを追加*/
+ @import 'bootstrap';
 
 /* リセットCSS HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -56,21 +57,7 @@ a:hover {
 
 /* Remove default margin */
 /* デフォルトのmarginを削除 */
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-a,
-ul[class],
-ol[class],
-li,
-figure,
-figcaption,
-blockquote,
-dl,
-dd {
+body,h1,h2,h3,h4,p,a,ul[class],ol[class],li,figure,figcaption,blockquote,dl,dd {
   margin: 0;
   font-family: 'GT America Standard', 'Helvetica Neue', 'Helvetica', 'Yu Gothic', '游ゴシック', YuGothic, '游ゴシック体', -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', meiryo, sans-serif;
     font-weight: 400;
@@ -79,6 +66,26 @@ dd {
 
 
 // エンドユーザ画面body設定
+.end-user-body {
+	.page-under-space-100 {
+	height: 100px;
+		}
+	.mb-5 {
+		margin-bottom: 50px;
+	}
+	.mb-3 {
+		margin-bottom: 30px;
+	}
+	.mb-1 {
+		margin-bottom: 10px;
+	}
+	.t-center {
+		text-align: center;
+	}
+	.t-right {
+		text-align: right;
+	}
+	}
 
 // 管理者側のヘッダー
 .admin .nav {
@@ -120,9 +127,6 @@ body .admin {
   transform: translateY(2px);/*沈むように*/
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
 }
-.page-under-space-100 {
-	height: 100px;
-}
 	.page-title {
 		box-shadow: 5px 5px 15px #aaaaaa;
 		border: 1px solid #aaaaaa;
@@ -159,25 +163,110 @@ body .admin {
 }
 
 
-
-
- @import 'bootstrap-datetimepicker';
-
- .m-box {
-	width:280px;
-	height: 280px;
-	float: left;
-  	padding-top: 50px;
+// ユーザーTOP
+.music {
+	.m-box {
+		width:280px;
+		height: 280px;
+		float: left;
+	  	padding-top: 100px;
+	  	text-align: center;
+	  	.m-image {
+	  	}
+	  	.m-text {
+			margin: 20px;
+			.m-content {
+				margin: 10px;
+			}
+	  	}
+	}
 }
 
-.m-image {
+// サイドバー
+.sidebar {
 	text-align: center;
+	padding-top: 70px;
+
+	.kensaku {
+		padding-top: 50px;
+		text-decoration: underline;
+		border: 1px solid ;
+		.search-form {
+			padding-top: 20px;
+			.search_text {
+				margin: 20px;
+			}
+			.search_bottun {
+				margin: 10px;
+				padding-bottom: 30px;
+			}
+		}
+	}
+	.iine {
+
+		padding-top: 50px;
+		text-decoration: underline;
+		border: 1px solid;
+		margin-top: 70px;
+		.like-music{
+			padding-top: 20px;
+			.number{
+				text-align: left
+			}
+			.like-m-box{
+				margin: 20px;
+			}
+			.like-m-image{
+				margin: 10px 30px;
+			}
+			.like-m-text{
+				margin: 20px;
+				padding-bottom: 25px;
+				.like-m-content {
+					margin: 15px;
+				}
+			}
+		}
+	}
+}
+
+// ユーザー商品詳細
+.show-image {
+	margin:100px;
+}
+
+.show-text {
+	margin-top:100px;
+	padding-left:60px;
+	.show-content {
+		margin: 20px;
+	}
+}
+
+.like {
+	text-align: left;
 }
 
 
-.m-text {
-	text-align: center;
-	padding-top: 10px;
+.glyphicon-heart {
+	font-size:32px;
+}
+
+.show-table {
+	margin: 30px 0px 0px 100px;
+}
+
+// カート
+.cart {
+	.btn {
+		color: white;
+		background-color: #DB0101;
+	}
+	.cart-right-card {
+		text-align: center;
+		border: 1px solid #DB0101;
+		padding: 50px;
+	}
 }
 
 /* mypage*/

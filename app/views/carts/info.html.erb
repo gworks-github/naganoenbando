@@ -1,15 +1,14 @@
-<div class="container">
-	<p>お届け先・お支払い方法</p>
-	<div class="container">
-		<p>お届け先</p>
+<div class="container cart">
+	<div class="row">
+		<div class="col-sm-8">
 		<table class="table">
 			<thead>
 				<tr>
-					<th>選択</th>
-					<th>郵便番号</th>
-					<th>住所</th>
-					<th>名前</th>
-					<th>電話番号</th>
+					<th>お届け先</th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -24,69 +23,89 @@
 				<% @deliveries.each_with_index do |d, index| %>
 				<tr>
 					<td><%= radio_button_tag "address", index+1 %></td>
-					<td><%= d.post_code %></td>
+					<td>〒<%= d.post_code %></td>
 					<td><%= d.address %></td>
 					<td><%= d.last_name + d.first_name %></td>
-					<td><%= d.phone_number %></td>
+					<td>TEL：<%= d.phone_number %></td>
 				</tr>
 				<% end %>
 			</tbody>
 		</table>
-	</div>
-	<h2>お支払い方法</h2>
-	<table class="table" style="width: 50%;">
-		<tbody>
-			<tr>
-				<td><%= radio_button_tag :pay, "0", checked = true %></td>
-				<td>現金振込</td>
-			</tr>
-			<tr>
-				<td><%= radio_button_tag :pay, "1" %></td>
-				<td>クレジットカード</td>
-			</tr>
-			<tr>
-				<td><%= radio_button_tag :pay, "2" %></td>
-				<td>代金引換</td>
-			</tr>
-		</tbody>
-	</table>
-	<br>
-	<br>
-	<p><%= submit_tag "注文確認" %></p>
-	<% end %>
-
-
-
-
-
-
-
-
-<h2>お届け先の追加</h2>
-		<table class="table">
+		<table class="table" style="width: 50%;">
 			<thead>
-				<tr>
-					<th></th>
-					<th>名前</th>
-					<th>ナマエ</th>
-					<th>郵便番号</th>
-					<th>住所</th>
-					<th>電話番号</th>
-				</tr>
+				<th>お支払い方法</th>
+				<th></th>
+				<th></th>
 			</thead>
-			<%= form_for @delivery, url: cart_address_path, method: :post do |f| %>
 			<tbody>
 				<tr>
-					<td>追加</td>
-					<td><%= f.text_field :last_name %><%= f.text_field :first_name %></td>
-					<td><%= f.text_field :last_furigana %><%= f.text_field :first_furigana %></td>
+					<td><%= radio_button_tag :pay, "0", checked = true %></td>
+					<td>現金振込</td>
+				</tr>
+				<tr>
+					<td><%= radio_button_tag :pay, "1" %></td>
+					<td>クレジットカード</td>
+				</tr>
+				<tr>
+					<td><%= radio_button_tag :pay, "2" %></td>
+					<td>代金引換</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-sm-4">
+		<div class="cart-right-card">
+			<p class="mb-1">商品合計：¥<%= @total_price - TaxInPostage.last.price %>（税込）</p>
+			<p class="mb-1">送料：¥<%= TaxInPostage.last.price %>（税込）</p>
+			<p class="mb-3">合計金額：¥<%= @total_price %>（税込）</p>
+			<p><%= submit_tag "注文確認", class: "btn btn-sm" %></p>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<%= form_for @delivery, url: cart_address_path, method: :post do |f| %>
+		<table class="table" style="width: 35%;">
+			<thead>
+					<th>お届け先の追加</th>
+					<th></th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>姓</td>
+					<td><%= f.text_field :last_name %></td>
+				</tr>
+				<tr>
+					<td>名</td>
+					<td><%= f.text_field :first_name %></td>
+				</tr>
+				<tr>
+					<td>セイ</td>
+					<td><%= f.text_field :last_furigana %></td>
+				</tr>
+				<tr>
+					<td>メイ</td>
+					<td><%= f.text_field :first_furigana %></td>
+				</tr>
+				<tr>
+					<td>郵便番号</td>
 					<td><%= f.text_field :post_code %></td>
+				</tr>
+				<tr>
+					<td>住所</td>
 					<td><%= f.text_field :address %></td>
+				</tr>
+				<tr>
+					<td>電話番号</td>
 					<td><%= f.text_field :phone_number %></td>
+				</tr>
+				<tr>
+					<td></td>
 					<td><%= f.submit "追加" %></td>
 				</tr>
 			</tbody>
-			<% end %>
 		</table>
+		<% end %>
 
-		</div>
+
+</div>
