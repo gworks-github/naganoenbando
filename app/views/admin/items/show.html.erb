@@ -21,7 +21,7 @@
                 </tr>
                 <tr>
                     <th>シングル/アルバム</th>
-                    <td><%= @item.format %></td>
+                    <td><% if @item.format %>シングル<% else %>アルバム<% end %></td>
                 </tr>
                 <tr>
                     <th>価格</th>
@@ -41,7 +41,7 @@
                 </tr>
                 <tr>
                     <th>ステータス</th>
-                    <td><%= @item.is_selling %></td>
+                    <td><% if @item.is_selling %>販売中<% else %>販売停止中<% end %></td>
                 </tr>
                  <tr>
                     <th>枚数</th>
