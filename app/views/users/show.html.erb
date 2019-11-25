@@ -8,6 +8,7 @@
         <%= link_to "いいねした商品", likes_path(current_customer.id), class:"btn btn-lg" %> <br>
         <%# "deletメソッドを使用しているが、実際はdevise/registrationへのリダイレクトのみ%>
         <%= link_to "退会手続き", destroy_customer_path(current_customer.id), method: :delete, class:"btn btn-lg"%> <br>
+
     </div>
 
       <div class="row">

@@ -176,6 +176,11 @@ body .admin {
 	}
 }
 
+.pages {
+	padding-top: 130px;
+	text-align: center;
+}
+
 // サイドバー
 .sidebar {
 	text-align: center;
@@ -310,6 +315,29 @@ h1.title {
   display:none;
 }
 
+/* mypage*/
+h1.title {
+  margin:10px;
+  margin-left:100px;
+}
+.mypage {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.profile {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.profile-content {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.add-button {
+  margin-bottom: 10px;
+}
+.delivery-add {
+  display:none;
+}
 
 /* user log_in */
 .login-title {

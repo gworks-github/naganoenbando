@@ -12,7 +12,8 @@ class ItemsController < ApplicationController
 
 
   def index
-  	@items = Item.all
+    # ページネーション
+  	@items = Item.page(params[:page]).per(18)
 
     #検索フォーム用
     @artists_search = Artist.all
