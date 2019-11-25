@@ -1,8 +1,8 @@
 <div class="container">
-<h1>受注履歴詳細</h1>
+<h1 class="page-title">受注履歴詳細</h1>
 <br>
 <br>
-<h2>注文内容</h2>
+<h2 class="table-title">注文内容</h2>
 <table class="table">
 	<thead>
 		<tr>
@@ -27,7 +27,7 @@
 </table>
 <br>
 <br>
-<h2>注文商品</h2>	
+<h2 class="table-title">注文商品</h2>	
 <table class="table">
 	<thead>
 		<tr>
@@ -56,7 +56,7 @@
 </table>
 <br>
 <br>
-<h2>配送先</h2>
+<h2 class="table-title">配送先</h2>
 <table class="table">
 	<thead>
 		<tr>
@@ -77,9 +77,9 @@
 </table>
 <%= form_with(url: admin_order_path(params[:id]), method: :patch)  do |f| %>
 <%= f.select :order_status, Order.order_statuses, :selected=>Order.order_statuses[@order.order_status] %>
-<%= f.submit "更新" %>
+<%= f.submit "更新", class: "btn btn-sm", style: "display: inline-block" %>
 <% end %>
-<%= link_to "戻る", admin_orders_path %>
+<%= link_to "戻る", admin_orders_path, class: "btn btn-sm" %>
 </div>
 <br>
 <br>
