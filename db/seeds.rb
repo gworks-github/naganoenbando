@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # Customer
-30.times do |n|
+50.times do |n|
   first_name = Gimei.first.kanji
   last_name = Gimei.last.kanji
   first_furigana = Gimei.first.katakana
@@ -25,35 +25,34 @@
 end
 
 # artist
-30.times do |n|
+50.times do |n|
   name  = Faker::Artist.name
   Artist.create!(name: name)
 end
 
 # label
-30.times do |n|
+50.times do |n|
   name = Faker::Food.dish
   Label.create!(name: name)
 end
 
 # genre
-30.times do |n|
+50.times do |n|
   name = Faker::Music.genre
   Genre.create!(name: name)
 end
 
 #Item
 I18n.locale = 'ja'
-50.times do |n|
+40.times do |n|
   name  = Faker::Music.album
   format = [true,false].sample
   artist_id = rand(1..30)
-  # jacket_image_id = "#{n+1}"
   genre_id = rand(1..30)
   label_id = rand(1..30)
-  quantity = "#{n+1}"
+  quantity = rand(1..3)
   release_date = "2019/11/1"
-  is_selling = "True"
+  is_selling = [true,false].sample
   prices  = [500,1000,3000].sample
   tax_id  = 1
 
@@ -61,7 +60,6 @@ I18n.locale = 'ja'
   name: name,
   format: format,
   artist_id: artist_id,
-  # jacket_image_id: jacket_image_id,
   genre_id: genre_id,
   label_id: label_id,
   quantity: quantity,
@@ -71,36 +69,11 @@ I18n.locale = 'ja'
   tax_id: tax_id)
 end
 
-
-Disk.create!(
-   item_id: '1',
-   disk_number: '1',
-   quantity: '10',
-)
-
-# 10.times do |n|
-#   name = Faker::Track.name
-#   Track.create!(name: name)
-# end
-
-# artist
-30.times do |n|
-  name  = Faker::Artist.name
-  Artist.create!(name: name)
-end
-
-# label
-30.times do |n|
-  name = Faker::Food.dish
-  Label.create!(name: name)
-end
-
-# genre
-30.times do |n|
-  name = Faker::Music.genre
-  Genre.create!(name: name)
-end
-
+#Disk.create!(
+#   item_id: '1',
+#   disk_number: '5',
+#   quantity: '10',
+#)
 
 # deliveries
 10.times do |n|
@@ -255,7 +228,7 @@ end
 end
 
 #arrived_item
-20.times do |n|
+30.times do |n|
   item_id = rand(1..15)
   quantity = rand(1..10)
   date = Random.rand(DateTime.now.ago(3.month)..DateTime.now.since(3.month))

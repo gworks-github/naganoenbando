@@ -20,6 +20,9 @@
  @import "bootstrap-sprockets";  /*ここを追加*/
  @import 'bootstrap-datetimepicker';/*ここを追加*/
  @import 'bootstrap';
+ @import 'bootstrap-datetimepicker';
+ @import "bootstrap";            /*ここを追加*/
+
 
 /* リセットCSS HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -182,6 +185,11 @@ body .admin {
 	}
 }
 
+.pages {
+	padding-top: 130px;
+	text-align: center;
+}
+
 // サイドバー
 .sidebar {
 	text-align: center;
@@ -269,6 +277,61 @@ body .admin {
 	}
 }
 
+
+// 退会確認
+.unsubscribe {
+	margin-top: 70px;
+	text-align: center;
+	border: 1px solid;
+	font-size: 25px;
+	.text1 {
+		padding: 20px;
+	}
+	.text2 {
+		padding: 20px;
+	}
+}
+
+.yes {
+	margin-top: 40px;
+	text-align: center;
+	border: 1px solid #db0000;
+	font-size: 25px;
+	float: left;
+}
+
+.no {
+	margin-top: 40px;
+	text-align: center;
+	border: 1px solid #db0000;
+	font-size: 25px;
+	float: right;
+}
+
+/* mypage*/
+h1.title {
+  margin:10px;
+  margin-left:100px;
+}
+.mypage {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.profile {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.profile-content {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.add-button {
+  margin-bottom: 10px;
+}
+.delivery-add {
+  display:none;
+}
+
 /* mypage*/
 h1.title {
   margin:10px;
@@ -307,7 +370,7 @@ h1.title {
     margin-left: 10px;
   }
 }
-/* user sign_up */
+/* user sign_up&edit */
 .signup-title {
   margin-top: 35px;
   margin-bottom: 10px;
@@ -326,4 +389,6 @@ footer {
 	p, {
 		color: white;
 	}
+.cancel-btn {
+  margin-left: 20px;
 }
