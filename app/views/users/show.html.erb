@@ -1,12 +1,14 @@
 <h1 class="title">マイページ</h1>
 
+
 <div class="container mypage">
   <div class="row">
     <div class="col-sm-1">
-        <%= link_to "購入履歴", orders_path, class:"btn btn-lg" %> <br>
-        <%= link_to "いいねした商品", likes_path, class:"btn btn-lg" %> <br>
+        <%= link_to "購入履歴", orders_path(current_customer.id), class:"btn btn-lg" %> <br>
+        <%= link_to "いいねした商品", likes_path(current_customer.id), class:"btn btn-lg" %> <br>
         <%# "deletメソッドを使用しているが、実際はdevise/registrationへのリダイレクトのみ%>
-        <%= link_to "退会手続き", destroy_customer_path, method: :delete, class:"btn btn-lg"%> <br>
+        <%= link_to "退会手続き", destroy_customer_path(current_customer.id), method: :delete, class:"btn btn-lg"%> <br>
+
     </div>
 
       <div class="row">
@@ -53,6 +55,7 @@
         <% end %>
       <% end %>
 
+<%= render 'layouts/error_message', model: @deli %>
       <div class="row">
         <div class="col-sm-8">
           <button class="btn add-button">お届け先を追加する</button>

@@ -9,7 +9,8 @@ class LikesController < ApplicationController
   end
 
   def index
-    @likes = Like.where(customer_id: params[:id])
+    item_id = Like.where(customer_id: params[:id]).order(created_at: "DESC").pluck(:item_id)
+    @items = Item.find(item_id)
   end
 
   def create

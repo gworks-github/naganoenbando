@@ -1,9 +1,18 @@
 class DeliveriesController < ApplicationController
   def create
-    delivery = current_customer.deliveries.new(delivery_params)
-  	delivery.save
-    redirect_to show_customer_path(id: delivery.customer_id)
+    @deli = current_customer.deliveries.new(delivery_params)
+
+    if @deli.save
+      redirect_to show_customer_path(id: @deli.customer_id)
+    else
+      # users/showでerrors.full_messagesをつかるようにするためrenderで引数を渡す
+      @customer   = Customer.find(current_customer.id)
+      @deliveries = @customer.deliveries
+      @delivery   = @customer.deliveries.new
+      render("users/show")
+    end
   end
+
   def destroy
     delivery = current_customer.deliveries.find(params[:id])
     delivery.destroy
