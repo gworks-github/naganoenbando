@@ -1,7 +1,7 @@
 <div class="container">
-	<h1>お届け先・お支払い方法</h1>
+	<p>お届け先・お支払い方法</p>
 	<div class="container">
-		<h2>お届け先</h2>
+		<p>お届け先</p>
 		<table class="table">
 			<thead>
 				<tr>
@@ -16,10 +16,10 @@
 				<%= form_tag carts_confirm_path, method: :get do %>
 				<tr>
 					<td><%= radio_button_tag "address", "0", checked = true %></td>
-					<td><%= @customer.post_code %></td>
+					<td>〒<%= @customer.post_code %></td>
 					<td><%= @customer.address %></td>
 					<td><%= @customer.last_name + @customer.first_name %></td>
-					<td><%= @customer.phone_number %></td>
+					<td>TEL：<%= @customer.phone_number %></td>
 				</tr>
 				<% @deliveries.each_with_index do |d, index| %>
 				<tr>
