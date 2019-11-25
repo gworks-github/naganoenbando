@@ -34,6 +34,7 @@ class ItemsController < ApplicationController
     @cart_item = CartItem.new
     @likes = Like.where(item_id: @item.id)
 
+
     #検索フォーム用
     @artists_search = Artist.all
     @labels_search = Label.all

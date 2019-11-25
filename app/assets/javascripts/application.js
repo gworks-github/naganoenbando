@@ -12,7 +12,6 @@
 //= require jquery
 //= require rails-ujs
 //= require activestorage
-//= require jquery
 //= require jquery.turbolinks
 //= require cocoon
 //= require turbolinks
