@@ -149,6 +149,29 @@ body .admin {
 	padding-top: 10px;
 }
 
+/* mypage*/
+h1.title {
+  margin:10px;
+  margin-left:100px;
+}
+.mypage {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.profile {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.profile-content {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.add-button {
+  margin-bottom: 10px;
+}
+.delivery-add {
+  display:none;
+}
 
 /* user log_in */
 .login-title {
@@ -173,5 +196,5 @@ body .admin {
   margin-top: 20px;
   .btn {
     margin-top: 10px;
-  }
+}
 }
