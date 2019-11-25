@@ -44,7 +44,6 @@ table {
 	border-spacing: 0;
 }
 a {
-    color: #db0000;
     text-decoration: none;
     overflow-wrap: break-word;
 }
@@ -57,6 +56,7 @@ h2,
 h3,
 h4,
 p,
+a,
 ul[class],
 ol[class],
 li,
@@ -69,6 +69,62 @@ dd {
   font-family: 'GT America Standard', 'Helvetica Neue', 'Helvetica', 'Yu Gothic', '游ゴシック', YuGothic, '游ゴシック体', -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', meiryo, sans-serif;
     font-weight: 400;
     color: #db0000;
+}
+
+// 管理者側のヘッダー
+header .nav {
+	a {
+		padding: 5px;
+		margin: 10px;
+		border-radius: 5px;
+	}
+		a:hover {
+		background-color: #232F3E;
+		border: 1px solid white;
+		margin: 9px
+		}
+	}
+
+// 管理者側のBODY
+body .admin {
+	background-color: #F0F1F2;
+	color: #333333;
+	h1,h2,h3,h4,p,li,a,{
+		color: #333333;
+	}
+	.page-title {
+		box-shadow: 5px 5px 15px #aaaaaa;
+		border: 1px solid #aaaaaa;
+		padding: 10px;
+		margin-top: 20px;
+		display: inline-block;
+		border-radius: 5px;
+		margin-bottom: 30px;
+		background-color: white;
+		font-size: 18px;
+		font-weight: bold;
+	}
+	.table-title {
+		box-shadow: 5px 5px 15px #cccccc;
+		border: 1px solid #aaaaaa;
+		padding: 10px;
+		display: inline-block;
+		margin-bottom: 10px;
+		background-color: white;
+		font-size: 16px;
+	}
+	.box-shodow {
+	 box-shadow:5px 5px 10px;
+}
+.table {
+	background-color: white;
+	border: 1px solid #cccccc;
+	box-shadow: 5px 5px 15px #cccccc;
+	a {
+		color: blue;
+	}
+}
+
 }
 
 
@@ -93,7 +149,6 @@ dd {
 	padding-top: 10px;
 }
 
-
 /* mypage*/
 
 h1.title {
@@ -117,4 +172,29 @@ h1.title {
 }
 .delivery-add {
   display:none;
+}
+
+/* user log_in */
+.login-title {
+  margin-top: 35px;
+  margin-bottom: 10px;
+}
+.login-form {
+  margin-top: 10px;
+  .field {
+    margin: 10px;
+  }
+  .btn {
+    margin-left: 10px;
+  }
+}
+/* user sign_up */
+.signup-title {
+  margin-top: 35px;
+  margin-bottom: 10px;
+}
+.signup-form {
+  margin-top: 20px;
+  .btn {
+    margin-top: 10px;
 }
