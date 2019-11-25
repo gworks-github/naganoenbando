@@ -1,5 +1,31 @@
-<p>本当に退会しますか?</p>
-<p>この操作は取り消しすることができません。</p>
+<div class="countainer">
+	<div class="row">
+		<div class="col-sm-3">
+		</div>
+		<div class="col-sm-6">
+			<div class="unsubscribe">
+				<p class="text1">本当に退会しますか?</p>
+				<p class="text2">この操作は取り消しすることができません。</p>
+			</div>
+		</div>
+		<div class="col-sm-3">
+		</div>
 
-<%= link_to "はい、退会する", customer_registration_path, method: :delete %>
-<%= link_to "キャンセル", show_customer_path %>
+		<div class="col-sm-4">
+		</div>
+		<div class="col-sm-4">
+			<button type="button" class="btn btn-link btn-lg active yes">
+				<%= link_to "退会する", customer_registration_path, method: :delete %>
+			</button>
+			<button type="button" class="btn btn-link btn-lg active no">
+				<%= link_to "キャンセル", show_customer_path %>
+			</button>
+		</div>
+		<div class="col-sm-4">
+		</div>
+	</div>
+</div>
+
+
+
+
