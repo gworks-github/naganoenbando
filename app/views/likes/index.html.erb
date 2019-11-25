@@ -1,27 +1,24 @@
 <div class="container">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+      <h3>いいねした商品</h3>
 
-  <h3>いいねした商品</h3>
+      <section class="music">
+        <% @items.each do |item| %>
+          <div class="m-box">
+            <div class="m-image">
+              <%= link_to attachment_image_tag(item, :jacket_image, :fill, 150, 150, format: 'jpeg',fallback: "no_image.png",size: "150x150" ), item_path(item.id) %>
+            </div>
+            <div class="m-text">
+              <p><%= link_to item.name, item_path(item.id) %></p>
+              <p><%= link_to Artist.find(item.artist_id).name, item_path(item.id) %></p>
+              <!-- <p><%= link_to Label.find(item.label_id).name, item_path(item.id) %></p> -->
+              <p>￥<%= (item.prices * (Tax.last.rate + 1)).floor %>(税込)</p>
+            </div>
+          </div>
+        <% end %>
+      </section>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th>ジャケット</th>
-        <th>タイトル</th>
-        <th>アーティスト名</th>
-        <th>価格</th>
-      </tr>
-    </thead>
-
-    <% @likes.each do |like| %>
-      <tbody>
-        <tr>
-          <td><%= like.id %></td>
-          <td><%= like.item_id %></td>
-          <td><%= like.customer_id %></td>
-          <td><%= like.customer_id %></td>
-        </tr>
-      </tbody>
-    <% end %>
-    </table>
-
+    </div>
+  </div>
 </div>
