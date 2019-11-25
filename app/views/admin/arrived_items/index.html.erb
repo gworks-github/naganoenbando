@@ -1,44 +1,58 @@
+
+
 <div class="container">
-  <div class="row">
-    <div class="col-md-2">
-
+  <h1 class="page-title">入荷履歴</h1>
       <%= form_tag(admin_arrived_items_search_path, method: :get) do %>
-
-          <%= label :name, "タイトル名" %>
-          <%= text_field_tag :name %>
-
-          <%= label :artist, "アーティスト名" %>
-          <%= collection_select(:artist, :id, @artists, :id, :name, :include_blank => '指定なし') %>
-
-          <%= label :format, "シングル/アルバム" %>
-          <label>シングル<%= check_box_tag :single, 1 %></label>
-          <label>アルバム<%= check_box_tag :album,  0 %></label>
-
-          <%= label :label, "レーベル" %>
-          <%= collection_select(:label, :id, @labels, :id, :name, :include_blank => '指定なし') %>
-
-          <%= label :genre, "ジャンル" %>
-          <%= collection_select(:genre, :id, @genres, :id, :name, :include_blank => '指定なし') %>
-
-          <%= label :date, "入荷日" %>
-          <label><%= date_field_tag :date_from %></label>
-          <label><%= date_field_tag :date_to %></label>
-
-          <%= submit_tag "検索", :name => nil %>
-
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>タイトル</th>
+            <td><%= text_field_tag :name %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>アーティスト</th>
+            <td> <%= collection_select(:artist, :id, @artists, :id, :name, :include_blank => '指定なし') %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>フォーマット</th>
+            <td>
+              <%= label :format, "シングル/アルバム" %>
+              <label>シングル<%= check_box_tag :single, 1 %></label>
+              <label>アルバム<%= check_box_tag :album,  0 %></label>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>レーベル</th>
+            <td><%= collection_select(:label, :id, @labels, :id, :name, :include_blank => '指定なし') %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>ジャンル</th>
+            <td><%= collection_select(:genre, :id, @genres, :id, :name, :include_blank => '指定なし') %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>入荷日</th>
+            <td>
+              <label><%= date_field_tag :date_from %></label>
+              <label><%= date_field_tag :date_to %></label>
+            </td>
+            <td><%= submit_tag "検索", :name => nil, class: "btn btn-sm" %></td>
+          </tr>
+        </tbody>
+      </table>
       <% end %>
-    </div>
-  </div>
 </div>
 
 <div class="container">
-  <h1>入荷履歴</h1>
   <table class="table">
     <thead>
       <tr>
         <th>入荷日</th>
         <th>商品ID</th>
-        <th>ジャケット</th>
         <th>タイトル</th>
         <th>フォーマット</th>
         <th>アーティスト</th>
@@ -51,10 +65,9 @@
     <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td><%= item.date.strftime("%Y年 %m月 %d日") %></td>
-        <td> <%=link_to item.item.id, admin_item_path(item.item.id) %></td>
-        <td><%= item.item.jacket_image_id %></td>
-        <td><%= item.item.name %></td>
+        <td><%= item.date.strftime("%Y/%m/%d") %></td>
+        <td><%= item.item.id %></td>
+        <td><%=link_to item.item.name, admin_item_path(item.item.id) %></td>
         <td><%= item.item.is_selling %></td>
         <td><%= item.item.artist.name %></td>
         <td><%= item.item.label.name %></td>
@@ -66,3 +79,5 @@
     </tbody>
   </table>
 </div>
+<div class="page-under-space-100"></div>
+<div class="page-under-space-100"></div>
