@@ -16,24 +16,26 @@
       </div>
       <div class="col-sm-8">
           <ul class="navbar-nav nav" style="color: white; padding: 15px; padding-bottom: 0;">
-            <li style="margin-right: 30px">未発送：<%= Order.where(order_status: 2).count %>件</li>
-            <li style="margin-right: 30px">本日の売上：<%= Order.where(created_at: Date.today.in_time_zone.all_day).sum(:tax_in_total_price) %>円</li>
-            <li style="margin-right: 30px">今月の売上：<%= Order.where(created_at: Date.today.in_time_zone.all_month).sum(:tax_in_total_price) %>円</li>
+            <li style="margin-right: 30px; color: #cccccc;">未発送：<%= Order.where(order_status: 2).count %>件</li>
+            <li style="margin-right: 30px; color: #cccccc;">本日の売上：<%= Order.where(created_at: Date.today.in_time_zone.all_day).sum(:tax_in_total_price) %>円</li>
+            <li style="margin-right: 30px; color: #cccccc;">今月の売上：<%= Order.where(created_at: Date.today.in_time_zone.all_month).sum(:tax_in_total_price) %>円</li>
           </ul>
           <ul class="navbar-nav nav" style="color: white">
-            <li><%= link_to "サイトTOP", items_path %></li>
-            <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
-            <li><%= link_to "商品登録", new_admin_item_path %></li>
-            <li><%= link_to "商品一覧", admin_items_path %></li>
-            <li><%= link_to "入荷登録", admin_ready_items_path %></li>
-            <li><%= link_to "入荷履歴", admin_arrived_items_path %></li>
-            <li><%= link_to "受注履歴", admin_orders_path %></li>
-            <li><%= link_to "顧客一覧", admin_customers_path %></li>
-            <li><%= link_to "情報マスタ", admin_info_index_path %></li>
+            <li><%= link_to "サイトTOP", items_path, :style=>"color:white;" %></li>
+            <li><%= link_to "ログアウト", destroy_admin_session_path, :style=>"color:white;", method: :delete %></li>
+            <li><%= link_to "商品登録", new_admin_item_path, :style=>"color:white;" %></li>
+            <li><%= link_to "商品一覧", admin_items_path, :style=>"color:white;" %></li>
+            <li><%= link_to "入荷登録", admin_ready_items_path, :style=>"color:white;" %></li>
+            <li><%= link_to "入荷履歴", admin_arrived_items_path, :style=>"color:white;" %></li>
+            <li><%= link_to "受注履歴", admin_orders_path, :style=>"color:white;" %></li>
+            <li><%= link_to "顧客一覧", admin_customers_path, :style=>"color:white;" %></li>
+            <li><%= link_to "情報マスタ", admin_info_index_path, :style=>"color:white; :hover:block" %></li>
           </ul>
       </div>
       </header>
+      <div class="admin">
         <!-- /header -->
         <%= yield %>
+        </div>
   </body>
 </html>
