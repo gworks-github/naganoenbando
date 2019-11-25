@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>商品登録</h1>
+    <h1 class="page-title">商品編集</h1>
     <%= form_with(model: @item, url: admin_item_path(@item.id)) do |f| %>
     <table class="table">
         <tbody>
@@ -8,7 +8,7 @@
                 <td><%= f.text_field :name %></td>
             </tr>
             <tr>
-                <th>アーティスト名</th>
+                <th>アーティスト</th>
                 <td><%= f.select :artist_id, Artist.pluck(:name,:id) %></td>
             </tr>
             <tr>
@@ -28,7 +28,7 @@
             </tr>
             <tr>
                 <th>発売日</th>
-                <td><%= f.date_select :release_date %></td>
+                <td><%= f.date_select :release_date, use_month_numbers: true, start_year: 1930 %></td>
             </tr>
             <tr>
                 <th>レーベル</th>
@@ -52,7 +52,7 @@
                 </td>
             </tr>
              <tr>
-                <th></th>
+                <th>ディスク詳細</th>
                 <td>
                     <div id="disks">
                         <%= f.fields_for :disks do |disk| %>
@@ -66,6 +66,8 @@
             </tr>
         </tbody>
     </table>
-    <%= f.submit '更新'%>
+    <%= f.submit '更新', class: "btn btn-sm" %>
+    <%= link_to "キャンセル", admin_item_path(params[:id]), class: "btn btn-sm" %>
     <% end %>
 </div>
+<div class="page-under-space-100"></div>

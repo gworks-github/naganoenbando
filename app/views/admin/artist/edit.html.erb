@@ -1,8 +1,13 @@
-<h1>編集画面</h1>
-
-
-<p>アーティスト名</p>
-<%= form_with model: @artist, url: admin_artist_path(params[:id]), local: true do |f| %>
-<p><%= f.text_field :name %></p>
-<%= f.submit "更新" %>
-<% end %>
+<div class="container">
+	<h1 class="page-title">アーティスト名編集</h1>
+	<%= form_with model: @artist, url: admin_artist_path(params[:id]), local: true do |f| %>
+	<p><%= f.text_field :name %></p>
+	<br>
+	<%= f.submit "更新", class: "btn btn-sm" %>
+	<% end %>
+</div>
+<div class="page-under-space-100"></div>
+<div class="page-under-space-100"></div>
+<div class="page-under-space-100"></div>
+<div class="page-under-space-100"></div>
+<div class="page-under-space-100"></div>
