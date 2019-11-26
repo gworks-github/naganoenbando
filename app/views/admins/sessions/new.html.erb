@@ -1,5 +1,16 @@
 <h3>管理者用ログイン</h3>
 
+<%# エラーメッセージ %>
+<% if !flash[:error].present? %>
+  <div class="row">
+    <% flash.each do |key, value| %>
+      <div class="error_field alert alert-danger" role="alert">
+        <%= content_tag(:div, value, class: "#{key}" "error_msg") %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :"メールアドレス" %><br />
@@ -22,6 +33,6 @@
     <%= f.submit "ログイン" %>
   </div>
 
- <%= render "admins/shared/links" %>
+  <%= render "admins/shared/links" %>
 
 <% end %>
