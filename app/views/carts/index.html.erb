@@ -1,7 +1,16 @@
-
-
-
 <div class="container cart">
+
+      <%# エラーメッセージ %>
+      <% if flash[:error].present? %>
+        <div class="row">
+          <% flash.each do |key, value| %>
+            <div class="error_field alert alert-danger" role="alert">
+              <%= content_tag(:div, value, class: "#{key}" "error_msg") %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
 	<div class="row">
 		<div class="col-sm-8">
 			<% if @cart_items.first == nil %>
