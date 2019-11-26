@@ -18,7 +18,7 @@
           <% else %>
       <div class="col-sm-8">
           <ul class="navbar-nav nav" style="color: white; padding: 15px; padding-bottom: 0;">
-            <li style="margin-right: 30px; color: #cccccc;">未発送：<%= Order.where(order_status: 2).count %>件</li>
+            <li style="margin-right: 30px; color: #cccccc;">未発送：<%= Order.where(order_status: [0,1]).count %>件</li>
             <li style="margin-right: 30px; color: #cccccc;">本日の売上：<%= Order.where(created_at: Date.today.in_time_zone.all_day).sum(:tax_in_total_price) %>円</li>
             <li style="margin-right: 30px; color: #cccccc;">今月の売上：<%= Order.where(created_at: Date.today.in_time_zone.all_month).sum(:tax_in_total_price) %>円</li>
             <li style="margin-right: 30px; color: #cccccc;">　　　ようこそ <span style="color:orange;"><%= current_admin.name %></span> さん</li>
