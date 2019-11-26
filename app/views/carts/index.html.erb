@@ -17,7 +17,7 @@
 			<p class="mb-5">商品はまだありません。</p>
 			<%= link_to "商品一覧", items_path, class: "btn btn-sm" %>
 			<% else %>
-
+			<%= form_tag(carts_update_path, method: :patch) do %>
 			<div class="items-in-cart">
 				<table class="table">
 					<thead>
@@ -31,7 +31,6 @@
 						</tr>
 					</thead>
 					<tbody>
-						<%= form_tag(carts_update_path, method: :patch) do %>
 						<% @cart_items.each_with_index  do |item, index| %>
 						<tr>
 							<td>商品番号：<%= item.item_id %></td>
@@ -48,7 +47,7 @@
 		</div>
 		<div class="col-sm-4 cart-right-card">
 			<p class="mb-3">送料：¥<%= TaxInPostage.last.price %>（税込）</p>
-				<%= submit_tag "レジに進む", class: "btn btn-sm", local: true %>
+				<%= submit_tag "レジに進む", class: "btn btn-sm",data: {"turbolinks"=>false} %>
 			<% end %>
 			<% end %>
 		</div>
