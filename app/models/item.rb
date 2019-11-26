@@ -40,3 +40,6 @@ class Item < ApplicationRecord
   }
 
 end
+
+
+
