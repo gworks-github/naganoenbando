@@ -69,7 +69,7 @@ class ItemsController < ApplicationController
 
   def search
     #検索結果
-    @items = Item.item_search(params)
+    @items = Item.item_search(params).page(params[:page]).per(18)
 
     #検索フォーム用
     @artists_search = Artist.all
