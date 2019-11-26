@@ -24,7 +24,7 @@ class Item < ApplicationRecord
   end
 
   scope :artist_select, -> (artist)   {
-    where(['id = ?', "#{artist}"]) if artist.present?
+    where(['artist_id = ?', "#{artist}"]) if artist.present?
   }
 
   scope :label_select, -> (label)   {
