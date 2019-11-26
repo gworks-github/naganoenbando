@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-  	@orders = Order.where(customer_id: current_customer.id)
+  	@orders = Order.where(customer_id: current_customer.id).order(id: "DESC")
   	@order_details = OrderDetail.where()
   end
 

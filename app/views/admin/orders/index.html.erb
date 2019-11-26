@@ -55,7 +55,7 @@
 				<td><%= order.name %></td>
 				<td><%= order.tax_in_total_price %></td>
 				<td><%= OrderDetail.where(order_id: order.id).sum(:order_quantity) %></td>
-				<td><%= link_to order.order_status, admin_order_path(order.id) %></td>
+				<td><%= link_to order.order_status, admin_order_path(order.id), data: {turbolinks: false} %></td>
 			</tr>
 			<% end %>
 		</tbody>
