@@ -21,7 +21,7 @@
         <tr>
             <td><%= item.id %></td>
             <td><%= link_to item.name, admin_item_path(item.id) %></td>
-            <td><%= item.format %></td>
+            <td><% if item.format %>シングル<% else %>アルバム<% end %></td>
             <td><%= Artist.find(item.artist_id).name %></td>
             <td><%= item.release_date %></td>
             <td><%= item.prices %></td>
