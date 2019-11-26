@@ -76,11 +76,14 @@ before_action :authenticate_customer!
 	def thanks
 	end
 
-	def in_cart_create_address
-		delivery = current_customer.deliveries.new(delivery_params)
-	  	delivery.save
-	    redirect_to carts_info_path
-	end
+  def in_cart_create_address
+    delivery = current_customer.deliveries.new(delivery_params)
+    if delivery.save
+      redirect_to carts_info_path
+    else
+      redirect_to carts_info_path, flash: { error: delivery.errors.full_messages }
+    end
+  end
 
 	private
 	def cart_item_params
