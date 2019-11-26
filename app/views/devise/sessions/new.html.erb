@@ -9,7 +9,7 @@
       </h3>
 
       <%# エラーメッセージ %>
-      <% if !flash[:error].present? %>
+      <% if flash[:alert].present? %>
         <div class="row">
           <% flash.each do |key, value| %>
             <div class="error_field alert alert-danger" role="alert">

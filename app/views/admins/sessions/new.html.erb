@@ -1,8 +1,9 @@
 <div class="container">
 
-  <h3 class="page-title">管理者用ログイン</h3>
+<h3 class="page-title">管理者用ログイン</h3>
+
 <%# エラーメッセージ %>
-<% if !flash[:error].present? %>
+<% if flash[:alert].present? %>
   <div class="row">
     <% flash.each do |key, value| %>
       <div class="error_field alert alert-danger" role="alert">
@@ -12,11 +13,12 @@
   </div>
 <% end %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :"メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field">
+      <%= f.label :"メールアドレス" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", style: "margin-bottom: 20px" %>
+    </div>
+
     <div class="field">
       <%= f.label :"パスワード" %><br />
       <%= f.password_field :password, autocomplete: "current-password", style: "margin-bottom: 20px" %>
@@ -35,7 +37,7 @@
 
    <%= render "admins/shared/links" %>
 
-<% end %>
+  <% end %>
 <div class="page-under-space-100"></div>
 <div class="page-under-space-100"></div>
 <div class="page-under-space-100"></div>

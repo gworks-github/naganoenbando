@@ -47,12 +47,36 @@ before_action :authenticate_customer!
 	def update
 		@cart_items = CartItem.where(customer: current_customer[:id])
 		n = 0
+
+    #エラーメッセージ格納用
+    msg = []
+
 		@cart_items.each do |f|
 			f.quantity = params["#{n}"]
-			f.save
 			n += 1
+
+      #在庫数
+      arrived_item_quantity = ArrivedItem.arrived_item_quantity(f.item_id)
+      order_item_quantity = OrderDetail.order_item_quantity(f.item_id)
+      stock = arrived_item_quantity.merge(order_item_quantity) {
+        |key,arrived,order| arrived - order }.values[0].to_i
+
+      #在庫数と注文数の比較
+      if stock > f.quantity
+        f.save
+      else
+        item_name = Item.find(f.item_id).name
+        msg << "#{item_name}の注文数が在庫数(#{stock})を上回っています。"
+      end
 		end
-		redirect_to carts_info_path
+
+    #在庫数を上回る商品がひとつでもあればレジに進ませない
+    if msg.present?
+      redirect_to carts_path, flash: { error: msg}
+    else
+      redirect_to carts_info_path
+    end
+
 	end
 
 	def confirm
@@ -76,11 +100,14 @@ before_action :authenticate_customer!
 	def thanks
 	end
 
-	def in_cart_create_address
-		delivery = current_customer.deliveries.new(delivery_params)
-	  	delivery.save
-	    redirect_to carts_info_path
-	end
+  def in_cart_create_address
+    delivery = current_customer.deliveries.new(delivery_params)
+    if delivery.save
+      redirect_to carts_info_path
+    else
+      redirect_to carts_info_path, flash: { error: delivery.errors.full_messages }
+    end
+  end
 
 	private
 	def cart_item_params
