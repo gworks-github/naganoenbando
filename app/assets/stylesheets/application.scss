@@ -186,6 +186,9 @@ body .admin {
 	  	padding-top: 100px;
 	  	text-align: center;
 	  	.m-image {
+	  		display: inline-block;
+	  		margin: 0 auto;
+	  		border: 1px solid #DB0101;
 	  	}
 	  	.m-text {
 			margin: 20px;
@@ -221,15 +224,20 @@ body .admin {
 		}
 	}
 	.iine {
-
 		padding-top: 50px;
-		text-decoration: underline;
 		border: 1px solid;
 		margin-top: 70px;
 		.like-music{
 			padding-top: 20px;
 			.number{
-				text-align: left
+				text-align: left;
+				.number-radius {
+				    padding: 5px 8px;
+	    			border-radius: 18px;
+					border: 1px solid;
+					display: inline-block;
+					margin-left: 27px;
+					}
 			}
 			.like-m-box{
 				margin: 20px;

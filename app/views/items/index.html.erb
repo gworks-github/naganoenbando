@@ -9,7 +9,7 @@
                 <%# 検索フォーム %>
                 <%= render 'items/item_search', artists_search:@artists_search, labels_search:@labels_search, genres_search:@genres_search %>
                 </div>
-                <div class="iine"><h4>週間いいねランキング</h4>
+                <div class="iine"><h4><b>週間いいねランキング</b></h4>
                 <%# いいねランキング %>
                 <%= render 'likes/ranks', likes_ranks:@likes_ranks, likes_ranks_count:@likes_ranks_count, ranks_number:@ranks_number %>
                 </div>
@@ -32,12 +32,11 @@
             <% @items.each do |item| %>
                 <div class="m-box">
                     <div class="m-image">
-                        <%= link_to attachment_image_tag(item, :jacket_image, :fill, 150, 150, format: 'jpeg',fallback: "no_image.png",size: "150x150" ), item_path(item.id) %>
+                        <%= link_to attachment_image_tag(item, :jacket_image, :fill, 150, 150, format: 'jpeg',fallback: "no_image.png",size: "150x150" ), item_path(item.id), class: "m-img" %>
                     </div>
                     <div class="m-text">
                         <p class="m-content"><%= link_to item.name, item_path(item.id) %></p>
                         <p class="m-content"><%= link_to Artist.find(item.artist_id).name, item_path(item.id) %></p>
-                        <!-- <p><%#= link_to Label.find(item.label_id).name, item_path(item.id) %></p> -->
                         <p class="m-content">￥<%= (item.prices * (Tax.last.rate + 1)).floor %>（税込）</p>
                     </div>
                 </div>
