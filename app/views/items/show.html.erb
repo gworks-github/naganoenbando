@@ -66,10 +66,11 @@
                 </p>
             </div>
         </div>
-
+        <% @disks.each do |disk| %>
         <div class="col-sm-9">
             <div class="show-table">
                 <table class="table">
+                    <p><%= disk.disk_number %>枚目</p>
                     <thead>
                         <tr>
                             <th>Track.No</th>
@@ -77,8 +78,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% @disks.each do |disk| %>
-                        <p><%= @disks.find(disk.id).disk_number %>枚目</p>
                         <% Track.where(disk_id: disk.id).each do |track| %>
                                 <p>
                                     <tr>
@@ -87,11 +86,11 @@
                                     </tr>
                                 </p>
                         <% end %>
-                        <% end %>
                     </tbody>
                 </table>
             </div>
         </div>
+        <% end %>
     </div>
 </div>
 
