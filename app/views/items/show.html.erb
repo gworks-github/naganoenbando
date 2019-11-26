@@ -36,7 +36,7 @@
                     <% if @stock > 0 %>
                         <%= f.select :quantity, options_for_select((1..@stock).to_a) %>
                         <%= f.hidden_field :item_id, :value => @item.id %>
-                        <%= f.submit "カートへ入れる", class: "btn" %>
+                        <%= f.submit "Cart In", class: "btn btn-sm" %>
                     <% else %>
                         <label>入荷待ちです</label>
                     <% end %>
@@ -45,18 +45,15 @@
                 <p class="like">
                     <% if customer_signed_in? %>
                       <% if @likes.find_by(customer_id: current_customer.id) %>
-                        <li>
+                        <p>
                           <%= link_to item_likes_path(@item), method: :delete do %>
-                            <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-                            Thanks!!!
+                          <span class="glyphicon glyphicon-heart"></span>
                           <% end %>
-                        </li>
+                        </p>
                       <% else %>
                         <p>
                           <%= link_to item_likes_path(@item), method: :post do %>
-                          <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                            <i class="fa fa-heart-o" aria-hidden="true"></i>
-                            Favorite!
+                          <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
                           <% end %>
                         </p>
                       <% end %>

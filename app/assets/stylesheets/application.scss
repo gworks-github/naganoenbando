@@ -248,7 +248,6 @@ body .admin {
 .show-image {
 	margin:100px;
 }
-
 .show-text {
 	margin-top:100px;
 	padding-left:60px;
@@ -256,15 +255,21 @@ body .admin {
 		margin: 20px;
 	}
 }
-
+.btn-sm {
+	color: white;
+	background-color: #DB0101;
+	margin-left: 20px;
+}
 .like {
 	text-align: left;
 }
-
-
 .glyphicon-heart {
 	font-size:32px;
 }
+.glyphicon-heart-empty {
+	font-size:32px;
+}
+
 
 .show-table {
 	margin: 30px 0px 0px 100px;
