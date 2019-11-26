@@ -88,6 +88,9 @@ body,h1,h2,h3,h4,p,a,ul[class],ol[class],li,figure,figcaption,blockquote,dl,dd {
 	.t-right {
 		text-align: right;
 	}
+	.mb-0 {
+		margin-bottom: 0;
+	}
 	}
 
 // 管理者側のヘッダー
@@ -312,27 +315,38 @@ body .admin {
 }
 
 /* mypage*/
-h1.title {
-  margin:10px;
-  margin-left:100px;
-}
 .mypage {
-  margin-top: 20px;
-  margin-bottom: 10px;
+	width: 60%;
+	h1.title {
+	}
+	.center {
+		margin: 0 auto;
+		text-align: center;
+	}
+	.profile {
+	  margin-top: 10px;
+	  margin-bottom: 60px;
+	}
+	.profile-content {
+	  margin: 20px;
+	}
+	.add-button {
+	  margin-bottom: 10px;
+	}
+	.delivery-add {
+	  display:none;
+	}
+	.mypage-left-card {
+		border: 1px solid #DB0101;
+		padding: 20px;
+	}
+	.btn-sm {
+		background-color: #DB0101;
+		color: white;
+	}
+
 }
-.profile {
-  margin-top: 10px;
-  margin-bottom: 60px;
-}
-.profile-content {
-  margin: 20px;
-}
-.add-button {
-  margin-bottom: 10px;
-}
-.delivery-add {
-  display:none;
-}
+
 
 /* user log_in */
 .login-title {

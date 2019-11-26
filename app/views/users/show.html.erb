@@ -1,107 +1,118 @@
 
 
 <div class="container mypage">
-  <h1>マイページ</h1>
+    <div class="row">
+              <div class="col-sm-7">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>基本情報</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+                    </tr>
+                    <tr>
+                      <td><%= @customer.last_furigana %> <%= @customer.first_furigana %></td>
+                    </tr>
+                    <tr>
+                      <td>〒<%= @customer.post_code %></td>
+                    </tr>
+                    <tr>
+                      <td><%= @customer.address %></td>
+                    </tr>
+                    <tr>
+                      <td><%= @customer.phone_number %></td>
+                    </tr>
+                    <tr>
+                      <td><%= @customer.email %></td>
+                    </tr>
+                    <tr>
+                      <td><%= link_to '変更', edit_customer_registration_path, class:"btn btn-sm" %></td>
+                    </tr>
+                  </tbody>
+                </table>
 
-  <div class="row">
-    <div class="col-sm-1">
-        <%= link_to "購入履歴", orders_path(current_customer.id), class:"btn btn-lg" %> <br>
-        <%= link_to "いいねした商品", likes_path(current_customer.id), class:"btn btn-lg" %> <br>
-        <%# "deletメソッドを使用しているが、実際はdevise/registrationへのリダイレクトのみ%>
-        <%= link_to "退会手続き", destroy_customer_path(current_customer.id), method: :delete, class:"btn btn-lg"%> <br>
+                <% if @deliveries %>
+                <table class="table mb-0">
+                  <thead>
+                    <tr>
+                      <th>追加したお届け先</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                     <% @deliveries.each do |delivery| %>
+                     <% unless delivery.last_name.nil? %>
+                    <tr>
+                      <td><%= delivery.last_name %><%= delivery.first_name %>
+                      (<%= delivery.last_furigana %><%= delivery.first_furigana %>)<br>
+                      〒<%= delivery.post_code %>　<%= delivery.address %><br>
+                      TEL：<%= delivery.phone_number %></td>
+                      <td> <%= link_to '削除', delivery_path(delivery), method: :delete, class:"btn btn-secondary" %></td>
+                    </tr>
+                    <% end %>
+                    <% end %>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+                   <% end %>
+                <button class="btn btn-sm add-button">追加</button>
+                <%= render 'layouts/error_message', model: @deli %>
+              <div class="delivery-add">
 
-    </div>
 
-      <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-          <h2>基本情報</h2>
-          <div class="profile">
-            <p class="profile-content">
-            <%= @customer.last_name %> <%= @customer.first_name %>
-            (<%= @customer.last_furigana %> <%= @customer.first_furigana %>)
-            </p>
 
-            <p class="profile-content">
-            <%= @customer.post_code %> <br>
-            <%= @customer.address %>
-            </p>
 
-            <p class="profile-content">
-            <%= @customer.phone_number %> <br>
-            <%= @customer.email %>
-            <%= link_to '変更する', edit_customer_registration_path, class:"btn btn-secondary" %>
-            </p>
-          </div>
-
-          <% if @deliveries %>
-            <h2>追加のお届け先</h2>
-            <div class="profile">
-              <% @deliveries.each do |delivery| %>
-                <% unless delivery.last_name.nil? %>
-
-                  <p class="profile-content">
-                  <%= delivery.last_name %> <%= delivery.first_name %>
-                  (<%= delivery.last_furigana %> <%= delivery.first_furigana %>)
-                  </p>
-
-                  <p class="profile-content">
-                  <%= delivery.post_code %> <br>
-                  <%= delivery.address %> <br>
-                  <%= delivery.phone_number %>
-                  <%= link_to '削除する', delivery_path(delivery), method: :delete, class:"btn btn-secondary" %>
-                  </p>
-            </div>
-          <% end %>
-
-        <% end %>
-      <% end %>
-
-<%= render 'layouts/error_message', model: @deli %>
-      <div class="row">
-        <div class="col-sm-8">
-          <button class="btn add-button">お届け先を追加する</button>
-          <div class="delivery-add">
-            <%= form_for @delivery, url:deliveries_path do |f| %>
-              <div class="field">
-                <%= f.label :"名前（姓・名）" %><br />
-                <%= f.text_field :last_name,  autocomplete: "last_name", autofocus: true %>
+                <%= form_for @delivery, url:deliveries_path do |f| %>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th colspan="2">新しいお届け先</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>名前</td>
+                      <td><%= f.text_field :last_name,  autocomplete: "last_name", autofocus: true %><%= f.text_field :first_name,  autocomplete: "first_name" %></td>
+                    </tr>
+                    <tr>
+                      <td>フリガナ</td>
+                      <td><%= f.text_field :last_furigana,  autocomplete: "last_furigana" %><%= f.text_field :first_furigana,  autocomplete: "first_furigana" %></td>
+                    </tr>
+                    <tr>
+                      <td>電話番号</td>
+                      <td><%= f.text_field :phone_number,  autocomplete: "phone_number" %></td>
+                    </tr>
+                    <tr>
+                      <td>郵便番号</td>
+                      <td><%= f.text_field :post_code,  autocomplete: "post_code" %></td>
+                    </tr>
+                    <tr>
+                      <td>住所</td>
+                      <td><%= f.text_field :address,  autocomplete: "address" %></td>
+                    </tr>
+                    <tr>
+                      <td><%= f.submit "登録", class:"btn add-button btn-sm" %></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+                 <% end %>
               </div>
-              <div class="field">
-                <%= f.text_field :first_name,  autocomplete: "first_name" %>
-              </div>
-
-              <div class="field">
-                <%= f.label :"名前（カナ姓・カナ名）"%><br />
-                <%= f.text_field :last_furigana,  autocomplete: "last_furigana" %>
-              </div>
-              <div class="field">
-                <%= f.text_field :first_furigana,  autocomplete: "first_furigana" %>
-              </div>
-
-              <div class="field">
-                <%= f.label :"電話番号" %><br />
-                <%= f.text_field :phone_number,  autocomplete: "phone_number" %>
-              </div>
-
-              <div class="field">
-                <%= f.label :"郵便番号" %><br />
-                <%= f.text_field :post_code,  autocomplete: "post_code" %>
-              </div>
-
-              <div class="field">
-                <%= f.label :"住所" %><br />
-                <%= f.text_field :address,  autocomplete: "address" %>
-              </div>
-
-              <div class="actions">
-                <%= f.submit "追加する", class:"btn add-button" %>
-              </div>
-            <% end %>
-          </div>
-        </div>
+              <div class="page-under-space-100"></div>
       </div>
-
-        </div>
+      <div class="col-sm-3 col-xs-offset-2 mypage-left-card">
+        <div class="center">
+          <%= link_to "購入履歴", orders_path(current_customer.id), class:"btn btn-md" %> <br>
+          <%= link_to "いいねした商品", likes_path(current_customer.id), class:"btn btn-md" %> <br>
+          <%# "deletメソッドを使用しているが、実際はdevise/registrationへのリダイレクトのみ%>
+          <%= link_to "退会手続き", destroy_customer_path(current_customer.id), method: :delete, class:"btn btn-md"%> <br>
+          </div>
       </div>
   </div>
 </div>
