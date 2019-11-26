@@ -1,9 +1,6 @@
 class Admin::ItemsController < ApplicationController
 
   layout 'admin'
-
-
-  layout 'admin'
 # require 'to_bool'
   def new
     @item = Item.new
@@ -64,7 +61,7 @@ class Admin::ItemsController < ApplicationController
                                  :release_date,
                                  :is_selling,
                                  :prices,
-                                 :jacket_image_id,
+                                 :jacket_image,
                                  :tax_id,
                                  disks_attributes:
                                  [:id, :disk_number, :_destroy, tracks_attributes:[:id, :track_number, :name, :_destroy]])

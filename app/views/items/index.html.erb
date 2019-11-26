@@ -1,11 +1,11 @@
 <div class="container">
     <div class="row">
-        <div class="mv">
+        <div class="ufo">
         </div>
         <div class="col-sm-3">
             <div class="sidebar">
               <div class="kensaku">
-                <h3>詳細検索</h3>
+                <h4><b>詳細検索</b></h4>
                 <%# 検索フォーム %>
                 <%= render 'items/item_search', artists_search:@artists_search, labels_search:@labels_search, genres_search:@genres_search %>
                 </div>
@@ -37,8 +37,8 @@
                     <div class="m-text">
                         <p class="m-content"><%= link_to item.name, item_path(item.id) %></p>
                         <p class="m-content"><%= link_to Artist.find(item.artist_id).name, item_path(item.id) %></p>
-                        <!-- <p><%= link_to Label.find(item.label_id).name, item_path(item.id) %></p> -->
-                        <p class="m-content">￥<%= (item.prices * (Tax.last.rate + 1)).floor %>(税込)</p>
+                        <!-- <p><%#= link_to Label.find(item.label_id).name, item_path(item.id) %></p> -->
+                        <p class="m-content">￥<%= (item.prices * (Tax.last.rate + 1)).floor %>（税込）</p>
                     </div>
                 </div>
             <% end %>
