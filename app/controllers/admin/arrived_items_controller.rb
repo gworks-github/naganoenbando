@@ -3,7 +3,6 @@ class Admin::ArrivedItemsController < ApplicationController
 
   def index
     @items = ArrivedItem.all.order("date asc")
-
     #検索フォーム用
     @artists = Artist.all
     @labels  = Label.all
