@@ -1,5 +1,15 @@
 <div class="container cart">
-	<div class="row">
+
+  <%# エラーメッセージ %>
+  <% if flash[:error].present? %>
+    <% flash.each do |key, value| %>
+      <div class="error_field alert alert-danger" role="alert">
+        <%= content_tag(:div, value, class: "#{key}" "error_msg") %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="row">
 		<div class="col-sm-8">
 		<table class="table">
 			<thead>
