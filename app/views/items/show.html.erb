@@ -52,13 +52,13 @@
                           <% end %>
                         </li>
                       <% else %>
-                        <li>
+                        <p>
                           <%= link_to item_likes_path(@item), method: :post do %>
                           <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
                             <i class="fa fa-heart-o" aria-hidden="true"></i>
                             Favorite!
                           <% end %>
-                        </li>
+                        </p>
                       <% end %>
                       <% else %>
                       <%! "ログインしないといいねボタンが表示されない" %>
