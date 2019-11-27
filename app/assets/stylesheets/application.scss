@@ -189,6 +189,16 @@ body .admin {
 	  		display: inline-block;
 	  		margin: 0 auto;
 	  		border: 1px solid #DB0101;
+	  		position: relative;
+	  		.sold-out {
+	  		position: absolute;
+	  		top: 65px;
+    		left: 18px;
+ 			background-color: #DB0101;
+ 			color: white;
+ 			padding: 5px 20px;
+ 			opacity: 0.6;
+	  		}
 	  	}
 	  	.m-text {
 			margin: 20px;

@@ -1,13 +1,8 @@
 class ItemsController < ApplicationController
   def new
-  	# @item = Item.new
-   #  disk = @item.disks.new
-   #  disk.tracks.new
   end
 
   def create
-  	# item = Item.create(item_params)
-   #  redirect_to items_path
   end
 
 
@@ -27,6 +22,13 @@ class ItemsController < ApplicationController
     @likes_ranks = Item.find(Like.where(created_at:1.week.ago.beginning_of_day..Time.zone.now.end_of_day).group(:item_id).order(Arel.sql('count(item_id) desc')).limit(5).pluck(:item_id))
     @likes_ranks_count = @likes_ranks.map{|id| Like.where(item_id: id).count}
     @ranks_number = [*1..5]
+    @stocks = []
+    @items.each do |item|
+      arrived_item_quantity = ArrivedItem.arrived_item_quantity(item.id)
+      order_item_quantity = OrderDetail.order_item_quantity(item.id)
+      @stocks << arrived_item_quantity.merge(order_item_quantity) {
+        |key,arrived,order| arrived - order }.values[0].to_i
+    end
   end
 
   def show
@@ -64,7 +66,6 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-
   end
 
   def search
