@@ -14,7 +14,7 @@
       <div class="" style="height: 100px; width:80%; margin:0 auto 50px; padding: 10px; border-bottom: solid 1px">
         <h1><a href="/">長野円盤堂</a></h1>
         <ul class="navbar-nav nav">
-          <li style="color: white"><%= link_to "Admin", admin_items_path %></li>
+          <li style="color: white"><%= link_to "Admin", admin_session_path %></li>
           <li style="color: white"><%= link_to "CD", items_path %></li>
           <% if current_customer == nil %>
           <li style="color: white"><%= link_to "Log in", new_customer_session_path %></li>
