@@ -70,7 +70,7 @@ class ItemsController < ApplicationController
 
   def search
     #検索結果
-    @items = Item.item_search(params).page(params[:page]).per(18)
+    @items = Item.item_search(params).page(params[:page]).per(30).order("id DESC")
 
     #検索フォーム用
     @artists_search = Artist.all
@@ -84,6 +84,15 @@ class ItemsController < ApplicationController
     @likes_ranks = Item.find(Like.where(created_at:1.week.ago.beginning_of_day..Time.zone.now.end_of_day).group(:item_id).order(Arel.sql('count(item_id) desc')).limit(5).pluck(:item_id))
     @likes_ranks_count = @likes_ranks.map{|id| Like.where(item_id: id).count}
     @ranks_number = [*1..5]
+
+    #在庫数
+    @stocks = []
+    @items.each do |item|
+      arrived_item_quantity = ArrivedItem.arrived_item_quantity(item.id)
+      order_item_quantity = OrderDetail.order_item_quantity(item.id)
+      @stocks << arrived_item_quantity.merge(order_item_quantity) {
+        |key,arrived,order| arrived - order }.values[0].to_i
+    end
 
     render :index
   end
