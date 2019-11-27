@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
 
   def index
     # ページネーション
-  	@items = Item.page(params[:page]).per(18).order("id DESC")
+  	@items = Item.page(params[:page]).per(30).order("id DESC")
 
     #検索フォーム用
     @artists_search = Artist.all
