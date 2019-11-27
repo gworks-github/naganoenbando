@@ -3,7 +3,7 @@
 
         <div class="col-sm-3">
             <div class="sidebar">
-              <div class="kensaku"><h3>詳細検索</h3>
+              <div class="kensaku"><h4><b>詳細検索</b></h4>
                 <%# 検索フォーム %>
                 <%= render 'items/item_search', artists_search:@artists_search, labels_search:@labels_search, genres_search:@genres_search %>
                 </div>
@@ -32,11 +32,11 @@
                 <p class="show-content"><% if @item.is_selling %>販売中<% else %>販売停止中<% end %></p>
                 <p class="show-content"><%= @item.quantity %>枚入り</p>
 
-                <%= form_for [@item,@cart_item], url: item_carts_path(@item), html: {method: :post} do |f| %>数量 ：
+                <%= form_for [@item,@cart_item], url: item_carts_path(@item), html: {method: :post} do |f| %>
                     <% if @stock > 0 %>
-                        <%= f.select :quantity, options_for_select((1..@stock).to_a) %>
+                        数量 ：<%= f.select :quantity, options_for_select((1..@stock).to_a) %>
                         <%= f.hidden_field :item_id, :value => @item.id %>
-                        <%= f.submit "Cart In", class: "btn btn-sm" %>
+                        <%= f.submit "Cart In", class: "btn btn-sm cart-in-btn" %>
                     <% else %>
                         <label>入荷待ちです</label>
                     <% end %>
