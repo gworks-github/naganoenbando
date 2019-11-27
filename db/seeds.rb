@@ -131,7 +131,7 @@ end
 end
 
 ## Admin
-name = Gimei.first.kanji
+name = "管理者A"
 email = "admin@gmail.com"
 password = "password"
 Admin.create!(
@@ -199,7 +199,7 @@ end
     rate: 0.1)
 
 # disk
-10.times do |n|
+40.times do |n|
   item_id = "#{n+1}"
   disk_number = "1"
   quantity = 15
@@ -209,17 +209,22 @@ end
     quantity: quantity
   )
 end
-Disk.create!(
-  item_id: "1",
-  disk_number: "2",
-  quantity: 5
-)
+40.times do |n|
+  item_id = "#{n+1}"
+  disk_number = "2"
+  quantity = 15
+  Disk.create!(
+    item_id: item_id,
+    disk_number: disk_number,
+    quantity: quantity
+  )
+end
 
 # track
-10.times do |n|
-  disk_id = "#{n+1}"
-  15.times do |m|
-    track_number = "#{m+1}"
+15.times do |n|
+  track_number = "#{n+1}"
+  80.times do |m|
+    disk_id = "#{m+1}"
     name = Faker::Book.title
     Track.create!(
       disk_id: disk_id,
@@ -228,23 +233,13 @@ Disk.create!(
     )
   end
 end
-5.times do |n|
-  disk_id = "11"
-  track_number = "#{n+1}"
-  name = Faker::Book.title
-    Track.create!(
-      disk_id: disk_id,
-      track_number: track_number,
-      name: name
-    )
-end
+
 
 #arrived_item
-30.times do |n|
-  item_id = rand(1..15)
-  quantity = rand(1..10)
+20.times do |n|
+  item_id = rand(1..40)
+  quantity = rand(5..7)
   date = Random.rand(DateTime.now.ago(3.month)..DateTime.now.since(3.month))
-
 ArrivedItem.create!(
   item_id: item_id,
   quantity: quantity,
@@ -255,7 +250,7 @@ end
 
 #order
 30.times do |n|
-  customer_id = rand(1..15)
+  customer_id = rand(1..51)
   tax_in_postage_id = 1
   payment_method = rand(0..2)
   post_code = "000-0000"
@@ -282,18 +277,33 @@ end
 
 
 #order_detail
-10.times do |n|
-    order_id = "#{n+1}"
-      10.times do |m|
-        item_id = "#{m+1}"
-        price = [550,1100,3300].sample
-        order_quantity = rand(1..3)
-        OrderDetail.create!(
-        order_id: order_id,
-        item_id: item_id,
-        price: price,
-        order_quantity: order_quantity
-        )
-      end
+30.times do |n|
+  order_id = "#{n+1}"
+    5.times do |m|
+      item_id = rand(1..40)
+      price = [550,1100,3300].sample
+      order_quantity = rand(1..3)
+      OrderDetail.create!(
+      order_id: order_id,
+      item_id: item_id,
+      price: price,
+      order_quantity: order_quantity
+      )
     end
+  end
+
+# 10.times do |n|
+#   order_id = rand(1..30)
+#     5.times do |m|
+#       item_id = rand(1..40)
+#       price = [550,1100,3300].sample
+#       order_quantity = 100
+#       OrderDetail.create!(
+#       order_id: order_id,
+#       item_id: item_id,
+#       price: price,
+#       order_quantity: order_quantity
+#       )
+#     end
+#   end
 

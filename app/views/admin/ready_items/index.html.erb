@@ -4,7 +4,6 @@
 		<thead>
 			<tr>
 				<th>アイテムID</th>
-				<th>ジャケット</th>
 				<th>タイトル</th>
 				<th>フォーマット</th>
 				<th>アーティスト</th>
@@ -21,7 +20,6 @@
             <tr>
               <td><%= item.item.id %></td>
               <%= f.hidden_field :item_id, :value => item.item.id %>
-              <td><%= item.item.jacket_image_id %></td>
               <td><%= item.item.name %></td>
               <td><%= item.item.format %></td>
               <td><%= item.item.artist.name %></td>
