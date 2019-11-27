@@ -14,7 +14,7 @@
             <div class="m-text">
               <p><%= link_to item.name, item_path(item.id) %></p>
               <p><%= link_to Artist.find(item.artist_id).name, item_path(item.id) %></p>
-              <!-- <p><%= link_to Label.find(item.label_id).name, item_path(item.id) %></p> -->
+              <!-- <p><%#= link_to Label.find(item.label_id).name, item_path(item.id) %></p> -->
               <p>￥<%= (item.prices * (Tax.last.rate + 1)).floor %>(税込)</p>
             </div>
           </div>

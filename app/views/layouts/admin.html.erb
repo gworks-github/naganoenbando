@@ -24,15 +24,15 @@
               <li style="margin-right: 30px; color: #cccccc;">　　　ようこそ <span style="color:orange;"><%= current_admin.name %></span> さん</li>
             </ul>
             <ul class="navbar-nav nav" style="color: white">
-              <li><%= link_to "サイトTOP", items_path, :style=>"color:white;" %></li>
-              <li><%= link_to "ログアウト", destroy_admin_session_path, :style=>"color:white;", method: :delete %></li>
-              <li><%= link_to "商品登録", new_admin_item_path, :style=>"color:white;" %></li>
-              <li><%= link_to "商品一覧", admin_items_path, :style=>"color:white;" %></li>
-              <li><%= link_to "入荷登録", admin_ready_items_path, :style=>"color:white;" %></li>
-              <li><%= link_to "入荷履歴", admin_arrived_items_path, :style=>"color:white;" %></li>
-              <li><%= link_to "受注履歴", admin_orders_path, :style=>"color:white;" %></li>
-              <li><%= link_to "顧客一覧", admin_customers_path, :style=>"color:white;" %></li>
-              <li><%= link_to "情報マスタ", admin_info_index_path, :style=>"color:white; :hover:block" %></li>
+              <li><%= link_to "サイトTOP", items_path, :style=>"color:white;", data: {turbolinks: false} %></li>
+              <li><%= link_to "ログアウト", destroy_admin_session_path, :style=>"color:white;", method: :delete, data: {turbolinks: false} %></li>
+              <li><%= link_to "商品登録", new_admin_item_path, :style=>"color:white;", data: {turbolinks: false} %></li>
+              <li><%= link_to "商品一覧", admin_items_path, :style=>"color:white;", data: {turbolinks: false} %></li>
+              <li><%= link_to "入荷登録", admin_ready_items_path, :style=>"color:white;", data: {turbolinks: false} %></li>
+              <li><%= link_to "入荷履歴", admin_arrived_items_path, :style=>"color:white;", data: {turbolinks: false} %></li>
+              <li><%= link_to "受注履歴", admin_orders_path, :style=>"color:white;", data: {turbolinks: false} %></li>
+              <li><%= link_to "顧客一覧", admin_customers_path, :style=>"color:white;", data: {turbolinks: false} %></li>
+              <li><%= link_to "情報マスタ", admin_info_index_path, :style=>"color:white; :hover:block", data: {turbolinks: false} %></li>
             </ul>
             <% end %>
       </div>
