@@ -1,5 +1,17 @@
 <div class="container">
 	<h1 class="page-title">入荷予定商品一覧</h1>
+
+      <%# エラーメッセージ %>
+      <% if flash[:error].present? %>
+        <div class="row">
+          <% flash.each do |key, value| %>
+            <div class="error_field alert alert-danger" role="alert">
+              <%= content_tag(:div, value, class: "#{key}" "error_msg") %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
 	<table class="table">
 		<thead>
 			<tr>

@@ -24,6 +24,7 @@
               <li style="margin-right: 30px; color: #cccccc;">　　　ようこそ <span style="color:orange;"><%= current_admin.name %></span> さん</li>
             </ul>
             <ul class="navbar-nav nav" style="color: white">
+
               <li><%= link_to "サイトTOP", items_path, :style=>"color:white;", data: {turbolinks: false} %></li>
               <li><%= link_to "ログアウト", destroy_admin_session_path, :style=>"color:white;", method: :delete, data: {turbolinks: false} %></li>
               <li><%= link_to "商品登録", new_admin_item_path, :style=>"color:white;", data: {turbolinks: false} %></li>
@@ -35,8 +36,8 @@
               <li><%= link_to "情報マスタ", admin_info_index_path, :style=>"color:white; :hover:block", data: {turbolinks: false} %></li>
             </ul>
             <% end %>
-      </div>
-      </div>
+      </div> 
+      </div>            
       </header>
       <div class="admin">
         <!-- /header -->

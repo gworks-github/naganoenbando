@@ -15,6 +15,14 @@ class Item < ApplicationRecord
 		return method
 	end
 
+  #商品登録バリデーション
+  VALID_REGEX = /\A[0-9]+\z/
+  validates :name, presence: true
+  validates :prices, presence: true,
+    format: { with: VALID_REGEX }
+  validates :quantity, presence: true,
+    format: { with: VALID_REGEX }
+
   #商品検索
   scope :item_search, -> (search_params) do
     artist_select(search_params[:artist][:id])
