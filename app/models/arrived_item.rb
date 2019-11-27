@@ -1,5 +1,12 @@
 class ArrivedItem < ApplicationRecord
 	belongs_to :item
+  #
+  #バリデーション
+  VALID_REGEX = /\A[0-9]+\z/
+  validates :quantity, presence: true,
+    format: { with: VALID_REGEX }
+  validates :date, presence: true
+
   #入荷検索
   scope :item_search, -> (search_params) do
     name_like(search_params[:name])
