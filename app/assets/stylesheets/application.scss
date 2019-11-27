@@ -374,7 +374,7 @@ body .admin {
   margin-bottom: 10px;
 }
 .login-form {
-  margin-top: 10px;
+  margin-top: 20px;
   margin-bottom: 80px;
   .field {
     margin: 10px;
@@ -416,9 +416,13 @@ footer {
   }
 }
 
-
-
-
+/* user change_password */
+.field {
+	margin-top: 40px;
+}
+.actions{
+	margin-top: 30px;
+}
 
 
 
