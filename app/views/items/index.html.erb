@@ -29,10 +29,13 @@
                 </thead>
             </table> -->
             <div class="music">
-            <% @items.each do |item| %>
+            <% @items.zip(@stocks).each do |item,stock| %>
                 <div class="m-box">
                     <div class="m-image">
                         <%= link_to attachment_image_tag(item, :jacket_image, :fill, 150, 150, format: 'jpeg',fallback: "no_image.png",size: "150x150" ), item_path(item.id), class: "m-img" %>
+                        <% if stock <= 0 %>
+                    <%= link_to "SOLD OUT", item_path(item.id), class: "sold-out" %>
+                    <% end %>
                     </div>
                     <div class="m-text">
                         <p class="m-content"><%= link_to item.name, item_path(item.id) %></p>
@@ -43,7 +46,7 @@
             <% end %>
             </div>
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-9 col-sm-offset-3">
             <div class="pages">
                 <%= paginate @items, class: "paginate" %>
             </div>

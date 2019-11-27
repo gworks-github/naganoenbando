@@ -62,14 +62,16 @@
 				<td>商品番号</td>
 				<td>タイトル</td>
 				<td>アーティスト</td>
+				<td>シングル/アルバム</td>
 				<td>枚数</td>
 				<td>価格（税込）</td>
 			</tr>
 			<% @order_details.each do |order| %>
 			<tr>
-				<td><%= order.id %></td>
+				<td><%= order.item_id %></td>
 				<td><%= Item.find(order.item_id).name %></td>
 				<td><%= Artist.find(Item.find(order.item_id).artist_id).name %></td>
+				<td><% if Item.find(order.item_id).format %>シングル<% else %>アルバム<% end %></td>
 				<td><%= order.order_quantity %></td>
 				<td><%= order.price %></td>
 			</tr>
