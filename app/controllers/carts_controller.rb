@@ -55,6 +55,13 @@ before_action :authenticate_customer!
 			f.quantity = params["#{n}"]
 			n += 1
 
+      #販売確認
+      item_chk = Item.find(f.item_id)
+      if item_chk.is_selling == false
+        msg << "#{item_chk.name}は販売停止中です。"
+        next
+      end
+
       #在庫数
       arrived_item_quantity = ArrivedItem.arrived_item_quantity(f.item_id)
       order_item_quantity = OrderDetail.order_item_quantity(f.item_id)
@@ -62,7 +69,7 @@ before_action :authenticate_customer!
         |key,arrived,order| arrived - order }.values[0].to_i
 
       #在庫数と注文数の比較
-      if stock > f.quantity
+      if stock >= f.quantity
         f.save
       else
         item_name = Item.find(f.item_id).name
