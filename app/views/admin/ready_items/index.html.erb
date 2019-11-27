@@ -34,20 +34,20 @@
 <% end %>
   </table>
   <br>
-  <div class="container">
+<!--   <div class="container">
     <div class="row">
       <div class='col-sm-6'>
-        <div class="form-group">
-          <div class='input-group date datetimepicker' id='datetimepicker2'>
-            <%= text_field_tag :date, nil, {class: "form_control"} %>
+        <div class="form-group"> -->
+          <div class='input-group date datetimepicker' id='datetimepicker2' style='width: 200px'>
+            <%= text_field_tag :date, nil, {class: "form_control form-with-calender"}%>
             <span class="input-group-addon">
               <span class="glyphicon glyphicon-calendar"></span>
             </span>
           </div>
-        </div>
+<!--         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <%= submit_tag "登録", class: "btn btn-sm", local: true %>
 
