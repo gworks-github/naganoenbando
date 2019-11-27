@@ -37,31 +37,31 @@ end
   password: "password")
 
 # artist
-50.times do |n|
+15.times do |n|
   name  = Faker::Artist.name
   Artist.create!(name: name)
 end
 
 # label
-50.times do |n|
+10.times do |n|
   name = Faker::Food.dish
   Label.create!(name: name)
 end
 
 # genre
-50.times do |n|
+10.times do |n|
   name = Faker::Music.genre
   Genre.create!(name: name)
 end
 
 #Item
 I18n.locale = 'ja'
-40.times do |n|
+50.times do |n|
   name  = Faker::Music.album
   format = [true,false].sample
-  artist_id = rand(1..30)
-  genre_id = rand(1..30)
-  label_id = rand(1..30)
+  artist_id = rand(1..15)
+  genre_id = rand(1..10)
+  label_id = rand(1..10)
   quantity = rand(1..3)
   release_date = "2019/11/1"
   is_selling = [true,false].sample
