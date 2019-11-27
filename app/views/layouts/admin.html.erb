@@ -27,7 +27,7 @@
             <li><%= link_to "ログアウト", destroy_admin_session_path, :style=>"color:white;", method: :delete %></li>
             <li><%= link_to "商品登録", new_admin_item_path, :style=>"color:white;" %></li>
             <li><%= link_to "商品一覧", admin_items_path, :style=>"color:white;" %></li>
-            <li><%= link_to "入荷登録", admin_ready_items_path, :style=>"color:white;" %></li>
+            <li><%= link_to "入荷登録", admin_ready_items_path, :style=>"color:white;", data: {"turbolinks" => false} %></li>
             <li><%= link_to "入荷履歴", admin_arrived_items_path, :style=>"color:white;" %></li>
             <li><%= link_to "受注履歴", admin_orders_path, :style=>"color:white;" %></li>
             <li><%= link_to "顧客一覧", admin_customers_path, :style=>"color:white;" %></li>
