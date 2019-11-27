@@ -20,8 +20,9 @@
           <li style="color: white"><%= link_to "Log in", new_customer_session_path %></li>
           <li style="color: white"><%= link_to "Sign up", new_customer_registration_path %></li>
           <% else %>
-          <li style="color: white"><%= link_to "Cart", carts_path %></li>
+          <li style="color: white"><%= link_to "Cart", carts_path,data: {"turbolinks"=>false} %></li>
           <li style="color: white"><%= link_to "My page", show_customer_path(current_customer.id), date: {"turbolinks" => false} %></li>
+          <li style="color: white"><%= link_to "Likes", likes_path(current_customer.id), date: {"turbolinks" => false} %></li>
         </ul>
         <ul class="navbar-nav nav pull-right">
           <li style="color: white"><%= link_to "ようこそ#{current_customer.last_name}さん", show_customer_path(current_customer.id), date: {"turbolinks" => false} %></li>

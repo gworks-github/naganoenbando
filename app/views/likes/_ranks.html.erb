@@ -2,14 +2,14 @@
 <section class="like-music">
 <% likes_ranks.zip(likes_ranks_count,ranks_number).each do |rank,count,number| %>
 <div class="like-m-box">
-	<p class="number"><%= number %></p>
+	<p class="number"><span class="number-radius"><%= number %></span></p>
   <div class="like-m-image">
 	<%= link_to attachment_image_tag(rank, :jacket_image, :fill, 100, 100, format: 'jpeg',fallback: "no_image.png",size: "100x100" ), item_path(rank.id) %>
   </div>
   <div class="like-m-text">
     <p class="like-m-content"><%=link_to rank.name , item_path(rank.id) %></p>
     <p class="like-m-content"><%=link_to rank.artist.name , item_path(rank.id) %></p>
-    <p class="like-m-content">❤️<%= count %></p>
+    <p class="like-m-content">❤️× <%= count %></p>
   </div>
 </div>
 <% end %>

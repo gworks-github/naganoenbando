@@ -4,7 +4,6 @@
     <title>管理画面</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -12,7 +11,7 @@
   <body>
     <header id="header" class="row admin" style="background-color: #232F3E; color:white; padding: 10px;">
       <div class="col-sm-4">
-          <h1 style="color:orange; padding: 20px">長野円盤堂（管理者）</h1>
+          <%= image_tag 'admin_icon.png',  style: "height:70px; margin: 10px 0 0 120px;" %>
       </div>
           <% if current_admin == nil %>
           <% else %>

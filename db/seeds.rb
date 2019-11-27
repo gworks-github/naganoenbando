@@ -24,6 +24,18 @@
   password: password)
 end
 
+#コツボ
+ Customer.create!(
+  first_name: "均",
+  last_name: "小坪",
+  first_furigana: "ヒトシ",
+  last_furigana: "コツボ",
+  post_code: "000-0000",
+  address: "東京都渋谷区二子玉川",
+  phone_number: "00000000000",
+  email: "kotsuboon@gmail.com",
+  password: "password")
+
 # artist
 50.times do |n|
   name  = Faker::Artist.name
@@ -239,3 +251,49 @@ ArrivedItem.create!(
   date: date
     )
 end
+
+
+#order
+30.times do |n|
+  customer_id = rand(1..15)
+  tax_in_postage_id = 1
+  payment_method = rand(0..2)
+  post_code = "000-0000"
+  address = Gimei.address.kanji
+  phone_number = "00000000000"
+  tax_in_total_price = [5500,11000,33000].sample
+  order_status = rand(0..2)
+  name = Gimei.last.kanji + Gimei.first.kanji
+  furigana = Gimei.last.katakana + Gimei.first.katakana
+
+Order.create!(
+  customer_id: customer_id,
+  tax_in_postage_id: tax_in_postage_id,
+  payment_method: payment_method,
+  post_code: post_code,
+  address: address,
+  phone_number: phone_number,
+  tax_in_total_price: tax_in_total_price,
+  order_status: order_status,
+  name: name,
+  furigana: furigana
+  )
+end
+
+
+#order_detail
+10.times do |n|
+    order_id = "#{n+1}"
+      10.times do |m|
+        item_id = "#{m+1}"
+        price = [550,1100,3300].sample
+        order_quantity = rand(1..3)
+        OrderDetail.create!(
+        order_id: order_id,
+        item_id: item_id,
+        price: price,
+        order_quantity: order_quantity
+        )
+      end
+    end
+

@@ -85,7 +85,7 @@
 		<div class="col-sm-4 cart-right-card">
 			<p class="mb-3">合計金額：¥<%= @total_price %>（税込）</p>
 		<%= link_to "注文確定", orders_path(pay: params[:pay], address: params[:address]), :method => :post, class: "btn btn-sm mb-3" %><br>
-		<%= link_to "修正する", carts_path, class: "btn-sm" %>
+		<%= link_to "修正する", carts_path, class: "btn-sm", data: {"turbolinks"=>false} %>
 			</div>
 		</div>
 	</div>
