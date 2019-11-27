@@ -33,7 +33,7 @@
                 <p class="show-content"><%= @item.quantity %>枚入り</p>
 
                 <%= form_for [@item,@cart_item], url: item_carts_path(@item), html: {method: :post} do |f| %>
-                    <% if @stock > 0 %>
+                    <% if @item.is_selling && @stock > 0 %>
                         数量 ：<%= f.select :quantity, options_for_select((1..@stock).to_a) %>
                         <%= f.hidden_field :item_id, :value => @item.id %>
                         <%= f.submit "Cart In", class: "btn btn-sm cart-in-btn" %>
