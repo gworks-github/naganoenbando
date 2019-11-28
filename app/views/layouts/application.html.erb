@@ -42,11 +42,14 @@
     <%= yield %>
     </div>
     <footer class="footer">
-      <p>営業時間　11:00~23:00</p>
-      <p>定休日　金曜日</p>
-      <p>本社　〒150-0041 東京都渋谷区神南１丁目１９−１１ パークウェースクエア2 4階</p>
-      <p>お問い合わせ　kotsuboon@gmail.com  03-6869-4700</p>
-      <p>配送料　全国一律<%= TaxInPostage.last.price %>円（税込）</p>
+      <div style="width: 800px; display: inline-block">
+        <p class="mb-1">営業時間　　　→　11:00~23:00</p>
+        <p class="mb-1">定休日　　　　→　金曜日</p>
+        <p class="mb-1">本社　　　　　→　〒150-0041 東京都渋谷区神南１丁目１９−１１ パークウェースクエア2 4階</p>
+        <p class="mb-1">お問い合わせ　→　admin@gmail.com  03-6869-4700</p>
+        <p class="mb-1">配送料　　　　→　全国一律<%= TaxInPostage.last.price %>円（税込）</p>
+      </div>
+      <%= image_tag 'footer_icon.png',  style: "height: 130px; float: right;" %>
     </footer>
   </body>
 </html>

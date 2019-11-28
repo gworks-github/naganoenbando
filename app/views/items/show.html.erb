@@ -31,16 +31,17 @@
                 <p class="show-content">ジャンル ： <%= Genre.find(@item.genre_id).name %></p>
                 <p class="show-content"><% if @item.is_selling %>販売中<% else %>販売停止中<% end %></p>
                 <p class="show-content"><%= @item.quantity %>枚入り</p>
-
+                <p>
                 <%= form_for [@item,@cart_item], url: item_carts_path(@item), html: {method: :post} do |f| %>
                     <% if @item.is_selling && @stock > 0 %>
                         数量 ：<%= f.select :quantity, options_for_select((1..@stock).to_a) %>
                         <%= f.hidden_field :item_id, :value => @item.id %>
                         <%= f.submit "Cart In", class: "btn btn-sm cart-in-btn" %>
                     <% else %>
-                        <label>入荷待ちです</label>
+                        <label style="margin-left: 18px;">入荷待ちです</label>
                     <% end %>
                     <% end %>
+                    </p>
 
                 <p class="like">
                     <% if customer_signed_in? %>
